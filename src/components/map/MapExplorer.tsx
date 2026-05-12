@@ -8,6 +8,7 @@ import { MotorwayLayer } from './MotorwayLayer';
 import { TollLayer } from './TollLayer';
 import { TruckParkingLayer } from './TruckParkingLayer';
 import { RealCorridorLayer } from './RealCorridorLayer';
+import { MapSearch } from './MapSearch';
 import { useApp } from '../../context/AppContext';
 
 // FR/BE/NL bounds
@@ -114,13 +115,14 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
   };
 
   return (
-    <div className="relative z-0 h-full w-full min-h-0">
+    <div className="relative z-0 h-full w-full overflow-hidden">
       <MapContainer
         center={[50.8, 4.6]}
         zoom={7}
         minZoom={5}
         maxZoom={18}
-        className="h-full w-full min-h-0"
+        className="h-full w-full"
+        style={{ height: "100%", width: "100%" }}
         zoomControl={false}
         scrollWheelZoom={true}
         preferCanvas={true}
@@ -132,6 +134,8 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         <ZoomControl position="topleft" />
         <MapZoomTracker onZoomChange={setZoom} />
         <MapResizer isFullScreen={isFullScreen} />
+        {/* Global search — MapSearch must be inside MapContainer to access useMap */}
+        <MapSearch onSelectResult={(id, type) => handleSelect(id, type)} />
 
         {/* Hubs */}
         {filteredHubs.map(hub => {
@@ -198,7 +202,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
 
       {/* Help card */}
       {showHelp && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1000] flex items-start gap-3 rounded-2xl border border-brand-blue/20 bg-white/96 px-5 py-3 text-xs font-medium text-brand-text shadow-xl backdrop-blur-sm max-w-sm">
+        <div className="absolute top-4 right-4 z-[1000] flex items-start gap-3 rounded-2xl border border-brand-blue/20 bg-white/96 px-5 py-3 text-xs font-medium text-brand-text shadow-xl backdrop-blur-sm max-w-sm">
           <span className="text-lg shrink-0 mt-0.5">💡</span>
           <div className="leading-relaxed">
             <span className="font-bold block mb-0.5">Vue initiale : hubs + autoroutes</span>

@@ -18,7 +18,24 @@ interface DetailPanelProps {
   onClose: () => void;
 }
 
-const formatValue = (value?: string) => value || 'Donnée non renseignée';
+const humanizeValue = (val: string, lang: Language): string => {
+  const map: Record<string, Record<string, string>> = {
+    toll_booth: { fr: 'Gare de péage', en: 'Toll booth' },
+    yes: { fr: 'Oui', en: 'Yes' },
+    no: { fr: 'Non', en: 'No' },
+    private: { fr: 'Privé', en: 'Private' },
+    permissive: { fr: 'Autorisé', en: 'Permissive' },
+    motorway: { fr: 'Autoroute', en: 'Motorway' },
+  };
+
+  const normalized = val.toLowerCase().trim();
+  return map[normalized] ? map[normalized][lang] : val;
+};
+
+const formatValue = (value?: string, lang: Language = 'fr') => {
+  if (!value) return lang === 'fr' ? 'Donnée non renseignée' : 'Data not provided';
+  return humanizeValue(value, lang);
+};
 
 export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClose }) => {
   const { t } = useTranslation(lang);
@@ -203,13 +220,13 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
             {selection.type === 'motorway' || selection.type === 'axis' ? (
               <div className="bg-brand-bg/50 rounded-xl p-3 border border-brand-border/50">
                 <div className="text-[10px] uppercase font-bold text-brand-muted">Référence OSM</div>
-                <div className="font-mono text-base font-black text-brand-text">{formatValue(feature.ref || feature.intRef)}</div>
+                <div className="font-mono text-base font-black text-brand-text">{formatValue(feature.ref || feature.intRef, lang)}</div>
               </div>
             ) : null}
 
             <div className="bg-brand-bg/50 rounded-xl p-3 border border-brand-border/50">
               <div className="text-[10px] uppercase font-bold text-brand-muted">Nom OSM</div>
-              <div className="font-semibold text-brand-text">{formatValue(feature.name)}</div>
+              <div className="font-semibold text-brand-text">{formatValue(feature.name, lang)}</div>
             </div>
           </div>
         </div>
@@ -228,11 +245,11 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
               <>
                 <div className="bg-brand-bg/50 rounded-xl p-3">
                   <div className="text-[10px] uppercase font-bold text-brand-muted">Accès HGV</div>
-                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.hgv)}</div>
+                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.hgv, lang)}</div>
                 </div>
                 <div className="bg-brand-bg/50 rounded-xl p-3">
                   <div className="text-[10px] uppercase font-bold text-brand-muted">Services</div>
-                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.services || feature.tags.service)}</div>
+                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.services || feature.tags.service, lang)}</div>
                 </div>
               </>
             )}
@@ -240,7 +257,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
             {selection.type === 'toll' && (
               <div className="bg-brand-bg/50 rounded-xl p-3">
                 <div className="text-[10px] uppercase font-bold text-brand-muted">Type barrière</div>
-                <div className="font-semibold text-brand-text">toll_booth</div>
+                <div className="font-semibold text-brand-text">{formatValue(feature.tags.barrier || 'toll_booth', lang)}</div>
               </div>
             )}
 

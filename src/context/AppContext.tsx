@@ -16,6 +16,7 @@ import {
 import { hubsData } from '../data/hubs';
 import { filterCompleteHubs } from '../services/dataLoader';
 import { loadAxisLayer } from '../services/osmLoader.ts';
+import { fixTagValues } from '../services/osmParser';
 
 const COUNTRY_CODES: Record<Country, OsmCountryCode> = {
   France: 'fr',
@@ -126,6 +127,7 @@ const buildMotorwayFeatures = (
   return waysWithGeometry.map((way) => {
     const geometry = way.geometry;
     const coordinates = toCoordinates(geometry);
+    const tags = fixTagValues(way.tags || {});
 
     return {
       id: `${code}-motorway-${way.id}`,
@@ -136,11 +138,11 @@ const buildMotorwayFeatures = (
       dataType: 'real',
       sourceUrl: buildSourceUrl('way', way.id),
       lastUpdated: timestamp,
-      tags: way.tags || {},
-      name: way.tags?.name,
-      ref: way.tags?.ref,
-      intRef: way.tags?.int_ref,
-      highway: way.tags?.highway,
+      tags,
+      name: tags.name,
+      ref: tags.ref,
+      intRef: tags.int_ref,
+      highway: tags.highway,
       coordinates,
       geometry,
     } satisfies OsmLineFeature;
@@ -156,7 +158,7 @@ const buildPointFeatures = (
   const features: OsmPointFeature[] = [];
 
   elements.forEach((element) => {
-    const tags = element.tags || {};
+    const tags = fixTagValues(element.tags || {});
     const coordinates = derivePointCoordinates(element as OverpassPointElement);
 
     if (!coordinates) {

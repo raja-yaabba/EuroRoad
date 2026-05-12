@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo } from 'react';
 import L from 'leaflet';
-import { Marker, Popup } from 'react-leaflet';
+import { Marker, Tooltip } from 'react-leaflet';
 import { Country, OsmCountryCode } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -59,69 +59,47 @@ const getServicesText = (featureTags: Record<string, string>) => {
   return services.join(', ');
 };
 
-export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = ({
-  country,
-  enabled,
-  zoom,
-  selectedItemId,
-  onSelectItem,
-}) => {
+export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = memo((
+  { country, enabled, zoom, selectedItemId, onSelectItem }
+) => {
   const { osmData, ensureOsmLayerLoaded } = useApp();
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
-    if (enabled) {
-      void ensureOsmLayerLoaded('truckParkings', [country]);
-    }
-  }, [country, enabled, ensureOsmLayerLoaded, zoom]);
+    if (enabled) void ensureOsmLayerLoaded('truckParkings', [country]);
+  }, [country, enabled, ensureOsmLayerLoaded]);
 
   const features = useMemo(() => osmData.truckParkings[code] || [], [code, osmData.truckParkings]);
   const loading = osmData.loading.truckParkings[code];
   const error = osmData.errors.truckParkings[code];
 
-  if (!enabled || loading || error || features.length === 0) {
-    return null;
-  }
+  const handleSelect = useCallback((id: string) => onSelectItem(id, 'truck_parking'), [onSelectItem]);
+  const showTooltip = zoom >= 11;
 
-  if (zoom < 10) {
-    return null;
-  }
-
-  const limitedFeatures = features.slice(0, 300);
+  if (!enabled || loading || error || features.length === 0) return null;
+  if (zoom < 10) return null;
 
   return (
     <>
-      {limitedFeatures.map((feature) => {
+      {features.slice(0, 300).map(feature => {
         const selected = selectedItemId === feature.id;
-
         return (
           <Marker
             key={feature.id}
             position={feature.coordinates}
             icon={createMarkerIcon(selected)}
-            eventHandlers={{ click: () => onSelectItem(feature.id, 'truck_parking') }}
+            eventHandlers={{ click: () => handleSelect(feature.id) }}
           >
-            <Popup className="osm-popup">
-              <div className="space-y-2 text-sm">
-                <div className="font-bold text-brand-text">{formatTagValue(feature.name)}</div>
-                <div className="text-xs text-brand-text">
-                  <span className="font-semibold">Pays:</span> {country}
-                </div>
-                <div className="text-xs text-brand-text">
-                  <span className="font-semibold">Source:</span> OpenStreetMap
-                </div>
-                <div className="space-y-1 border-t border-brand-border pt-2">
-                  <div className="text-xs text-brand-text"><span className="font-semibold">hgv:</span> {formatTagValue(feature.hgv)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">parking:</span> {formatTagValue(feature.parking)}</div>
-                  {feature.openingHours && (
-                    <div className="text-xs text-brand-text"><span className="font-semibold">opening_hours:</span> {feature.openingHours}</div>
-                  )}
-                </div>
-              </div>
-            </Popup>
+            {showTooltip && (
+              <Tooltip direction="top" offset={[0, -10]} className="rounded-xl border-none px-3 py-2 text-sm shadow-lg">
+                <div className="font-bold">{formatTagValue(feature.name)}</div>
+                <div className="text-xs text-brand-muted">{country} · Parking PL</div>
+              </Tooltip>
+            )}
           </Marker>
         );
       })}
     </>
   );
-};
+});
+TruckParkingLayer.displayName = 'TruckParkingLayer';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from './Header';
 import { useApp } from '../../context/AppContext';
 
@@ -8,6 +8,17 @@ interface AppShellProps {
 
 export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const { lang, setLang, hubs, loading, error, isFullScreen } = useApp();
+
+  // Prevent Ctrl+scroll from zooming the entire browser page
+  // (Leaflet's own scroll zoom should work; browser zoom should not)
+  useEffect(() => {
+    const onWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) e.preventDefault();
+    };
+    // { passive: false } required so preventDefault() works on wheel events
+    window.addEventListener('wheel', onWheel, { passive: false });
+    return () => window.removeEventListener('wheel', onWheel);
+  }, []);
 
   if (loading) {
     return (

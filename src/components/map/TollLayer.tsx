@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo } from 'react';
 import L from 'leaflet';
-import { Marker, Popup } from 'react-leaflet';
+import { Marker, Tooltip } from 'react-leaflet';
 import { Country, OsmCountryCode } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -41,67 +41,47 @@ const COUNTRY_CODE: Record<Country, OsmCountryCode> = {
   Netherlands: 'nl',
 };
 
-export const TollLayer: React.FC<TollLayerProps> = ({
-  country,
-  enabled,
-  zoom,
-  selectedItemId,
-  onSelectItem,
-}) => {
-  const { osmData, ensureOsmLayerLoaded, lang } = useApp();
+export const TollLayer: React.FC<TollLayerProps> = memo((
+  { country, enabled, zoom, selectedItemId, onSelectItem }
+) => {
+  const { osmData, ensureOsmLayerLoaded } = useApp();
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
-    if (enabled) {
-      void ensureOsmLayerLoaded('tolls', [country]);
-    }
-  }, [country, enabled, ensureOsmLayerLoaded, zoom]);
+    if (enabled) void ensureOsmLayerLoaded('tolls', [country]);
+  }, [country, enabled, ensureOsmLayerLoaded]);
 
   const features = useMemo(() => osmData.tolls[code] || [], [code, osmData.tolls]);
   const loading = osmData.loading.tolls[code];
   const error = osmData.errors.tolls[code];
 
-  if (!enabled || loading || error || features.length === 0) {
-    return null;
-  }
+  const handleSelect = useCallback((id: string) => onSelectItem(id, 'toll'), [onSelectItem]);
+  const showTooltip = zoom >= 10;
 
-  if (zoom < 9) {
-    return null;
-  }
-
-  const limitedFeatures = features.slice(0, 300);
+  if (!enabled || loading || error || features.length === 0) return null;
+  if (zoom < 9) return null;
 
   return (
     <>
-      {limitedFeatures.map((feature) => {
+      {features.slice(0, 300).map(feature => {
         const selected = selectedItemId === feature.id;
-
         return (
           <Marker
             key={feature.id}
             position={feature.coordinates}
             icon={createMarkerIcon(selected)}
-            eventHandlers={{ click: () => onSelectItem(feature.id, 'toll') }}
+            eventHandlers={{ click: () => handleSelect(feature.id) }}
           >
-            <Popup className="osm-popup">
-              <div className="space-y-2 text-sm">
-                <div className="font-bold text-brand-text">{formatTagValue(feature.name)}</div>
-                <div className="text-xs text-brand-text">
-                  <span className="font-semibold">Pays:</span> {country}
-                </div>
-                <div className="text-xs text-brand-text">
-                  <span className="font-semibold">Source:</span> OpenStreetMap
-                </div>
-                <div className="space-y-1 border-t border-brand-border pt-2">
-                  <div className="text-xs text-brand-text"><span className="font-semibold">barrier:</span> {formatTagValue(feature.tags.barrier)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">highway:</span> {formatTagValue(feature.tags.highway)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">toll:</span> {formatTagValue(feature.tags.toll)}</div>
-                </div>
-              </div>
-            </Popup>
+            {showTooltip && (
+              <Tooltip direction="top" offset={[0, -10]} className="rounded-xl border-none px-3 py-2 text-sm shadow-lg">
+                <div className="font-bold">{formatTagValue(feature.name)}</div>
+                <div className="text-xs text-brand-muted">{country} · OSM</div>
+              </Tooltip>
+            )}
           </Marker>
         );
       })}
     </>
   );
-};
+});
+TollLayer.displayName = 'TollLayer';

@@ -1,5 +1,35 @@
 import { Country, OsmAxisFeature, OsmLineFeature, OsmPointFeature } from '../types';
 
+/**
+ * Fix Mojibake: UTF-8 string that was incorrectly decoded as Latin-1.
+ * e.g. "CarolorÃ©gienne" → "Carolorégienne"
+ * Strategy: re-encode each char as Latin-1 byte, then decode the byte
+ * sequence as UTF-8.
+ */
+export const fixMojibake = (s: string): string => {
+  try {
+    // Convert each character to its Latin-1 byte value
+    const bytes = new Uint8Array(s.length);
+    for (let i = 0; i < s.length; i++) {
+      bytes[i] = s.charCodeAt(i) & 0xff;
+    }
+    // Re-interpret those bytes as UTF-8
+    const decoded = new TextDecoder('utf-8', { fatal: false }).decode(bytes);
+    // Only use the decoded version if it's visually different (avoids double-fixing ASCII)
+    return decoded !== s && decoded.length <= s.length ? decoded : s;
+  } catch {
+    return s;
+  }
+};
+
+export const fixTagValues = (tags: Record<string, string>): Record<string, string> => {
+  const fixed: Record<string, string> = {};
+  for (const [k, v] of Object.entries(tags)) {
+    fixed[k] = typeof v === 'string' ? fixMojibake(v) : v;
+  }
+  return fixed;
+};
+
 export interface OsmRawNode {
   type: 'node';
   id: number;
@@ -58,12 +88,13 @@ const RELEVANT_TAGS = [
 const DEFAULT_TIMESTAMP = new Date().toISOString();
 
 const pickRelevantTags = (tags?: Record<string, string>) => {
-  if (!tags) {
-    return {} as Record<string, string>;
-  }
+  if (!tags) return {} as Record<string, string>;
+
+  // Apply mojibake fix to all tag values (corrects UTF-8 mis-decoded as Latin-1)
+  const fixedTags = fixTagValues(tags);
 
   return Object.fromEntries(
-    Object.entries(tags).filter(([key]) => RELEVANT_TAGS.includes(key as (typeof RELEVANT_TAGS)[number]))
+    Object.entries(fixedTags).filter(([key]) => RELEVANT_TAGS.includes(key as (typeof RELEVANT_TAGS)[number]))
   ) as Record<string, string>;
 };
 
