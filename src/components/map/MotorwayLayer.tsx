@@ -12,9 +12,9 @@ interface MotorwayLayerProps {
 }
 
 const COUNTRY_COLORS: Record<Country, string> = {
-  France: '#2563EB',
-  Belgium: '#F59E0B',
-  Netherlands: '#06B6D4',
+  France: '#3B82F6',      // blue-500, soft
+  Belgium: '#D97706',     // amber-600, warm
+  Netherlands: '#0891B2', // cyan-600, cool
 };
 
 const COUNTRY_CODE: Record<Country, OsmCountryCode> = {
@@ -70,11 +70,7 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
 
   return (
     <>
-      {filters.showAllMotorways && zoom < 9 && (
-        <div className="pointer-events-none absolute left-4 bottom-4 z-[1000] rounded-xl border border-brand-border bg-white/90 px-4 py-3 text-xs font-semibold text-amber-600 shadow-lg backdrop-blur-sm">
-          Zoomez pour afficher toutes les autoroutes
-        </div>
-      )}
+      {filters.showAllMotorways && zoom < 9 && null}
       {filteredFeatures.map((feature) => {
         const isSelected = selectedItemId === feature.id;
         const label = feature.ref || feature.intRef || 'Donnée non renseignée';
@@ -88,18 +84,18 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
             positions={positions}
             pathOptions={{
               color: COUNTRY_COLORS[country],
-              weight: isSelected ? 6 : 2.5,
-              opacity: isSelected ? 1 : 0.75,
+              weight: isSelected ? 5 : 2,
+              opacity: isSelected ? 0.9 : 0.55,
               lineCap: 'round',
               lineJoin: 'round',
             }}
             eventHandlers={{
               click: () => onSelectItem(feature.id, 'motorway'),
               mouseover: (e) => {
-                if (!isSelected) e.target.setStyle({ weight: 5, opacity: 1 });
+                if (!isSelected) e.target.setStyle({ weight: 4, opacity: 0.85 });
               },
               mouseout: (e) => {
-                if (!isSelected) e.target.setStyle({ weight: 2.5, opacity: 0.75 });
+                if (!isSelected) e.target.setStyle({ weight: 2, opacity: 0.55 });
               }
             }}
           >

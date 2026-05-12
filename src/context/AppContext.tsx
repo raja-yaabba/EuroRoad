@@ -233,6 +233,10 @@ interface AppContextValue {
   setSelectedItemType: (type: SelectedItemType | null) => void;
   fetchRealData: () => Promise<void>;
   ensureOsmLayerLoaded: (layer: OsmLayerKey, countries: Country[]) => Promise<void>;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (v: boolean) => void;
+  isFullScreen: boolean;
+  setIsFullScreen: (v: boolean) => void;
 }
 
 const AppContext = createContext<AppContextValue | undefined>(undefined);
@@ -251,6 +255,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [error, setError] = useState<string | null>(null);
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const [selectedItemType, setSelectedItemType] = useState<SelectedItemType | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     countries: ['France', 'Belgium', 'Netherlands'],
     hubTypes: ['seaport', 'urban_hub', 'border_hub', 'industrial_hub', 'inland_hub'],
@@ -259,7 +265,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showAllMotorways: false,
     showTolls: false,
     showTruckParkings: false,
-    showAxes: true,
+    showAxes: false,
+    showAllAxes: false,
   });
   const inFlightLoads = useRef(new Set<string>());
   const isLoadingMotorwaysRef = useRef(false);
@@ -531,6 +538,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setSelectedItemType,
         fetchRealData,
         ensureOsmLayerLoaded,
+        isSidebarOpen,
+        setIsSidebarOpen,
+        isFullScreen,
+        setIsFullScreen,
       }}
     >
       {children}

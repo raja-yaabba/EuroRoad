@@ -26,8 +26,8 @@ export const OsmDataStats: React.FC<{ lang: Language }> = ({ lang }) => {
   const activeLayers = filters.showMotorways || filters.showTolls || filters.showTruckParkings || filters.showAxes;
   const anyLoading = Object.values(osmData.loading).some((layer) => Object.values(layer).some(Boolean));
   const motorwayLoading = Object.values(osmData.loading.motorways).some(Boolean);
-  const errorMessages = Object.values(osmData.errors).flatMap((layer) => Object.values(layer).filter(Boolean));
-  const hasNotFoundError = errorMessages.some((message) => message?.includes('Fichier introuvable'));
+  const errorMessages = Object.values(osmData.errors).flatMap((layer) => Object.values(layer).filter(Boolean) as string[]);
+  const hasNotFoundError = errorMessages.some((message) => message.includes('Fichier introuvable'));
   const hasGeometryIssue = activeLayers && !motorwayLoading && totalMotorwaysCalculated === 0 && !errorMessages.length;
 
   const status = !activeLayers
@@ -52,7 +52,7 @@ export const OsmDataStats: React.FC<{ lang: Language }> = ({ lang }) => {
       : status === 'empty'
       ? 'Données chargées mais aucune géométrie exploitable'
       : lang === 'fr'
-      ? '🗺️ Données OpenStreetMap en direct'
+      ? '🗺️ Données OpenStreetMap intégrées'
       : '🗺️ Real OpenStreetMap Data';
 
   const statusDescription =
@@ -92,44 +92,44 @@ export const OsmDataStats: React.FC<{ lang: Language }> = ({ lang }) => {
 
       <div className="mb-4 rounded-xl border border-orange-100 bg-white px-4 py-3 text-sm font-semibold text-brand-text shadow-sm">
         {lang === 'fr'
-          ? `Autoroutes OSM : ${totalMotorwaysCalculated.toLocaleString()} segments`
-          : `OSM motorways: ${totalMotorwaysCalculated.toLocaleString()} segments`}
+          ? `${(totalMotorwaysCalculated + totalTollsCalculated + totalParkingsCalculated).toLocaleString('fr-FR')} éléments OSM`
+          : `${(totalMotorwaysCalculated + totalTollsCalculated + totalParkingsCalculated).toLocaleString('fr-FR')} OSM elements`}
       </div>
 
       {hasData && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           <div className="bg-white rounded-xl p-4 border border-orange-100">
-            <div className="text-2xl font-extrabold text-orange-600">{totalMotorwaysCalculated.toLocaleString()}</div>
+            <div className="text-2xl font-extrabold text-orange-600">{totalMotorwaysCalculated.toLocaleString('fr-FR')}</div>
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mt-1">
-              {lang === 'fr' ? 'Autoroutes OSM' : 'OSM motorways'}
+              {lang === 'fr' ? 'segments autoroutiers' : 'motorway segments'}
             </div>
           </div>
 
           <div className="bg-white rounded-xl p-4 border border-amber-100">
-            <div className="text-2xl font-extrabold text-amber-600">{totalTollsCalculated.toLocaleString()}</div>
+            <div className="text-2xl font-extrabold text-amber-600">{totalTollsCalculated.toLocaleString('fr-FR')}</div>
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mt-1">
-              {lang === 'fr' ? 'Péages OSM' : 'OSM tolls'}
+              {lang === 'fr' ? 'péages' : 'tolls'}
             </div>
           </div>
 
           <div className="bg-white rounded-xl p-4 border border-yellow-100">
-            <div className="text-2xl font-extrabold text-yellow-600">{totalParkingsCalculated.toLocaleString()}</div>
+            <div className="text-2xl font-extrabold text-yellow-600">{totalParkingsCalculated.toLocaleString('fr-FR')}</div>
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mt-1">
-              {lang === 'fr' ? 'Parkings PL OSM' : 'OSM truck parkings'}
+              {lang === 'fr' ? 'parkings PL' : 'truck parkings'}
             </div>
           </div>
 
           <div className="bg-white rounded-xl p-4 border border-emerald-100">
-            <div className="text-2xl font-extrabold text-emerald-600">{totalAxesCalculated.toLocaleString()}</div>
+            <div className="text-2xl font-extrabold text-emerald-600">{totalAxesCalculated.toLocaleString('fr-FR')}</div>
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mt-1">
-              {lang === 'fr' ? 'Axes OSM calculés' : 'Calculated OSM axes'}
+              {lang === 'fr' ? 'axes calculés' : 'calculated axes'}
             </div>
           </div>
 
           <div className="bg-white rounded-xl p-4 border border-blue-100">
             <div className="text-2xl font-extrabold text-blue-600">{countriesCovered}</div>
             <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mt-1">
-              {lang === 'fr' ? 'Pays couverts' : 'Countries Covered'}
+              {lang === 'fr' ? 'pays couverts' : 'countries covered'}
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export const OsmDataStats: React.FC<{ lang: Language }> = ({ lang }) => {
           <span className="font-semibold text-gray-700">Information :</span> Axes calculés à partir des références OSM ref / int_ref
         </div>
         <div className="p-3 bg-white rounded-lg border border-orange-100 text-xs text-gray-600">
-          <span className="font-semibold text-gray-700">Source:</span> OpenStreetMap (Overpass API) • MIT License
+          <span className="font-semibold text-gray-700">Source :</span> OpenStreetMap / Overpass API · Données OSM sous licence <strong>ODbL</strong>
         </div>
       </div>
     </div>

@@ -140,15 +140,15 @@ const normalizeRouteKey = (tags: Record<string, string>) => {
 const buildSourceUrl = (kind: string, osmId: number) => `https://www.openstreetmap.org/${kind}/${osmId}`;
 
 const formatFeature = <T extends OsmLineFeature | OsmPointFeature>(
-  base: Omit<T, 'source' | 'dataType' | 'sourceUrl' | 'lastUpdated' | 'tags' | 'name' | 'ref' | 'intRef' | 'highway' | 'toll' | 'amenity' | 'parking' | 'hgv' | 'openingHours'> & {
-    tags: Record<string, string>;
+  base: Omit<T, 'source' | 'sourceUrl' | 'lastUpdated' | 'tags' | 'name' | 'ref' | 'intRef' | 'highway' | 'toll' | 'amenity' | 'parking' | 'hgv' | 'openingHours'> & {
     osmId: number;
     country: Country;
     sourceUrl: string;
     lastUpdated: string;
+    dataType: 'real' | 'calculated' | 'unavailable';
   },
   tags: Record<string, string>
-) => ({
+): T => ({
   ...base,
   source: 'OpenStreetMap' as const,
   tags,
@@ -161,7 +161,7 @@ const formatFeature = <T extends OsmLineFeature | OsmPointFeature>(
   parking: tags.parking,
   hgv: tags.hgv,
   openingHours: tags.opening_hours,
-});
+} as unknown as T);
 
 export const parseMotorwayWays = (rawData: OsmRawData, country: Country): OsmLineFeature[] => {
   const timestamp = getTimestamp(rawData);

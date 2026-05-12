@@ -26,7 +26,7 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
   selectedItemId,
   onSelectItem,
 }) => {
-  const { osmData, ensureOsmLayerLoaded } = useApp();
+  const { osmData, ensureOsmLayerLoaded, filters } = useApp();
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
@@ -43,9 +43,13 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
     return null;
   }
 
+  // Sort by memberCount descending — top 15 by default, all if showAllAxes
+  const sortedFeatures = [...features].sort((a, b) => b.memberCount - a.memberCount);
+  const displayFeatures = filters.showAllAxes ? sortedFeatures.slice(0, 50) : sortedFeatures.slice(0, 15);
+
   return (
     <>
-      {features.map((feature) => {
+      {displayFeatures.map((feature) => {
         const selected = selectedItemId === feature.id;
 
         return (
@@ -54,21 +58,27 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
             positions={feature.coordinates}
             pathOptions={{
               color: AXIS_COLOR,
-              weight: selected ? 6 : 4,
-              opacity: selected ? 1 : 0.8,
-              dashArray: '8 6',
+              weight: selected ? 3.5 : 1.5,
+              opacity: selected ? 0.85 : 0.25,
+              dashArray: '10 7',
               lineCap: 'round',
               lineJoin: 'round',
             }}
             eventHandlers={{
               click: () => onSelectItem(feature.id, 'axis'),
+              mouseover: (e) => {
+                if (!selected) e.target.setStyle({ weight: 4, opacity: 0.8 });
+              },
+              mouseout: (e) => {
+                if (!selected) e.target.setStyle({ weight: 1.5, opacity: 0.25 });
+              }
             }}
           >
             <Tooltip sticky className="rounded-xl border-none px-3 py-2 text-sm shadow-lg">
-              <div className="font-bold">Axe autoroutier OSM {feature.axisKey || feature.ref || 'Donnée non renseignée'}</div>
-              <div className="text-xs text-brand-muted">{feature.memberCount} segments</div>
-              <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-brand-blue">
-                Source OSM
+              <div className="font-bold">Analyse axe {feature.axisKey || feature.ref || 'N/A'}</div>
+              <div className="text-xs text-brand-muted">{feature.memberCount} segments OSM regroupés</div>
+              <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-brand-turquoise">
+                Donnée analytique — regroupement par ref/int_ref
               </div>
               <div className="text-[10px] font-semibold uppercase tracking-wide text-brand-blue">
                 Donnée calculée depuis OpenStreetMap — regroupement par ref/int_ref.

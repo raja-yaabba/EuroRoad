@@ -104,6 +104,7 @@ export interface FilterState {
   showTolls: boolean;
   showTruckParkings: boolean;
   showAxes: boolean;
+  showAllAxes: boolean;
 }
 
 export interface OsmLayerLoadState {

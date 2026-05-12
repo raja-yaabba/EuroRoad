@@ -52,6 +52,8 @@ body {
 .leaflet-container {
   background: #E5E9EC !important; /* Carto Positron background color match */
   font-family: var(--font-sans) !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 .leaflet-popup-content-wrapper {
   background: #FFFFFF !important;

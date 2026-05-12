@@ -16,21 +16,21 @@ const createMarkerIcon = (selected: boolean) =>
   L.divIcon({
     className: 'osm-toll-marker',
     html: `<div style="
-      width:${selected ? 30 : 24}px;
-      height:${selected ? 30 : 24}px;
+      width:${selected ? 24 : 18}px;
+      height:${selected ? 24 : 18}px;
       border-radius:9999px;
       background:${selected ? '#F97316' : '#FDBA74'};
-      border:2px solid #ffffff;
-      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      border:1.5px solid #ffffff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
       display:flex;
       align-items:center;
       justify-content:center;
       color:#ffffff;
-      font-size:${selected ? 14 : 12}px;
+      font-size:${selected ? 12 : 10}px;
       font-weight:800;
     ">€</div>`,
-    iconSize: [selected ? 30 : 24, selected ? 30 : 24],
-    iconAnchor: [selected ? 15 : 12, selected ? 15 : 12],
+    iconSize: [selected ? 24 : 18, selected ? 24 : 18],
+    iconAnchor: [selected ? 12 : 9, selected ? 12 : 9],
   });
 
 const formatTagValue = (value?: string) => value || 'Donnée non renseignée';
@@ -65,15 +65,11 @@ export const TollLayer: React.FC<TollLayerProps> = ({
     return null;
   }
 
-  if (zoom < 8) {
-    return (
-      <div className="pointer-events-none absolute left-4 bottom-28 z-[1000] rounded-xl border border-brand-border bg-white/90 px-4 py-3 text-xs font-semibold text-amber-600 shadow-lg backdrop-blur-sm">
-        Zoomez pour afficher les péages
-      </div>
-    );
+  if (zoom < 9) {
+    return null;
   }
 
-  const limitedFeatures = features.slice(0, 1500);
+  const limitedFeatures = features.slice(0, 300);
 
   return (
     <>

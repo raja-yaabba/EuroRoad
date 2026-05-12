@@ -35,12 +35,14 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         
         {/* Content */}
         <div className="p-8 overflow-y-auto space-y-6 text-brand-text">
-          {/* Texte introductif */}
+          {/* Pourquoi ce projet ? */}
           <div className="p-4 bg-brand-blue-light/30 rounded-2xl border border-brand-blue/20">
-            <p className="text-base font-medium leading-relaxed">
-              {lang === 'fr' 
-                ? "EuroRoad Atlas est un atlas interactif open data. Il ne mesure pas les flux privés de transporteurs et ne simule pas de coûts transport. Les données proviennent de sources ouvertes/officielles lorsqu'elles sont disponibles. Les indicateurs calculés sont distingués des données réelles."
-                : "EuroRoad Atlas is an open data interactive atlas. It does not measure private carrier flows or simulate transport costs. Data comes from open/official sources when available. Calculated indicators are clearly separated from real data."}
+            <h3 className="font-bold text-brand-blue mb-2">Pourquoi ce projet ?</h3>
+            <p className="text-sm font-medium leading-relaxed">
+              EuroRoad Atlas est un projet open data conçu pour explorer les infrastructures autoroutières et logistiques entre la France, la Belgique et les Pays-Bas. L'objectif est de transformer des données OpenStreetMap brutes en interface lisible : carte, filtres, couches, KPI et fiches d'exploration.
+            </p>
+            <p className="text-xs text-brand-muted mt-2 italic">
+              Rendu Canvas Leaflet pour limiter la surcharge DOM.
             </p>
           </div>
           
@@ -99,11 +101,13 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
               <AlertCircle className="w-5 h-5 text-brand-orange" />
               <h3 className="font-bold text-brand-orange uppercase tracking-wide text-sm">Limites</h3>
             </div>
-            <p className="text-xs text-brand-muted leading-relaxed">
-              {lang === 'fr'
-                ? "EuroRoad Atlas utilise uniquement des données open source (OpenStreetMap, ports officiels). Les données de trafic réel, volumes privés, coûts et horaires ne sont pas représentés car non disponibles publiquement."
-                : "EuroRoad Atlas uses only open source data (OpenStreetMap, official ports). Actual traffic data, private volumes, costs and schedules are not represented as they are not publicly available."}
-            </p>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-brand-text">
+              <li>Les données dépendent de la qualité OpenStreetMap</li>
+              <li>Les parkings PL peuvent être incomplets selon les pays</li>
+              <li>Les axes calculés ne sont pas des corridors officiels</li>
+              <li>Aucun flux transporteur privé n'est mesuré</li>
+              <li>Aucun coût ou volume n'est inventé</li>
+            </ul>
           </div>
         </div>
       </div>
