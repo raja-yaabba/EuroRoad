@@ -70,7 +70,7 @@ export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = ({
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
-    if (enabled && zoom >= 10) {
+    if (enabled) {
       void ensureOsmLayerLoaded('truckParkings', [country]);
     }
   }, [country, enabled, ensureOsmLayerLoaded, zoom]);
@@ -79,13 +79,23 @@ export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = ({
   const loading = osmData.loading.truckParkings[code];
   const error = osmData.errors.truckParkings[code];
 
-  if (!enabled || zoom < 10 || loading || error || features.length === 0) {
+  if (!enabled || loading || error || features.length === 0) {
     return null;
   }
 
+  if (zoom < 8) {
+    return (
+      <div className="pointer-events-none absolute left-4 bottom-14 z-[1000] rounded-xl border border-brand-border bg-white/90 px-4 py-3 text-xs font-semibold text-amber-600 shadow-lg backdrop-blur-sm">
+        Zoomez pour afficher les parkings PL
+      </div>
+    );
+  }
+
+  const limitedFeatures = features.slice(0, 1500);
+
   return (
     <>
-      {features.map((feature) => {
+      {limitedFeatures.map((feature) => {
         const selected = selectedItemId === feature.id;
 
         return (
@@ -98,21 +108,19 @@ export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = ({
             <Popup className="osm-popup">
               <div className="space-y-2 text-sm">
                 <div className="font-bold text-brand-text">{formatTagValue(feature.name)}</div>
-                <div className="text-xs uppercase tracking-wide text-brand-muted">Parking poids lourds</div>
                 <div className="text-xs text-brand-text">
                   <span className="font-semibold">Pays:</span> {country}
                 </div>
                 <div className="text-xs text-brand-text">
-                  <span className="font-semibold">OpenStreetMap:</span> Donnée réelle
+                  <span className="font-semibold">Source:</span> OpenStreetMap
                 </div>
                 <div className="space-y-1 border-t border-brand-border pt-2">
                   <div className="text-xs text-brand-text"><span className="font-semibold">hgv:</span> {formatTagValue(feature.hgv)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">opening_hours:</span> {formatTagValue(feature.openingHours)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">services:</span> {getServicesText(feature.tags)}</div>
-                  <div className="text-xs text-brand-text"><span className="font-semibold">amenity:</span> {formatTagValue(feature.amenity)}</div>
                   <div className="text-xs text-brand-text"><span className="font-semibold">parking:</span> {formatTagValue(feature.parking)}</div>
+                  {feature.openingHours && (
+                    <div className="text-xs text-brand-text"><span className="font-semibold">opening_hours:</span> {feature.openingHours}</div>
+                  )}
                 </div>
-                <div className="text-[10px] text-brand-muted">Donnée non renseignée si absent dans OSM</div>
               </div>
             </Popup>
           </Marker>

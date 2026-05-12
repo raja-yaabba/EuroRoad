@@ -52,7 +52,6 @@ interface RealDataStats {
   axes: OsmCountryMap<OsmAxisFeature[]>;
   loading: OsmLayerLoadState;
   errors: OsmLayerErrorState;
-  stats: OsmStats;
 }
 
 const createCountryMap = <T,>(): OsmCountryMap<T[]> => ({
@@ -103,20 +102,12 @@ const toCoordinates = (points: Array<{ lat: number; lon: number }>): [number, nu
   points.map((point) => [point.lat, point.lon]);
 
 const derivePointCoordinates = (element: OverpassPointElement): [number, number] | null => {
-  if (typeof element.lat === 'number' && typeof element.lon === 'number') {
+  if (element.type === 'node' && typeof element.lat === 'number' && typeof element.lon === 'number') {
     return [element.lat, element.lon];
   }
 
-  if (element.center && typeof element.center.lat === 'number' && typeof element.center.lon === 'number') {
+  if (element.type === 'way' && element.center && typeof element.center.lat === 'number' && typeof element.center.lon === 'number') {
     return [element.center.lat, element.center.lon];
-  }
-
-  if (Array.isArray(element.geometry) && element.geometry.length > 0) {
-    const centroid = element.geometry.reduce(
-      (accumulator, point) => [accumulator[0] + point.lat, accumulator[1] + point.lon] as [number, number],
-      [0, 0]
-    );
-    return [centroid[0] / element.geometry.length, centroid[1] / element.geometry.length];
   }
 
   return null;
@@ -131,8 +122,6 @@ const buildMotorwayFeatures = (
   const waysWithGeometry = elements.filter(
     (element): element is OverpassWayElement => element.type === 'way' && Array.isArray((element as OverpassWayElement).geometry)
   );
-
-  console.log(`${code.toUpperCase()} : ${waysWithGeometry.length} ways with geometry`);
 
   return waysWithGeometry.map((way) => {
     const geometry = way.geometry;
@@ -225,37 +214,9 @@ const createEmptyOsmData = (): RealDataStats => ({
     truckParkings: { fr: null, be: null, nl: null },
     axes: { fr: null, be: null, nl: null },
   },
-  stats: {
-    totalMotorways: 0,
-    totalTolls: 0,
-    totalParkings: 0,
-    totalAxes: 0,
-    countriesCovered: 0,
-    loaded: false,
-  },
 });
 
-const countLoadedEntries = <T,>(layer: OsmCountryMap<T[]>) =>
-  Object.values(layer).reduce((total, entries) => total + (entries?.length || 0), 0);
 
-const computeStats = (osmData: RealDataStats): OsmStats => {
-  const countriesCovered = (['fr', 'be', 'nl'] as OsmCountryCode[]).filter((code) =>
-    [osmData.motorways, osmData.tolls, osmData.truckParkings, osmData.axes].some(
-      (layer) => (layer[code]?.length || 0) > 0
-    )
-  ).length;
-
-  return {
-    totalMotorways: countLoadedEntries(osmData.motorways),
-    totalTolls: countLoadedEntries(osmData.tolls),
-    totalParkings: countLoadedEntries(osmData.truckParkings),
-    totalAxes: countLoadedEntries(osmData.axes),
-    countriesCovered,
-    loaded: [osmData.motorways, osmData.tolls, osmData.truckParkings, osmData.axes].some((layer) =>
-      Object.values(layer).some((entries) => entries !== null)
-    ),
-  };
-};
 
 interface AppContextValue {
   lang: Language;
@@ -295,11 +256,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     hubTypes: ['seaport', 'urban_hub', 'border_hub', 'industrial_hub', 'inland_hub'],
     showHubs: true,
     showMotorways: true,
+    showAllMotorways: false,
     showTolls: false,
     showTruckParkings: false,
-    showAxes: false,
+    showAxes: true,
   });
   const inFlightLoads = useRef(new Set<string>());
+  const isLoadingMotorwaysRef = useRef(false);
+  const hasLoadedMotorwaysRef = useRef(false);
+  const isLoadingTollsRef = useRef(false);
+  const hasLoadedTollsRef = useRef(false);
+  const isLoadingTruckParkingsRef = useRef(false);
+  const hasLoadedTruckParkingsRef = useRef(false);
 
   const setLayerData = <T,>(layer: OsmLayerKey, country: OsmCountryCode, data: T[]) => {
     setOsmData((current) => {
@@ -327,10 +295,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         },
       };
 
-      return {
-        ...nextState,
-        stats: computeStats(nextState),
-      };
+      return nextState;
     });
   };
 
@@ -344,7 +309,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           [country]: loadingValue,
         },
       },
-      stats: computeStats(current),
     }));
   };
 
@@ -358,7 +322,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           [country]: errorMessage,
         },
       },
-      stats: computeStats(current),
     }));
   };
 
@@ -391,10 +354,87 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     fetchRealData();
   }, []);
 
+  useEffect(() => {
+    fetchRealData();
+  }, []);
+
+  const loadLayer = async (
+    layerKey: 'motorways' | 'tolls' | 'truckParkings',
+    loadingRef: React.MutableRefObject<boolean>,
+    hasLoadedRef: React.MutableRefObject<boolean>,
+    kind?: 'toll' | 'truck_parking'
+  ) => {
+    if (loadingRef.current || hasLoadedRef.current) return;
+    loadingRef.current = true;
+    
+    setOsmData(prev => ({
+      ...prev,
+      loading: { ...prev.loading, [layerKey]: { fr: true, be: true, nl: true } }
+    }));
+
+    const countries: Country[] = ['France', 'Belgium', 'Netherlands'];
+    
+    try {
+      const results = await Promise.all(countries.map(async (country) => {
+        const code = COUNTRY_CODES[country];
+        try {
+          const timestamp = new Date().toISOString();
+          const filePath = COUNTRY_FILES[code][layerKey];
+          const elements = await getOverpassElements(filePath);
+          const features = layerKey === 'motorways'
+            ? buildMotorwayFeatures(elements, country, code, timestamp)
+            : buildPointFeatures(elements, country, kind!, timestamp);
+          return { code, features };
+        } catch (err) {
+          console.warn(`Failed to load ${layerKey} for ${code}:`, err);
+          return { code, error: true };
+        }
+      }));
+
+      setOsmData(prev => {
+        const nextLayer = { ...prev[layerKey] };
+        let total = 0;
+        results.forEach(res => {
+          if (res.features) {
+            nextLayer[res.code] = res.features as any;
+          }
+          total += (nextLayer[res.code]?.length || 0);
+        });
+        
+
+        
+        return {
+          ...prev,
+          [layerKey]: nextLayer,
+          loading: { ...prev.loading, [layerKey]: { fr: false, be: false, nl: false } }
+        };
+      });
+      hasLoadedRef.current = true;
+    } finally {
+      loadingRef.current = false;
+    }
+  };
+
+  const loadMotorways = () => loadLayer('motorways', isLoadingMotorwaysRef, hasLoadedMotorwaysRef);
+  const loadTolls = () => loadLayer('tolls', isLoadingTollsRef, hasLoadedTollsRef, 'toll');
+  const loadTruckParkings = () => loadLayer('truckParkings', isLoadingTruckParkingsRef, hasLoadedTruckParkingsRef, 'truck_parking');
+
   const ensureOsmLayerLoaded = async (
     layer: OsmLayerKey,
     countries: Country[]
   ) => {
+    if (layer === 'motorways') {
+      void loadMotorways();
+      return;
+    }
+    if (layer === 'tolls') {
+      void loadTolls();
+      return;
+    }
+    if (layer === 'truckParkings') {
+      void loadTruckParkings();
+      return;
+    }
     const uniqueCountries = Array.from(new Set(countries));
     const requestedCountries = uniqueCountries.filter((country) => {
       const code = COUNTRY_CODES[country];
@@ -414,7 +454,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     inFlightLoads.current.add(loadKey);
     requestedCountries.forEach((country) => setLayerLoading(layer, COUNTRY_CODES[country], true));
-    const motorwaysByCountry: Partial<Record<OsmCountryCode, number>> = {};
+    const motorwaysByCountry: Partial<Record<OsmCountryCode, OsmLineFeature[]>> = {};
 
     await Promise.all(
       requestedCountries.map(async (country) => {
@@ -423,31 +463,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         try {
           const timestamp = new Date().toISOString();
 
-          if (layer === 'motorways') {
-            const filePath = COUNTRY_FILES[code].motorways;
-            const elements = await getOverpassElements(filePath);
-            const features = buildMotorwayFeatures(elements, country, code, timestamp);
-            console.log(`✅ ${code.toUpperCase()} motorways: ${features.length}`);
-            motorwaysByCountry[code] = features.length;
-            setLayerData('motorways', code, features);
-            return features;
-          }
 
-          if (layer === 'tolls') {
-            const filePath = COUNTRY_FILES[code].tolls;
-            const elements = await getOverpassElements(filePath);
-            const features = buildPointFeatures(elements, country, 'toll', timestamp);
-            setLayerData('tolls', code, features);
-            return features;
-          }
-
-          if (layer === 'truckParkings') {
-            const filePath = COUNTRY_FILES[code].truckParkings;
-            const elements = await getOverpassElements(filePath);
-            const features = buildPointFeatures(elements, country, 'truck_parking', timestamp);
-            setLayerData('truckParkings', code, features);
-            return features;
-          }
 
           const result = await loadAxisLayer(country);
           setLayerData('axes', code, result.data);
@@ -462,24 +478,41 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       })
     );
 
-    if (layer === 'motorways') {
-      const waysFR = motorwaysByCountry.fr || 0;
-      const waysBE = motorwaysByCountry.be || 0;
-      const waysNL = motorwaysByCountry.nl || 0;
-      const total = waysFR + waysBE + waysNL;
-      console.log('✅ FR motorways:', waysFR);
-      console.log('✅ BE motorways:', waysBE);
-      console.log('✅ NL motorways:', waysNL);
-      console.log('✅ TOTAL:', total);
-      console.log('🔵 FR stored:', waysFR);
-      console.log('🟠 BE stored:', waysBE);
-      console.log('🟢 NL stored:', waysNL);
-      console.log('📊 TOTAL stored:', total);
-    }
-
     requestedCountries.forEach((country) => setLayerLoading(layer, COUNTRY_CODES[country], false));
     inFlightLoads.current.delete(loadKey);
   };
+
+  useEffect(() => {
+    void loadMotorways();
+    void loadTolls();
+    void loadTruckParkings();
+  }, []);
+
+  const hasLoggedTotal = useRef(false);
+  useEffect(() => {
+    if (
+      hasLoadedMotorwaysRef.current &&
+      hasLoadedTollsRef.current &&
+      hasLoadedTruckParkingsRef.current &&
+      !hasLoggedTotal.current
+    ) {
+      const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
+      const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
+      const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
+      const totalElements = totalMotorways + totalTolls + totalParkings;
+      
+      const uniqueAxes = new Set<string>();
+      (['fr', 'be', 'nl'] as const).forEach(country => {
+        (osmData.motorways[country] || []).forEach(way => {
+          const ref = way.ref || way.intRef;
+          if (ref) uniqueAxes.add(`${country}:${ref.trim()}`);
+        });
+      });
+      
+      console.log("OSM data loaded:", totalElements, "elements,", uniqueAxes.size, "calculated axes");
+      hasLoggedTotal.current = true;
+    }
+  }, [osmData]);
 
   return (
     <AppContext.Provider

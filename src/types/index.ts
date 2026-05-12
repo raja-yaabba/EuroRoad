@@ -100,6 +100,7 @@ export interface FilterState {
   hubTypes: HubType[];
   showHubs: boolean;
   showMotorways: boolean;
+  showAllMotorways: boolean;
   showTolls: boolean;
   showTruckParkings: boolean;
   showAxes: boolean;

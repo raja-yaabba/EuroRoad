@@ -5,26 +5,39 @@ import { getAggregatedStats } from '../../utils/calculations';
 import { useTranslation } from '../../utils/i18n';
 import { KpiCard } from './KpiCard';
 import { Map, MapPin, Truck, Route, Database, BarChart2, Shield } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 
 interface DataInsightsProps {
   hubs: Hub[];
   lang: Language;
-  osmStats?: OsmStats;
+  lang: Language;
 }
 
 const COLORS = ['#2563EB', '#22C55E', '#06B6D4', '#F59E0B', '#8B5CF6', '#FACC15'];
 
-export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang, osmStats }) => {
+export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
   const { t } = useTranslation(lang);
+  const { osmData } = useApp();
   const stats = useMemo(() => getAggregatedStats(hubs), [hubs]);
-  const osms = osmStats || {
-    totalMotorways: 0,
-    totalTolls: 0,
-    totalParkings: 0,
-    totalAxes: 0,
-    countriesCovered: 0,
-    loaded: false,
-  };
+
+  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
+  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
+  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
+  
+  const uniqueAxes = new Set<string>();
+  (['fr', 'be', 'nl'] as const).forEach(country => {
+    (osmData.motorways[country] || []).forEach(way => {
+      const ref = way.ref || way.intRef;
+      if (ref) uniqueAxes.add(`${country}:${ref.trim()}`);
+    });
+  });
+  const totalAxes = uniqueAxes.size;
+
+  const countriesCovered = (['fr', 'be', 'nl'] as const).filter(country =>
+    (osmData.motorways[country]?.length || 0) > 0 ||
+    (osmData.tolls[country]?.length || 0) > 0 ||
+    (osmData.truckParkings[country]?.length || 0) > 0
+  ).length;
 
   const countryData = [
     { name: 'France', value: stats.hubsByCountry.France, color: '#2563EB' },
@@ -65,32 +78,32 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang, osmStats
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">
         <KpiCard 
           title={lang === 'fr' ? 'Autoroutes OSM' : 'OSM motorways'} 
-          value={osms.totalMotorways} 
+          value={totalMotorways} 
           icon={Map} 
           colorClass="bg-brand-blue-light text-brand-blue" 
           subtitle={lang === 'fr' ? 'segments' : 'segments'}
         />
         <KpiCard 
           title={lang === 'fr' ? 'Péages OSM détectés' : 'Detected OSM tolls'} 
-          value={osms.totalTolls} 
+          value={totalTolls} 
           icon={MapPin} 
           colorClass="bg-brand-orange-light text-brand-orange" 
         />
         <KpiCard 
           title={lang === 'fr' ? 'Parkings PL détectés' : 'Detected truck parkings'} 
-          value={osms.totalParkings} 
+          value={totalParkings} 
           icon={Truck} 
           colorClass="bg-brand-turquoise-light text-brand-turquoise" 
         />
         <KpiCard 
           title={lang === 'fr' ? 'Axes OSM calculés' : 'Calculated OSM axes'} 
-          value={osms.totalAxes} 
+          value={totalAxes} 
           icon={Route} 
           colorClass="bg-brand-green-light text-brand-green" 
         />
         <KpiCard 
           title={lang === 'fr' ? 'Pays couverts' : 'Countries covered'} 
-          value={osms.countriesCovered} 
+          value={countriesCovered} 
           icon={Database} 
           colorClass="bg-brand-yellow-light text-brand-orange" 
         />

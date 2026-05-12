@@ -94,17 +94,10 @@ const AppContent: React.FC = () => {
 
       <div className="min-h-0 flex-[0.85] overflow-y-auto bg-brand-bg">
         <div className="p-6 md:p-8">
-          <OsmDataStats 
-            totalMotorways={osmData.stats.totalMotorways}
-            totalTolls={osmData.stats.totalTolls}
-            totalParkings={osmData.stats.totalParkings}
-            totalAxes={osmData.stats.totalAxes}
-            countriesCovered={osmData.stats.countriesCovered}
-            lang={lang}
-          />
+          <OsmDataStats lang={lang} />
         </div>
         
-        <DataInsights hubs={hubs} lang={lang} osmStats={osmData.stats} />
+        <DataInsights hubs={hubs} lang={lang} />
       </div>
 
       <MethodologyModal 

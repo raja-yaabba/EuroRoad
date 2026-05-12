@@ -205,10 +205,41 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
               <div className="text-[10px] uppercase font-bold text-brand-muted">Nom</div>
               <div className="font-semibold text-brand-text">{formatValue(feature.name)}</div>
             </div>
-            <div className="bg-brand-bg/50 rounded-xl p-3">
-              <div className="text-[10px] uppercase font-bold text-brand-muted">Réf.</div>
-              <div className="font-semibold text-brand-text">{formatValue(feature.ref || feature.intRef)}</div>
-            </div>
+            
+            {selection.type === 'motorway' || selection.type === 'axis' ? (
+              <div className="bg-brand-bg/50 rounded-xl p-3">
+                <div className="text-[10px] uppercase font-bold text-brand-muted">Réf.</div>
+                <div className="font-semibold text-brand-text">{formatValue(feature.ref || feature.intRef)}</div>
+              </div>
+            ) : null}
+
+            {selection.type === 'truck_parking' && (
+              <>
+                <div className="bg-brand-bg/50 rounded-xl p-3">
+                  <div className="text-[10px] uppercase font-bold text-brand-muted">HGV</div>
+                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.hgv)}</div>
+                </div>
+                <div className="bg-brand-bg/50 rounded-xl p-3">
+                  <div className="text-[10px] uppercase font-bold text-brand-muted">Services</div>
+                  <div className="font-semibold text-brand-text">{formatValue(feature.tags.services || feature.tags.service)}</div>
+                </div>
+              </>
+            )}
+
+            {selection.type === 'toll' && (
+              <div className="bg-brand-bg/50 rounded-xl p-3">
+                <div className="text-[10px] uppercase font-bold text-brand-muted">Type</div>
+                <div className="font-semibold text-brand-text">toll_booth</div>
+              </div>
+            )}
+
+            {(feature.openingHours || feature.tags.opening_hours) && (
+              <div className="bg-brand-bg/50 rounded-xl p-3">
+                <div className="text-[10px] uppercase font-bold text-brand-muted">Horaires</div>
+                <div className="font-semibold text-brand-text">{formatValue(feature.openingHours || feature.tags.opening_hours)}</div>
+              </div>
+            )}
+
             <div className="bg-brand-bg/50 rounded-xl p-3">
               <div className="text-[10px] uppercase font-bold text-brand-muted">Pays</div>
               <div className="font-semibold text-brand-text">{feature.country}</div>

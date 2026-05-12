@@ -93,6 +93,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({
         className="h-full w-full min-h-0"
         zoomControl={true}
         scrollWheelZoom={true}
+        preferCanvas={true}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"

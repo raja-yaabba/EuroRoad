@@ -30,7 +30,7 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
-    if (enabled && zoom >= 10) {
+    if (enabled) {
       void ensureOsmLayerLoaded('axes', [country]);
     }
   }, [country, enabled, ensureOsmLayerLoaded, zoom]);
@@ -39,7 +39,7 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
   const loading = osmData.loading.axes[code];
   const error = osmData.errors.axes[code];
 
-  if (!enabled || zoom < 10 || loading || error || features.length === 0) {
+  if (!enabled || zoom < 7 || loading || error || features.length === 0) {
     return null;
   }
 
@@ -71,7 +71,7 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = ({
                 Source OSM
               </div>
               <div className="text-[10px] font-semibold uppercase tracking-wide text-brand-blue">
-                Donnée calculée depuis OpenStreetMap
+                Donnée calculée depuis OpenStreetMap — regroupement par ref/int_ref.
               </div>
             </Tooltip>
           </Polyline>

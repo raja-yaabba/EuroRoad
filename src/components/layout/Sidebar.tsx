@@ -53,9 +53,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
       hubTypes: ['seaport', 'urban_hub', 'border_hub', 'industrial_hub', 'inland_hub'],
       showHubs: true,
       showMotorways: true,
+      showAllMotorways: false,
       showTolls: false,
       showTruckParkings: false,
-      showAxes: false,
+      showAxes: true,
     });
   };
 
@@ -124,8 +125,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
               }`}
             >
               <Map className="w-4 h-4" />
-              Autoroutes OSM
+              Autoroutes principales
             </button>
+            <div className="flex flex-col gap-1">
+              <button
+                onClick={() => setFilters(prev => ({ ...prev, showAllMotorways: !prev.showAllMotorways }))}
+                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-[10px] font-bold transition-all ${
+                  filters.showAllMotorways
+                    ? 'bg-brand-blue/80 text-white shadow-md'
+                    : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-blue/50'
+                }`}
+              >
+                <Map className="w-3 h-3" />
+                Toutes les autoroutes
+              </button>
+              <div className="text-[8px] text-center text-amber-600 font-bold leading-tight">
+                ⚠️ Couche lourde — peut ralentir la carte
+              </div>
+            </div>
             <button
               onClick={() => setFilters(prev => ({ ...prev, showTolls: !prev.showTolls }))}
               className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${

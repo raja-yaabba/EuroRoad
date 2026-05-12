@@ -26,7 +26,21 @@ export const Header: React.FC<HeaderProps> = ({
     realHubs: hubs.filter(h => h.dataType === 'real').length,
     countries: new Set(hubs.map(h => h.country)).size
   };
-  const osmSegments = osmData.stats.totalMotorways + osmData.stats.totalTolls + osmData.stats.totalParkings;
+  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
+  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
+  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
+  
+  const uniqueAxes = new Set<string>();
+  (['fr', 'be', 'nl'] as const).forEach(country => {
+    (osmData.motorways[country] || []).forEach(way => {
+      const ref = way.ref || way.intRef;
+      if (ref) uniqueAxes.add(`${country}:${ref.trim()}`);
+    });
+  });
+  const totalAxes = uniqueAxes.size;
+
+  const osmSegments = totalMotorways + totalTolls + totalParkings;
+  const isOsmLoaded = totalMotorways > 0 || totalTolls > 0 || totalParkings > 0;
 
   return (
     <div className="shrink-0 z-50 relative card-shadow bg-white flex flex-col">
@@ -89,11 +103,11 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-brand-text">{stats.realHubs}</span>
             <span>{lang === 'fr' ? 'hubs documentés' : 'documented hubs'}</span>
           </div>
-          {osmData.stats.loaded && (
+          {isOsmLoaded && (
             <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-brand-border shadow-sm">
               <Layers className="w-4 h-4 text-brand-green" />
               <span className="text-brand-text">{osmSegments}</span>
-              <span>{lang === 'fr' ? 'segments OSM' : 'OSM segments'}</span>
+              <span>{lang === 'fr' ? 'éléments OSM' : 'OSM elements'}</span>
             </div>
           )}
           <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-brand-border shadow-sm">

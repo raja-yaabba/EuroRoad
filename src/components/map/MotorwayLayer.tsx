@@ -30,11 +30,11 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
   selectedItemId,
   onSelectItem,
 }) => {
-  const { osmData, ensureOsmLayerLoaded } = useApp();
+  const { osmData, ensureOsmLayerLoaded, filters } = useApp();
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
-    if (enabled && zoom >= 10) {
+    if (enabled) {
       void ensureOsmLayerLoaded('motorways', [country]);
     }
   }, [country, enabled, ensureOsmLayerLoaded, zoom]);
@@ -42,10 +42,18 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
   const features = useMemo(() => osmData.motorways[code] || [], [code, osmData.motorways]);
   const loading = osmData.loading.motorways[code];
   const error = osmData.errors.motorways[code];
-  const totalMotorways = osmData.stats.totalMotorways;
+  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
   const motorwayLoading = Object.values(osmData.loading.motorways).some(Boolean);
 
-  if (!enabled || zoom < 10 || loading || error) {
+  const filteredFeatures = useMemo(() => {
+    const principals = features.filter(f => f.ref || f.intRef).slice(0, 5000);
+    if (filters.showAllMotorways && zoom >= 9) {
+      return features.slice(0, 5000);
+    }
+    return principals;
+  }, [features, filters.showAllMotorways, zoom]);
+
+  if (!enabled || zoom < 7 || loading || error) {
     return null;
   }
 
@@ -57,13 +65,17 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
         </div>
       );
     }
-
     return null;
   }
 
   return (
     <>
-      {features.map((feature) => {
+      {filters.showAllMotorways && zoom < 9 && (
+        <div className="pointer-events-none absolute left-4 bottom-4 z-[1000] rounded-xl border border-brand-border bg-white/90 px-4 py-3 text-xs font-semibold text-amber-600 shadow-lg backdrop-blur-sm">
+          Zoomez pour afficher toutes les autoroutes
+        </div>
+      )}
+      {filteredFeatures.map((feature) => {
         const isSelected = selectedItemId === feature.id;
         const label = feature.ref || feature.intRef || 'Donnée non renseignée';
         const positions = Array.isArray(feature.geometry)
@@ -76,13 +88,19 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = ({
             positions={positions}
             pathOptions={{
               color: COUNTRY_COLORS[country],
-              weight: isSelected ? 6 : 4,
-              opacity: isSelected ? 1 : 0.85,
+              weight: isSelected ? 6 : 2.5,
+              opacity: isSelected ? 1 : 0.75,
               lineCap: 'round',
               lineJoin: 'round',
             }}
             eventHandlers={{
               click: () => onSelectItem(feature.id, 'motorway'),
+              mouseover: (e) => {
+                if (!isSelected) e.target.setStyle({ weight: 5, opacity: 1 });
+              },
+              mouseout: (e) => {
+                if (!isSelected) e.target.setStyle({ weight: 2.5, opacity: 0.75 });
+              }
             }}
           >
             <Tooltip sticky className="rounded-xl border-none px-3 py-2 text-sm shadow-lg">
