@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route, Map as MapIcon, Info, Database, Layers, Globe } from 'lucide-react';
+import { Route, Info, Database, Layers, Globe } from 'lucide-react';
 import { Language, Hub } from '../../types';
 import { useTranslation } from '../../utils/i18n';
+import { useApp } from '../../context/AppContext';
 
 interface HeaderProps {
   lang: Language;
@@ -19,12 +20,13 @@ export const Header: React.FC<HeaderProps> = ({
   hubs,
 }) => {
   const { t } = useTranslation(lang);
+  const { osmData } = useApp();
 
   const stats = {
     realHubs: hubs.filter(h => h.dataType === 'real').length,
-    infrastructures: hubs.reduce((acc, h) => acc + h.connectedHighways.length, 0), // Rough metric or we can just count highwy sets
     countries: new Set(hubs.map(h => h.country)).size
   };
+  const osmSegments = osmData.stats.totalMotorways + osmData.stats.totalTolls + osmData.stats.totalParkings;
 
   return (
     <div className="shrink-0 z-50 relative card-shadow bg-white flex flex-col">
@@ -38,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
               EuroRoad Atlas
             </h1>
             <p className="text-xs text-brand-muted hidden md:block font-medium">
-              Routes, hubs & corridors logistiques
+              Routes, hubs et couches OSM
             </p>
           </div>
         </div>
@@ -87,11 +89,13 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-brand-text">{stats.realHubs}</span>
             <span>{lang === 'fr' ? 'hubs documentés' : 'documented hubs'}</span>
           </div>
-          <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-brand-border shadow-sm">
-            <Route className="w-4 h-4 text-brand-green" />
-            <span className="text-brand-text">{hubs.reduce((acc, h) => acc + h.connectedHighways.length, 0)}</span>
-            <span>{lang === 'fr' ? 'liaisons' : 'links'}</span>
-          </div>
+          {osmData.stats.loaded && (
+            <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-brand-border shadow-sm">
+              <Layers className="w-4 h-4 text-brand-green" />
+              <span className="text-brand-text">{osmSegments}</span>
+              <span>{lang === 'fr' ? 'segments OSM' : 'OSM segments'}</span>
+            </div>
+          )}
           <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-brand-border shadow-sm">
             <Globe className="w-4 h-4 text-brand-orange" />
             <span className="text-brand-text">{stats.countries}</span>

@@ -6,6 +6,7 @@ import { DataInsights } from './components/dashboard/DataInsights';
 import { OsmDataStats } from './components/dashboard/OsmDataStats';
 import { MethodologyModal } from './components/panels/MethodologyModal';
 import { AppProvider, useApp } from './context/AppContext';
+import { OsmAxisFeature, OsmLineFeature, OsmPointFeature, SelectedItemType } from './types';
 
 const AppContent: React.FC = () => {
   const { 
@@ -23,6 +24,41 @@ const AppContent: React.FC = () => {
     ? hubs.find(h => h.id === selectedItemId) || null
     : null;
 
+  const findOsmFeature = (type: Exclude<SelectedItemType, 'hub'>, id: string | null) => {
+    if (!id) {
+      return null;
+    }
+
+    const searchLayer = <T extends OsmLineFeature | OsmPointFeature | OsmAxisFeature>(
+      layer: { fr: T[] | null; be: T[] | null; nl: T[] | null }
+    ) => Object.values(layer).flatMap((entries) => entries || []).find((feature) => feature.id === id) || null;
+
+    switch (type) {
+      case 'motorway':
+        return searchLayer(osmData.motorways);
+      case 'toll':
+        return searchLayer(osmData.tolls);
+      case 'truck_parking':
+        return searchLayer(osmData.truckParkings);
+      case 'axis':
+        return searchLayer(osmData.axes);
+      default:
+        return null;
+    }
+  };
+
+  const selectedSelection =
+    selectedItemType === 'hub'
+      ? selectedItem
+        ? { type: 'hub' as const, item: selectedItem }
+        : null
+      : selectedItemType
+      ? (() => {
+          const osmItem = findOsmFeature(selectedItemType, selectedItemId);
+          return osmItem ? { type: selectedItemType, item: osmItem } : null;
+        })()
+      : null;
+
   const [showMethodology, setShowMethodology] = useState(false);
 
   return (
@@ -32,15 +68,15 @@ const AppContent: React.FC = () => {
           lang={lang} 
           filters={filters} 
           selectedItemId={selectedItemId}
-          onSelectItem={(id) => {
+          onSelectItem={(id, type) => {
             setSelectedItemId(id);
-            setSelectedItemType('hub');
+            setSelectedItemType(type);
           }}
         />
 
-        {selectedItemId && (
+        {selectedSelection && (
           <DetailPanel 
-            item={selectedItem} 
+            selection={selectedSelection} 
             lang={lang} 
             onClose={() => {
               setSelectedItemId(null);
@@ -57,19 +93,18 @@ const AppContent: React.FC = () => {
       </div>
 
       <div className="min-h-0 flex-[0.85] overflow-y-auto bg-brand-bg">
-        {osmData && osmData.stats && (
-          <div className="p-6 md:p-8">
-            <OsmDataStats 
-              totalMotorways={osmData.stats.totalMotorways}
-              totalTolls={osmData.stats.totalTolls}
-              totalParkings={osmData.stats.totalParkings}
-              countriesCovered={osmData.stats.countriesCovered}
-              lang={lang}
-            />
-          </div>
-        )}
+        <div className="p-6 md:p-8">
+          <OsmDataStats 
+            totalMotorways={osmData.stats.totalMotorways}
+            totalTolls={osmData.stats.totalTolls}
+            totalParkings={osmData.stats.totalParkings}
+            totalAxes={osmData.stats.totalAxes}
+            countriesCovered={osmData.stats.countriesCovered}
+            lang={lang}
+          />
+        </div>
         
-        <DataInsights hubs={hubs} lang={lang} totalMotorways={osmData?.stats.totalMotorways} />
+        <DataInsights hubs={hubs} lang={lang} osmStats={osmData.stats} />
       </div>
 
       <MethodologyModal 

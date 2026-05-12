@@ -1,14 +1,8 @@
-[out:json][timeout:120];
-area["ISO3166-1"="FR"][admin_level=2]->.searchArea;
+﻿[out:json][timeout:180];
 (
-  node["amenity"="parking"]["hgv"](area.searchArea);
-  way["amenity"="parking"]["hgv"](area.searchArea);
-  relation["amenity"="parking"]["hgv"](area.searchArea);
-  node["amenity"="parking"]["truck"](area.searchArea);
-  way["amenity"="parking"]["truck"](area.searchArea);
-  relation["amenity"="parking"]["truck"](area.searchArea);
-  node["amenity"="parking"]["access:hgv"](area.searchArea);
-  way["amenity"="parking"]["access:hgv"](area.searchArea);
-  relation["amenity"="parking"]["access:hgv"](area.searchArea);
+  node["amenity"="parking"]["hgv"](48.0,-1.0,51.5,8.5);
+  way["amenity"="parking"]["hgv"](48.0,-1.0,51.5,8.5);
+  node["amenity"="parking"]["parking"="truck"](48.0,-1.0,51.5,8.5);
+  way["amenity"="parking"]["parking"="truck"](48.0,-1.0,51.5,8.5);
 );
 out center tags;

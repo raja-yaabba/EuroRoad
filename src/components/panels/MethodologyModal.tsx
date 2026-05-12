@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Info, Database, Calculator, BookOpen, AlertCircle, ExternalLink } from 'lucide-react';
+import { X, Info, Database, Calculator, AlertCircle, ExternalLink } from 'lucide-react';
 import { Language } from '../../types';
 import { useTranslation } from '../../utils/i18n';
 
@@ -45,7 +45,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
           </div>
           
           {/* Grille des types de données */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Réel */}
             <div className="bg-brand-green-light/30 p-4 rounded-2xl border border-brand-green/20">
               <div className="flex items-center gap-2 mb-3">
@@ -55,9 +55,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
               <ul className="list-disc pl-5 space-y-1.5 text-xs text-brand-text">
                 <li>Emplacements des hubs (OSM)</li>
                 <li>Tracés des autoroutes (OSM)</li>
+                <li>Péages et parkings PL (OSM)</li>
                 <li>Données portuaires officielles</li>
-                <li>Statistiques Eurostat</li>
-                <li>Corridors TEN-T</li>
               </ul>
             </div>
             
@@ -74,19 +73,6 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 <li className="text-brand-muted italic">Ne jamais présenter comme officiel</li>
               </ul>
             </div>
-            
-            {/* Pédagogique */}
-            <div className="bg-brand-purple-light/30 p-4 rounded-2xl border border-brand-purple/20">
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="w-5 h-5 text-brand-purple" />
-                <h3 className="font-bold text-brand-purple uppercase tracking-wide text-sm">Analyse pédagogique</h3>
-              </div>
-              <ul className="list-disc pl-5 space-y-1.5 text-xs text-brand-text">
-                <li>Corridors illustratifs</li>
-                <li>Ne reflètent pas des flux privés mesurés</li>
-                <li>Basés sur les infrastructures réelles</li>
-              </ul>
-            </div>
           </div>
 
           {/* Sources utilisées */}
@@ -101,16 +87,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 <span className="text-brand-muted">OpenStreetMap / Overpass API</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold">🇪🇺 TEN-T:</span>
-                <span className="text-brand-muted">TENtec / European Commission</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold">📊 Eurostat:</span>
-                <span className="text-brand-muted">Statistiques transport macro</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <span className="font-bold">⚓ Ports:</span>
-                <span className="text-brand-muted">Rotterdam, Anvers, Haropa, Dunkerque</span>
+                <span className="text-brand-muted">Sources officielles publiques</span>
               </div>
             </div>
           </div>

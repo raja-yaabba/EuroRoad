@@ -26,7 +26,7 @@ export const translations = {
     
     // Detail panel
     detailsTitle: "Détails",
-    noSelection: "Sélectionnez un hub",
+    noSelection: "Sélectionnez un élément sur la carte",
     connectedHighways: "Autoroutes connectées",
     logisticsRole: "Rôle logistique",
     strategicReasoning: "Pourquoi c'est stratégique",
@@ -36,7 +36,6 @@ export const translations = {
     // Dashboard
     dataInsights: "Tableau de bord",
     hubsCount: "Hubs",
-    corridorsCount: "Corridors",
     avgScore: "Score moyen",
     hubsByCountry: "Hubs par pays",
     hubsByType: "Types de hubs",
@@ -87,7 +86,7 @@ export const translations = {
     
     // Detail panel
     detailsTitle: "Details",
-    noSelection: "Select a hub",
+    noSelection: "Select an item on the map",
     connectedHighways: "Connected highways",
     logisticsRole: "Logistics role",
     strategicReasoning: "Strategic importance",
@@ -97,7 +96,6 @@ export const translations = {
     // Dashboard
     dataInsights: "Dashboard",
     hubsCount: "Hubs",
-    corridorsCount: "Corridors",
     avgScore: "Average score",
     hubsByCountry: "Hubs by country",
     hubsByType: "Hub types",

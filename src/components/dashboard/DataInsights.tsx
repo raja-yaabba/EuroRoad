@@ -1,22 +1,30 @@
 import React, { useMemo } from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend } from 'recharts';
-import { Hub, Language } from '../../types';
+import { Hub, Language, OsmStats } from '../../types';
 import { getAggregatedStats } from '../../utils/calculations';
 import { useTranslation } from '../../utils/i18n';
 import { KpiCard } from './KpiCard';
-import { Map, Anchor, BarChart2, Database, Shield } from 'lucide-react';
+import { Map, MapPin, Truck, Route, Database, BarChart2, Shield } from 'lucide-react';
 
 interface DataInsightsProps {
   hubs: Hub[];
   lang: Language;
-  totalMotorways?: number;
+  osmStats?: OsmStats;
 }
 
 const COLORS = ['#2563EB', '#22C55E', '#06B6D4', '#F59E0B', '#8B5CF6', '#FACC15'];
 
-export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang, totalMotorways = 0 }) => {
+export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang, osmStats }) => {
   const { t } = useTranslation(lang);
   const stats = useMemo(() => getAggregatedStats(hubs), [hubs]);
+  const osms = osmStats || {
+    totalMotorways: 0,
+    totalTolls: 0,
+    totalParkings: 0,
+    totalAxes: 0,
+    countriesCovered: 0,
+    loaded: false,
+  };
 
   const countryData = [
     { name: 'France', value: stats.hubsByCountry.France, color: '#2563EB' },
@@ -54,32 +62,37 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang, totalMot
       </div>
 
       {/* KPIs */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">
         <KpiCard 
-          title={t('hubsCount')} 
-          value={stats.totalHubs} 
+          title={lang === 'fr' ? 'Autoroutes OSM' : 'OSM motorways'} 
+          value={osms.totalMotorways} 
           icon={Map} 
           colorClass="bg-brand-blue-light text-brand-blue" 
-          subtitle={`${stats.dataCoverage.real} réels`}
+          subtitle={lang === 'fr' ? 'segments' : 'segments'}
         />
         <KpiCard 
-          title="Autoroutes" 
-          value={totalMotorways} 
-          icon={Anchor} 
-          colorClass="bg-brand-green-light text-brand-green" 
+          title={lang === 'fr' ? 'Péages OSM détectés' : 'Detected OSM tolls'} 
+          value={osms.totalTolls} 
+          icon={MapPin} 
+          colorClass="bg-brand-orange-light text-brand-orange" 
         />
         <KpiCard 
-          title="Ports" 
-          value={stats.portsCount} 
-          icon={Anchor} 
+          title={lang === 'fr' ? 'Parkings PL détectés' : 'Detected truck parkings'} 
+          value={osms.totalParkings} 
+          icon={Truck} 
           colorClass="bg-brand-turquoise-light text-brand-turquoise" 
         />
         <KpiCard 
-          title={t('dataCoverage')} 
-          value={`${stats.coverageRate}%`} 
+          title={lang === 'fr' ? 'Axes OSM calculés' : 'Calculated OSM axes'} 
+          value={osms.totalAxes} 
+          icon={Route} 
+          colorClass="bg-brand-green-light text-brand-green" 
+        />
+        <KpiCard 
+          title={lang === 'fr' ? 'Pays couverts' : 'Countries covered'} 
+          value={osms.countriesCovered} 
           icon={Database} 
           colorClass="bg-brand-yellow-light text-brand-orange" 
-          subtitle={`${stats.realDataRate}% réelles`}
         />
       </div>
 

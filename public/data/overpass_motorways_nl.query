@@ -1,9 +1,5 @@
-[out:json][timeout:180];
-area["ISO3166-1"="NL"][admin_level=2]->.searchArea;
+﻿[out:json][timeout:180];
 (
-  way["highway"="motorway"](area.searchArea);
-  way["highway"="motorway_link"](area.searchArea);
+  way["highway"="motorway"](50.7,3.2,53.7,7.4);
 );
-out body tags;
->;
-out skel qt;
+out geom;

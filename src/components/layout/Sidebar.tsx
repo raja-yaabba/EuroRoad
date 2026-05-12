@@ -3,7 +3,7 @@ import { FilterState, Language, Country, HubType } from '../../types';
 import { useTranslation } from '../../utils/i18n';
 import { 
   Settings2, RotateCcw, Box, Map, Ship, Warehouse, Factory, 
-  Globe, Route, Filter, Database, Shield, Check 
+  Globe, Route, Filter, Database, Shield, Check, MapPin, Truck, Layers
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -52,6 +52,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
       countries: ['France', 'Belgium', 'Netherlands'],
       hubTypes: ['seaport', 'urban_hub', 'border_hub', 'industrial_hub', 'inland_hub'],
       showHubs: true,
+      showMotorways: true,
+      showTolls: false,
+      showTruckParkings: false,
+      showAxes: false,
     });
   };
 
@@ -104,23 +108,58 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
           </div>
         </div>
 
-        {/* 2. Infrastructures */}
+        {/* 2. Couches OSM */}
         <div className="space-y-3">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
             <Route className="w-3.5 h-3.5" />
-            Infrastructures
+            Couches OSM
           </h3>
-          <button
-            onClick={() => setFilters(prev => ({ ...prev, showHubs: !prev.showHubs }))}
-            className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${
-              filters.showHubs
-                ? 'bg-brand-blue text-white shadow-md'
-                : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-blue/50'
-            }`}
-          >
-            <Map className="w-4 h-4" />
-            Hubs
-          </button>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => setFilters(prev => ({ ...prev, showMotorways: !prev.showMotorways }))}
+              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                filters.showMotorways
+                  ? 'bg-brand-blue text-white shadow-md'
+                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-blue/50'
+              }`}
+            >
+              <Map className="w-4 h-4" />
+              Autoroutes OSM
+            </button>
+            <button
+              onClick={() => setFilters(prev => ({ ...prev, showTolls: !prev.showTolls }))}
+              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                filters.showTolls
+                  ? 'bg-brand-orange text-white shadow-md'
+                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-orange/50'
+              }`}
+            >
+              <MapPin className="w-4 h-4" />
+              Péages OSM
+            </button>
+            <button
+              onClick={() => setFilters(prev => ({ ...prev, showTruckParkings: !prev.showTruckParkings }))}
+              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                filters.showTruckParkings
+                  ? 'bg-brand-turquoise text-white shadow-md'
+                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-turquoise/50'
+              }`}
+            >
+              <Truck className="w-4 h-4" />
+              Parkings PL OSM
+            </button>
+            <button
+              onClick={() => setFilters(prev => ({ ...prev, showAxes: !prev.showAxes }))}
+              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                filters.showAxes
+                  ? 'bg-brand-green text-white shadow-md'
+                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-green/50'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              Axes OSM calculés
+            </button>
+          </div>
         </div>
 
         {/* 3. Types de hubs */}
@@ -151,21 +190,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
           </div>
         </div>
 
-        {/* 4. Données disponibles (badges info) */}
+        {/* 4. Badges data */}
         <div className="space-y-3 pt-2 border-t border-brand-border/50">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
             <Shield className="w-3.5 h-3.5" />
-            Données disponibles
+            Types de données
           </h3>
           <div className="flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-green-light text-brand-green border border-brand-green/30">
-              🟢 Réelles
+              🟢 Réelles - OpenStreetMap
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-blue-light text-brand-blue border border-brand-blue/30">
-              🔵 Calculées
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-purple-light text-brand-purple border border-brand-purple/30">
-              🟣 Pédagogiques
+              🔵 Calculées depuis OpenStreetMap
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-500 border border-gray-300">
               ⚪ Indisponibles
@@ -177,7 +213,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
       {/* Footer sidebar */}
       <div className="mt-auto p-4 border-t border-brand-border bg-brand-bg/30">
         <p className="text-[10px] text-brand-muted text-center">
-          🔓 Données open source — OSM · TEN-T · Eurostat
+          🔓 Données open source — OSM réel uniquement
         </p>
       </div>
     </aside>

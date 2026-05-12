@@ -16,8 +16,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       <div className="h-screen w-full flex items-center justify-center bg-brand-bg">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-brand-muted">Chargement des données depuis OSM, TEN-T, Eurostat...</p>
-            <p className="text-brand-muted">Chargement des données open source...</p>
+          <p className="text-brand-muted">Chargement des données open source...</p>
         </div>
       </div>
     );

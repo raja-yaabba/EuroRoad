@@ -1,11 +1,8 @@
-[out:json][timeout:120];
-area["ISO3166-1"="FR"][admin_level=2]->.searchArea;
+﻿[out:json][timeout:180];
 (
-  node["barrier"="toll_booth"](area.searchArea);
-  way["barrier"="toll_booth"](area.searchArea);
-  node["highway"="toll_gantry"](area.searchArea);
-  way["highway"="toll_gantry"](area.searchArea);
-  node["toll"="yes"](area.searchArea);
-  way["toll"="yes"](area.searchArea);
+  node["barrier"="toll_booth"](48.0,-1.0,51.5,8.5);
+  way["barrier"="toll_booth"](48.0,-1.0,51.5,8.5);
+  node["highway"="toll_gantry"](48.0,-1.0,51.5,8.5);
+  way["highway"="toll_gantry"](48.0,-1.0,51.5,8.5);
 );
 out center tags;
