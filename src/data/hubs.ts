@@ -48,6 +48,7 @@ export const hubsData: Hub[] = [
   {
     id: "dunkirk",
     name: "Dunkerque",
+    aliases: ["Dunkirk"],
     country: "France",
     type: "seaport",
     coordinates: [51.0343, 2.3768],
@@ -114,6 +115,7 @@ export const hubsData: Hub[] = [
   {
     id: "brussels",
     name: "Brussels",
+    aliases: ["Bruxelles", "Brussel"],
     country: "Belgium",
     type: "urban_hub",
     coordinates: [50.8503, 4.3517],
@@ -136,6 +138,7 @@ export const hubsData: Hub[] = [
   {
     id: "antwerp",
     name: "Antwerp",
+    aliases: ["Anvers", "Antwerpen"],
     country: "Belgium",
     type: "seaport",
     coordinates: [51.2194, 4.4025],
@@ -158,6 +161,7 @@ export const hubsData: Hub[] = [
   {
     id: "ghent",
     name: "Ghent",
+    aliases: ["Gand", "Gent"],
     country: "Belgium",
     type: "inland_hub",
     coordinates: [51.0500, 3.7303],
@@ -180,6 +184,7 @@ export const hubsData: Hub[] = [
   {
     id: "liege",
     name: "Liège",
+    aliases: ["Liege", "Luik"],
     country: "Belgium",
     type: "border_hub",
     coordinates: [50.6326, 5.5667],

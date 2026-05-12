@@ -3,6 +3,7 @@ import { Route, Database, Layers, Globe, Menu, X } from 'lucide-react';
 import { Language, Hub } from '../../types';
 import { useTranslation } from '../../utils/i18n';
 import { useApp } from '../../context/AppContext';
+import { computeGlobalStats } from '../../utils/calculations';
 
 interface HeaderProps {
   lang: Language;
@@ -25,10 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
-  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
-  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
-  const osmElements = totalMotorways + totalTolls + totalParkings;
+  const stats = React.useMemo(() => computeGlobalStats(hubs, osmData), [hubs, osmData]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -56,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
                 EuroRoad Atlas
               </h1>
               <p className="text-[10px] text-brand-muted hidden md:block font-bold uppercase tracking-wider">
-                Infrastructures logistiques FR/BE/NL
+                Infrastructures logistiques France / Belgique / Pays-Bas
               </p>
             </div>
           </div>
@@ -94,13 +92,18 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-1.5">
                 <Database className="w-3 h-3 text-brand-blue" />
-                <span className="text-brand-text">15</span>
+                <span className="text-brand-text">{stats.totalHubs}</span>
                 <span>Hubs</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Layers className="w-3 h-3 text-brand-green" />
-                <span className="text-brand-text">{osmElements.toLocaleString('fr-FR')}</span>
+                <span className="text-brand-text">{stats.osmElements.toLocaleString('fr-FR')}</span>
                 <span>Éléments OSM</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Route className="w-3 h-3 text-brand-turquoise" />
+                <span className="text-brand-text">{stats.totalAxes}</span>
+                <span>Axes calculés</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Globe className="w-3 h-3 text-brand-orange" />
@@ -109,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             </div>
             <div className="text-[9px] text-brand-muted/60 italic lowercase font-medium tracking-normal">
-              Atlas open data des infrastructures logistiques FR/BE/NL
+              Atlas open data des infrastructures logistiques France / Belgique / Pays-Bas
             </div>
           </div>
         )}

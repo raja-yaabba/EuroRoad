@@ -24,6 +24,11 @@ export const translations = {
     urban_distribution: "Distribution urbaine",
     industrial: "Industriel",
     
+    // Infrastructure types
+    motorway: "Autoroute OSM",
+    toll: "Péage OSM",
+    truck_parking: "Parking PL",
+    
     // Detail panel
     detailsTitle: "Détails",
     noSelection: "Sélectionnez un élément sur la carte",
@@ -58,6 +63,11 @@ export const translations = {
     
     // Missing data
     dataNotAvailable: "Donnée non renseignée",
+    
+    // Countries
+    france: "FRANCE",
+    belgium: "BELGIQUE",
+    netherlands: "PAYS-BAS",
   },
   en: {
     // Header
@@ -83,6 +93,11 @@ export const translations = {
     cross_border: "Cross-border",
     urban_distribution: "Urban distribution",
     industrial: "Industrial",
+
+    // Infrastructure types
+    motorway: "OSM Motorway",
+    toll: "OSM Toll",
+    truck_parking: "HGV Parking",
     
     // Detail panel
     detailsTitle: "Details",
@@ -118,5 +133,10 @@ export const translations = {
     
     // Missing data
     dataNotAvailable: "Data not available",
+
+    // Countries
+    france: "FRANCE",
+    belgium: "BELGIUM",
+    netherlands: "NETHERLANDS",
   }
 };

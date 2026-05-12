@@ -1,4 +1,11 @@
-import { Hub, HubScore } from '../types';
+import { Hub, HubScore, OsmData } from '../types';
+
+export const normalizeRef = (ref: string): string[] => {
+  if (!ref) return [];
+  // Split by semicolon first (common in OSM for shared segments)
+  const parts = ref.split(';');
+  return parts.map(p => p.replace(/\s+/g, '').toUpperCase().trim()).filter(Boolean);
+};
 
 export const calculateHubScore = (hub: Hub): HubScore => {
   let base = 30;
@@ -89,5 +96,34 @@ export const getAggregatedStats = (hubs: Hub[]) => {
     portsCount,
     sources,
     topHubsByConnectivity,
+  };
+};
+
+export const computeGlobalStats = (hubs: Hub[], osmData: OsmData) => {
+  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
+  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
+  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
+  const osmElements = totalMotorways + totalTolls + totalParkings;
+
+  const uniqueAxes = new Set<string>();
+  (['fr', 'be', 'nl'] as const).forEach(country => {
+    (osmData.motorways[country] || []).forEach(way => {
+      const refs = normalizeRef(way.ref || way.intRef || '');
+      refs.forEach(ref => uniqueAxes.add(`${country}:${ref}`));
+    });
+  });
+  const totalAxes = uniqueAxes.size;
+
+  const totalRealDocumented = osmElements + hubs.filter(h => h.dataType === 'real').length;
+
+  return {
+    osmElements,
+    totalMotorways,
+    totalTolls,
+    totalParkings,
+    totalAxes,
+    totalHubs: hubs.length,
+    totalRealDocumented,
+    countriesCount: 3
   };
 };

@@ -13,6 +13,7 @@ export type SelectedItemType = 'hub' | OsmSelectionType;
 export interface Hub {
   id: string;
   name: string;
+  aliases?: string[];
   country: Country;
   type: HubType;
   coordinates: [number, number]; // [lat, lng]
@@ -119,4 +120,10 @@ export interface OsmLayerErrorState {
   tolls: Record<OsmCountryCode, string | null>;
   truckParkings: Record<OsmCountryCode, string | null>;
   axes: Record<OsmCountryCode, string | null>;
+}
+export interface OsmData {
+  motorways: Record<OsmCountryCode, OsmLineFeature[]>;
+  tolls: Record<OsmCountryCode, OsmPointFeature[]>;
+  truckParkings: Record<OsmCountryCode, OsmPointFeature[]>;
+  axes: Record<OsmCountryCode, OsmAxisFeature[]>;
 }

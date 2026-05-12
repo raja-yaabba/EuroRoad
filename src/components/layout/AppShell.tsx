@@ -26,7 +26,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-brand-muted font-bold tracking-tight">Chargement de l'Atlas...</p>
-          <p className="text-xs text-brand-muted/70 mt-2">Récupération des données OpenStreetMap FR/BE/NL</p>
+          <p className="text-xs text-brand-muted/70 mt-2">Récupération des données OpenStreetMap FR/BE/Pays-Bas</p>
         </div>
       </div>
     );

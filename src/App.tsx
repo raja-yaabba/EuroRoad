@@ -5,14 +5,12 @@ import { Sidebar } from './components/layout/Sidebar';
 import { DetailPanel } from './components/panels/DetailPanel';
 import { DataInsights } from './components/dashboard/DataInsights';
 import { AppProvider, useApp } from './context/AppContext';
-import { ArrowDown, Code2, Database, Layers, Layout, Map as MapIcon, Microscope, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowDown, Code2, Database, Layers, Layout, Map as MapIcon, Microscope, ShieldCheck, Zap, Route } from 'lucide-react';
+import { computeGlobalStats } from './utils/calculations';
 
 const Hero: React.FC = () => {
-  const { osmData } = useApp();
-  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
-  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
-  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
-  const osmElements = totalMotorways + totalTolls + totalParkings;
+  const { osmData, hubs } = useApp();
+  const stats = React.useMemo(() => computeGlobalStats(hubs, osmData), [hubs, osmData]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -38,13 +36,14 @@ const Hero: React.FC = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-brand-muted font-medium max-w-2xl mx-auto leading-relaxed">
-          Atlas open data des infrastructures logistiques FR/BE/NL. Explorez les hubs, autoroutes, péages et parkings à partir de données réelles.
+          Atlas open data des infrastructures logistiques France / Belgique / Pays-Bas. Explorez les hubs, autoroutes, péages et parkings à partir de données réelles.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
           {[
-            { label: 'Hubs documentés', value: '15', icon: Database, color: 'text-brand-blue' },
-            { label: 'Éléments OSM', value: osmElements.toLocaleString('fr-FR'), icon: Layers, color: 'text-brand-green' },
+            { label: 'Hubs documentés', value: stats.totalHubs.toString(), icon: Database, color: 'text-brand-blue' },
+            { label: 'Éléments OSM', value: stats.osmElements.toLocaleString('fr-FR'), icon: Layers, color: 'text-brand-green' },
+            { label: 'Axes calculés', value: stats.totalAxes.toString(), icon: Route, color: 'text-brand-turquoise' },
             { label: 'Pays couverts', value: '3', icon: MapIcon, color: 'text-brand-orange' },
           ].map((kpi, idx) => (
             <div key={idx} className="flex flex-col items-center gap-1 group">
@@ -95,6 +94,7 @@ const MapSection: React.FC = () => {
 
   const findOsmFeature = (type: string | null, id: string | null) => {
     if (!id || !type) return null;
+    if (type === 'hub') return hubs.find(h => h.id === id) || null;
     const key = type === 'motorway' ? 'motorways' : type === 'toll' ? 'tolls' : type === 'truck_parking' ? 'truckParkings' : 'axes';
     const layer = (osmData as any)[key];
     if (!layer) return null;
@@ -106,18 +106,13 @@ const MapSection: React.FC = () => {
 
   const selectedSelection = React.useMemo(() => {
     if (!selectedItemId || !selectedItemType) return null;
-    
-    if (selectedItemType === 'hub') {
-      const hub = hubs.find(h => h.id === selectedItemId);
-      return hub ? { type: 'hub' as const, item: hub } : null;
-    }
-    
-    const feature = findOsmFeature(selectedItemType, selectedItemId);
-    return feature ? { type: selectedItemType as any, item: feature } : null;
+    const item = findOsmFeature(selectedItemType, selectedItemId);
+    if (!item) return null;
+    return { type: selectedItemType as any, item };
   }, [selectedItemId, selectedItemType, hubs, osmData]);
 
   return (
-    <section id="interactive-map" className={`relative flex flex-col bg-white border-y border-brand-border transition-all duration-500 ${isFullScreen ? '' : 'py-12 md:py-20'}`}>
+    <section id="interactive-map" className={`relative flex flex-col transition-all duration-500 overflow-hidden ${isFullScreen ? 'fixed inset-0 z-[5000] h-screen' : 'py-12 md:py-20 border-y border-brand-border bg-white'}`}>
       {!isFullScreen && (
         <div className="max-w-7xl mx-auto px-6 md:px-8 mb-10 w-full text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-black text-brand-text mb-2">Carte interactive</h2>
@@ -153,6 +148,22 @@ const MapSection: React.FC = () => {
 
           {/* Map */}
           <div className="flex-1 relative min-w-0 h-full">
+            {/* Mobile/Tablet Sidebar Toggle */}
+            {!isFullScreen && (
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className={`absolute top-4 left-4 z-[1500] p-3 rounded-2xl border-2 shadow-xl transition-all flex items-center gap-2 ${
+                  isSidebarOpen 
+                    ? 'bg-brand-text text-white border-brand-text' 
+                    : 'bg-white text-brand-text border-brand-border hover:bg-brand-bg'
+                } md:hidden`}
+                title={isSidebarOpen ? "Fermer les filtres" : "Ouvrir les filtres"}
+              >
+                <Layout className="w-5 h-5" />
+                <span className="text-xs font-black uppercase tracking-wider">{isSidebarOpen ? 'Fermer' : 'Filtres'}</span>
+              </button>
+            )}
+
             <MapExplorer 
               lang={lang} 
               filters={filters} 
@@ -161,15 +172,17 @@ const MapSection: React.FC = () => {
             />
             
             {/* Detail Panel */}
-            <div className={`absolute top-0 right-0 h-full z-[1001] transition-transform duration-300 pointer-events-none ${selectedSelection ? 'translate-x-0' : 'translate-x-full'}`}>
-              <div className="h-full pointer-events-auto">
-                <DetailPanel 
-                  selection={selectedSelection} 
-                  lang={lang} 
-                  onClose={() => { setSelectedItemId(null); setSelectedItemType(null); }} 
-                />
+            {selectedItemId && (
+              <div className="absolute top-0 right-0 h-full w-full md:w-96 z-[2000] pointer-events-none p-0 md:p-4">
+                <div className="h-full pointer-events-auto">
+                  <DetailPanel 
+                    selection={selectedSelection}
+                    onClose={() => setSelectedItemId(null)}
+                    lang={lang}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -192,9 +205,9 @@ const MethodologySection: React.FC = () => (
           { icon: MapIcon, title: 'Visualisation', text: 'Conversion des géométries en couches interactives Leaflet.' },
           { icon: Microscope, title: 'Analyse', text: 'Calcul des axes logistiques par regroupement analytique des tags.' },
         ].map((step, idx) => (
-          <div key={idx} className="relative group">
+          <div key={idx} className="relative group h-full">
             {idx < 3 && <div className="hidden lg:block absolute top-10 left-full w-full h-px border-t-2 border-dashed border-brand-border -z-0"></div>}
-            <div className="relative bg-white p-8 rounded-3xl border border-brand-border shadow-sm group-hover:shadow-xl transition-all z-10">
+            <div className="relative bg-white p-8 rounded-3xl border border-brand-border shadow-sm group-hover:shadow-xl transition-all z-10 h-full flex flex-col">
               <div className="w-14 h-14 rounded-2xl bg-brand-blue-light text-brand-blue flex items-center justify-center mb-6">
                 <step.icon className="w-7 h-7" />
               </div>
@@ -237,6 +250,14 @@ const LimitsSection: React.FC = () => (
               </li>
             ))}
           </ul>
+          
+          <div className="p-4 bg-brand-bg rounded-xl border border-brand-border/50 text-[11px] leading-relaxed text-brand-muted italic">
+            <strong>Note méthodologique :</strong><br />
+            {useApp().lang === 'fr' 
+              ? "Les noms issus d’OpenStreetMap sont conservés dans leur forme source. La recherche accepte certaines variantes usuelles FR/EN/NL pour les principaux hubs."
+              : "Names from OpenStreetMap are kept in their source form. Search supports common FR/EN/NL aliases for key hubs."}
+          </div>
+
           <p className="text-[10px] text-brand-muted italic pt-4">
             Source : OpenStreetMap / Overpass API · Données OSM sous licence ODbL
           </p>

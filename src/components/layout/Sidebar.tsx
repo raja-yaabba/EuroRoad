@@ -101,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                     }`}
                 >
                   <span className="text-base">{flag}</span>
-                  <span>{code}</span>
+                  <span>{t(code.toLowerCase() as any)}</span>
                   {isActive && <Check className="w-3.5 h-3.5" />}
                 </button>
               );
@@ -256,8 +256,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
       </div>
       {/* Footer sidebar */}
       <div className="mt-auto p-4 border-t border-brand-border bg-brand-bg/30">
-        <p className="text-[10px] text-brand-muted text-center">
-          🔓 Données open source — OSM réel uniquement
+        <p className="text-[10px] text-brand-muted text-center italic font-medium">
+          🔓 Données OSM sous licence ODbL
         </p>
       </div>
     </aside>

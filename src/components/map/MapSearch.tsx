@@ -5,6 +5,7 @@ import { Search, X, Navigation2, Route, ParkingSquare, Euro, TrendingUp, MapPin 
 import { useApp } from '../../context/AppContext';
 import { SelectedItemType } from '../../types';
 import { hubsData } from '../../data/hubs';
+import { useTranslation } from '../../utils/i18n';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -19,6 +20,7 @@ interface SearchResult {
   coordinates: [number, number] | null;
   // For a line / multi-segment feature — computed bounds
   bounds: [[number, number], [number, number]] | null;
+  aliases?: string[];
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -102,7 +104,8 @@ interface MapSearchProps {
 }
 
 export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
-  const { osmData } = useApp();
+  const { osmData, lang } = useApp();
+  const { t } = useTranslation(lang);
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -137,12 +140,13 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
       results.push({
         id: hub.id,
         label: hub.name,
-        sublabel: `${hub.type.replace(/_/g, ' ')} · ${hub.country}`,
+        sublabel: `${t(hub.type as any)} · ${t(hub.country.toLowerCase() as any)}`,
         type: 'hub',
         dataType: 'real',
         country: hub.country,
         coordinates: hub.coordinates,   // [lat, lng]
         bounds: null,
+        aliases: hub.aliases,
       });
     });
 
@@ -160,7 +164,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
         results.push({
           id: axis.id,
           label: axis.axisKey || axis.ref || 'Axe N/A',
-          sublabel: `${axis.memberCount ?? '?'} segments · ${country}`,
+          sublabel: `${axis.memberCount ?? '?'} segments · ${t(country.toLowerCase() as any)}`,
           type: 'axis',
           dataType: 'calculated',
           country,
@@ -183,7 +187,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
             result: {
               id: way.id,
               label: key,
-              sublabel: `${way.name ? way.name + ' · ' : ''}Autoroute OSM · ${country}`,
+              sublabel: `${way.name ? way.name + ' · ' : ''}${t('motorway' as any)} · ${t(country.toLowerCase() as any)}`,
               type: 'motorway',
               dataType: 'real',
               country,
@@ -211,7 +215,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
         results.push({
           id: toll.id,
           label,
-          sublabel: `Péage OSM · ${country}`,
+          sublabel: `${t('toll' as any)} · ${t(country.toLowerCase() as any)}`,
           type: 'toll',
           dataType: 'real',
           country,
@@ -229,7 +233,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
         results.push({
           id: parking.id,
           label,
-          sublabel: `Parking PL OSM · ${country}`,
+          sublabel: `${t('truck_parking' as any)} · ${t(country.toLowerCase() as any)}`,
           type: 'truck_parking',
           dataType: 'real',
           country,
@@ -247,7 +251,11 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
     const q = normalize(debouncedQuery);
     if (q.length < 2) return [];
     return searchIndex
-      .filter(r => matches(q, r.label, r.sublabel, r.country))
+      .filter(r => {
+        const fieldMatch = matches(q, r.label, r.sublabel, r.country);
+        const aliasMatch = r.aliases?.some(a => normalize(a).includes(q));
+        return fieldMatch || aliasMatch;
+      })
       .slice(0, 10);
   }, [debouncedQuery, searchIndex]);
 
@@ -349,11 +357,18 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
               </ul>
             )}
 
-            <div className="px-4 py-2 border-t border-brand-border/40 flex items-center justify-between">
-              <span className="text-[9px] text-brand-muted/50 font-bold uppercase tracking-widest">
-                {results.length} résultat{results.length !== 1 ? 's' : ''} · données locales
-              </span>
-              <MapPin className="w-3 h-3 text-brand-muted/30" />
+            <div className="px-4 py-3 border-t border-brand-border/40 bg-brand-bg/20 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[9px] text-brand-muted/50 font-bold uppercase tracking-widest">
+                  {results.length} résultat{results.length !== 1 ? 's' : ''} · données locales
+                </span>
+                <MapPin className="w-3 h-3 text-brand-muted/30" />
+              </div>
+              <p className="text-[8px] text-brand-muted/60 leading-tight italic">
+                {lang === 'fr' 
+                  ? "Les noms OSM sont conservés en forme source. Recherche en FR/EN/NL supportée."
+                  : "OSM names kept in source form. FR/EN/NL search supported."}
+              </p>
             </div>
           </div>
         )}
