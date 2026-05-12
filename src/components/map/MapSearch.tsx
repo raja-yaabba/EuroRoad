@@ -42,12 +42,19 @@ function computeBounds(coords: [number, number][]): [[number, number], [number, 
   return [[minLat, minLng], [maxLat, maxLng]];
 }
 
-const TYPE_LABEL: Record<SelectedItemType, string> = {
+const TYPE_LABEL_FR: Record<SelectedItemType, string> = {
   hub: 'Hub',
   motorway: 'Autoroute OSM',
   toll: 'Péage OSM',
   truck_parking: 'Parking PL',
   axis: 'Axe calculé',
+};
+const TYPE_LABEL_EN: Record<SelectedItemType, string> = {
+  hub: 'Hub',
+  motorway: 'OSM Motorway',
+  toll: 'OSM Toll',
+  truck_parking: 'HGV Parking',
+  axis: 'Calculated axis',
 };
 const TYPE_ICON: Record<SelectedItemType, React.FC<{ className?: string }>> = {
   hub: Navigation2,
@@ -302,7 +309,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
             value={query}
             onChange={handleChange}
             onFocus={() => debouncedQuery.trim().length >= 2 && setIsOpen(true)}
-            placeholder="Rechercher : A1, E40, Rotterdam…"
+            placeholder={t('searchPlaceholder')}
             className="flex-1 text-sm font-semibold text-brand-text bg-transparent outline-none placeholder:text-brand-muted/50"
           />
           {query && (
@@ -317,7 +324,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
           <div className="mt-2 bg-white rounded-2xl border border-brand-border shadow-2xl overflow-hidden">
             {results.length === 0 ? (
               <div className="px-5 py-4 text-xs text-brand-muted italic text-center">
-                Aucun résultat dans les données chargées.
+                {t('noResults')}
               </div>
             ) : (
               <ul className="divide-y divide-brand-border/40 max-h-80 overflow-auto">
@@ -337,7 +344,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
                             <span className="font-black text-sm text-brand-text truncate">{result.label}</span>
                             {result.dataType === 'calculated' ? (
                               <span className="shrink-0 text-[9px] font-black uppercase tracking-widest text-brand-blue bg-brand-blue-light px-1.5 py-0.5 rounded-full border border-brand-blue/20">
-                                Calculé
+                                {lang === 'fr' ? 'Calculé' : 'Calculated'}
                               </span>
                             ) : (
                               <span className="shrink-0 text-[9px] font-black uppercase tracking-widest text-brand-green bg-brand-green-light px-1.5 py-0.5 rounded-full border border-brand-green/20">
@@ -348,7 +355,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
                           <div className="text-[11px] text-brand-muted truncate">{result.sublabel}</div>
                         </div>
                         <span className="text-[10px] font-bold text-brand-muted shrink-0 hidden sm:block">
-                          {TYPE_LABEL[result.type]}
+                          {(lang === 'fr' ? TYPE_LABEL_FR : TYPE_LABEL_EN)[result.type]}
                         </span>
                       </button>
                     </li>
@@ -360,14 +367,12 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
             <div className="px-4 py-3 border-t border-brand-border/40 bg-brand-bg/20 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-[9px] text-brand-muted/50 font-bold uppercase tracking-widest">
-                  {results.length} résultat{results.length !== 1 ? 's' : ''} · données locales
+                  {results.length} {t('resultLabel')}{results.length !== 1 ? 's' : ''} · {t('localData')}
                 </span>
                 <MapPin className="w-3 h-3 text-brand-muted/30" />
               </div>
               <p className="text-[8px] text-brand-muted/60 leading-tight italic">
-                {lang === 'fr' 
-                  ? "Les noms OSM sont conservés en forme source. Recherche en FR/EN/NL supportée."
-                  : "OSM names kept in source form. FR/EN/NL search supported."}
+                {t('searchHint')}
               </p>
             </div>
           </div>

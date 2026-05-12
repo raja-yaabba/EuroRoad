@@ -18,12 +18,12 @@ const COUNTRIES: { code: Country; flag: string; color: string }[] = [
   { code: 'Netherlands', flag: '🇳🇱', color: 'border-brand-orange' },
 ];
 
-const HUB_TYPES: { type: HubType; icon: React.ElementType; label: string; color: string; bg: string }[] = [
-  { type: 'seaport', icon: Ship, label: 'Port maritime', color: 'text-brand-green', bg: 'bg-brand-green-light' },
-  { type: 'urban_hub', icon: Box, label: 'Hub urbain', color: 'text-brand-blue', bg: 'bg-brand-blue-light' },
-  { type: 'border_hub', icon: Globe, label: 'Hub frontalier', color: 'text-brand-purple', bg: 'bg-brand-purple-light' },
-  { type: 'industrial_hub', icon: Factory, label: 'Hub industriel', color: 'text-brand-orange', bg: 'bg-brand-orange-light' },
-  { type: 'inland_hub', icon: Warehouse, label: 'Hub intérieur', color: 'text-brand-turquoise', bg: 'bg-brand-turquoise-light' },
+const HUB_TYPES: { type: HubType; icon: React.ElementType; labelKey: string; color: string; bg: string }[] = [
+  { type: 'seaport', icon: Ship, labelKey: 'seaport', color: 'text-brand-green', bg: 'bg-brand-green-light' },
+  { type: 'urban_hub', icon: Box, labelKey: 'urban_hub', color: 'text-brand-blue', bg: 'bg-brand-blue-light' },
+  { type: 'border_hub', icon: Globe, labelKey: 'border_hub', color: 'text-brand-purple', bg: 'bg-brand-purple-light' },
+  { type: 'industrial_hub', icon: Factory, labelKey: 'industrial_hub', color: 'text-brand-orange', bg: 'bg-brand-orange-light' },
+  { type: 'inland_hub', icon: Warehouse, labelKey: 'inland_hub', color: 'text-brand-turquoise', bg: 'bg-brand-turquoise-light' },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) => {
@@ -69,7 +69,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
           <div className="p-1.5 bg-gradient-to-br from-brand-blue to-brand-turquoise rounded-lg">
             <Filter className="w-4 h-4 text-white" />
           </div>
-          <span className="font-extrabold text-brand-text text-lg">Filtres</span>
+          <span className="font-extrabold text-brand-text text-lg">{t('filters')}</span>
         </div>
         <button
           onClick={resetFilters}
@@ -113,7 +113,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
         <div className="space-y-3">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
             <Route className="w-3.5 h-3.5" />
-            Couches carte
+            {t('mapLayers')}
           </h3>
           <div className="grid grid-cols-2 gap-2">
             {/* Primary layers */}
@@ -125,7 +125,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                 }`}
             >
               <Map className="w-4 h-4" />
-              Autoroutes principales
+              {t('primaryMotorways')}
             </button>
             <div className="col-span-2 flex flex-col gap-1">
               <button
@@ -136,10 +136,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                   }`}
               >
                 <Map className="w-3 h-3" />
-                Toutes les autoroutes
+                {t('allMotorways')}
               </button>
               <div className="text-[8px] text-center text-amber-600 font-bold leading-tight">
-                ⚠️ Couche lourde — peut ralentir la carte
+                {t('heavyLayerWarning')}
               </div>
             </div>
             <button
@@ -150,7 +150,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                 }`}
             >
               <MapPin className="w-4 h-4" />
-              Péages OSM
+              {t('toll')}
               <span className="ml-auto text-[9px] font-normal opacity-60">zoom≥9</span>
             </button>
             <button
@@ -161,7 +161,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                 }`}
             >
               <Truck className="w-4 h-4" />
-              Parkings PL
+              {t('truck_parking')}
               <span className="ml-auto text-[9px] font-normal opacity-60">zoom≥10</span>
             </button>
 
@@ -169,7 +169,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
             <div className="col-span-2 border-t border-brand-border/50 pt-2 flex flex-col gap-1">
               <div className="text-[9px] font-bold uppercase tracking-wider text-brand-muted mb-1 flex items-center gap-1">
                 <Layers className="w-3 h-3" />
-                Couche analytique
+                {t('analyticalLayer')}
               </div>
               <button
                 onClick={() => setFilters(prev => ({ ...prev, showAxes: !prev.showAxes }))}
@@ -179,10 +179,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                   }`}
               >
                 <Layers className="w-4 h-4" />
-                Analyse des axes OSM
+                {t('osmAxesAnalysis')}
               </button>
               <div className="text-[9px] text-center text-brand-muted font-medium px-2 leading-tight">
-                Regroupement analytique des segments par ref / int_ref.
+                {t('analyticalGroupingNote')}
               </div>
               <button
                 onClick={() => setFilters(prev => ({ ...prev, showAllAxes: !prev.showAllAxes }))}
@@ -192,7 +192,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                   }`}
               >
                 <Layers className="w-3 h-3" />
-                Afficher tous les axes
+                {t('showAllAxes')}
               </button>
             </div>
 
@@ -203,10 +203,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
         <div className="space-y-3">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
             <Database className="w-3.5 h-3.5" />
-            Types de hubs
+            {t('hubTypes')}
           </h3>
           <div className="grid grid-cols-2 gap-2">
-            {HUB_TYPES.map(({ type, icon: Icon, label, color, bg }) => {
+            {HUB_TYPES.map(({ type, icon: Icon, labelKey, color, bg }) => {
               const isSelected = filters.hubTypes.includes(type);
               return (
                 <button
@@ -218,7 +218,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                     }`}
                 >
                   <Icon className="w-4 h-4" />
-                  <span className="flex-1 text-left">{label}</span>
+                  <span className="flex-1 text-left">{t(labelKey as any)}</span>
                   {isSelected && <Check className="w-3 h-3" />}
                 </button>
               );
@@ -230,26 +230,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
         <div className="space-y-3 pt-4 border-t border-brand-border/50">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
             <Shield className="w-3.5 h-3.5" />
-            Légende
+            {t('legend')}
           </h3>
           <div className="bg-brand-bg rounded-xl p-3 text-[10px] text-brand-muted font-medium border border-brand-border shadow-sm">
             <div className="flex flex-wrap gap-x-3 gap-y-1 justify-center mb-2">
-              <span className="flex items-center gap-1">⚓ Port</span>
+              <span className="flex items-center gap-1">⚓ {t('portLabel')}</span>
               <span className="text-gray-300">|</span>
-              <span className="flex items-center gap-1">🏙️ Urbain</span>
+              <span className="flex items-center gap-1">🏙️ {t('urbanLabel')}</span>
               <span className="text-gray-300">|</span>
-              <span className="flex items-center gap-1">🚧 Frontalier</span>
+              <span className="flex items-center gap-1">🚧 {t('borderLabel')}</span>
               <span className="text-gray-300">|</span>
-              <span className="flex items-center gap-1">🏭 Industriel</span>
+              <span className="flex items-center gap-1">🏭 {t('industrialLabel')}</span>
               <span className="text-gray-300">|</span>
-              <span className="flex items-center gap-1">📦 Intérieur</span>
+              <span className="flex items-center gap-1">📦 {t('inlandLabel')}</span>
             </div>
             <div className="border-t border-brand-border/50 my-2"></div>
             <div className="grid grid-cols-2 gap-2">
-              <div className="flex items-center gap-1.5"><span className="w-4 h-1 rounded-full bg-[#2563EB]"></span>Autoroute OSM</div>
-              <div className="flex items-center gap-1.5"><span className="w-4 h-1 rounded-full bg-[#0F766E]"></span>Axe calculé</div>
-              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#F97316]"></span>Péage OSM</div>
-              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#14B8A6]"></span>Parking PL</div>
+              <div className="flex items-center gap-1.5"><span className="w-4 h-1 rounded-full bg-[#2563EB]"></span>{t('motorway')}</div>
+              <div className="flex items-center gap-1.5"><span className="w-4 h-1 rounded-full bg-[#0F766E]"></span>{t('osmAxesAnalysis')}</div>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#F97316]"></span>{t('toll')}</div>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#14B8A6]"></span>{t('truck_parking')}</div>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
       {/* Footer sidebar */}
       <div className="mt-auto p-4 border-t border-brand-border bg-brand-bg/30">
         <p className="text-[10px] text-brand-muted text-center italic font-medium">
-          🔓 Données OSM sous licence ODbL
+          {t('osmLicenceShort')}
         </p>
       </div>
     </aside>

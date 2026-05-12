@@ -69,22 +69,22 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
   const reliabilityData = [
     { 
-      name: 'Données réelles documentées', 
+      name: t('realDocumentedData'), 
       value: globalStats.totalRealDocumented, 
       color: '#22C55E',
-      description: '55 751 éléments OSM + 15 hubs documentés'
+      description: lang === 'fr' ? '55 751 éléments OSM + 15 hubs documentés' : '55,751 OSM elements + 15 documented hubs'
     },
     { 
-      name: 'Données calculées OSM', 
+      name: t('calculatedOsmData'), 
       value: globalStats.totalAxes, 
       color: '#3B82F6',
-      description: 'Axes dérivés des tags OSM ref / int_ref'
+      description: t('axesOsmNote')
     },
     { 
-      name: 'Éléments non exploitables', 
+      name: t('nonUsableElements'), 
       value: hubs.filter(h => h.dataType === 'unavailable').length, 
       color: '#CBD5E1',
-      description: 'Hors champs OSM ponctuellement non renseignés.'
+      description: t('unusableNote')
     },
   ];
 
@@ -93,9 +93,9 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Title Section */}
         <div className="mb-10 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-black text-brand-text mb-2 tracking-tight">Lecture du réseau</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-brand-text mb-2 tracking-tight">{t('networkReading')}</h2>
           <p className="text-brand-muted max-w-2xl leading-relaxed">
-            Une synthèse open data des hubs, axes routiers et infrastructures observables sur le périmètre France / Belgique / Pays-Bas.
+            {t('networkSubtitle')}
           </p>
         </div>
 
@@ -103,15 +103,15 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="bg-brand-bg/50 rounded-3xl border border-brand-border p-8 md:p-10 mb-12 flex flex-col md:flex-row gap-10 items-center">
           <div className="flex-1 space-y-4">
             <p className="text-lg md:text-xl text-brand-text font-medium leading-relaxed italic opacity-90">
-              “EuroRoad Atlas transforme des données OpenStreetMap brutes en une lecture cartographique des infrastructures logistiques : hubs, autoroutes, péages, parkings poids lourds et axes calculés.”
+              {t('atlasTransformQuote')}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-6 w-full md:w-auto shrink-0">
             {[
-              { label: 'Éléments OSM exploités', value: globalStats.osmElements.toLocaleString('fr-FR') },
-              { label: 'Hubs documentés', value: globalStats.totalHubs },
-              { label: 'Axes calculés', value: globalStats.totalAxes },
-              { label: 'Pays couverts', value: globalStats.countriesCount },
+              { label: t('osmElementsUsed'), value: globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US') },
+              { label: t('documentedHubs'), value: globalStats.totalHubs },
+              { label: t('calculatedAxes'), value: globalStats.totalAxes },
+              { label: t('countriesCovered'), value: globalStats.countriesCount },
             ].map((kpi, idx) => (
               <div key={idx} className="bg-white p-5 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
                 <div className="text-2xl font-black text-brand-blue mb-1">{kpi.value}</div>
@@ -125,18 +125,20 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Card OSM Composition */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">Composition OSM</h3>
-            <p className="text-xs text-brand-muted mb-6">Répartition technique des {globalStats.osmElements.toLocaleString('fr-FR')} éléments exploités.</p>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('osmComposition')}</h3>
+            <p className="text-xs text-brand-muted mb-6">
+              {t('osmCompositionSubtitle').replace('{count}', globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'))}
+            </p>
             <div className="space-y-4 flex-1">
               {[
-                { label: 'Segments autoroutiers', value: globalStats.totalMotorways, color: 'bg-brand-blue' },
-                { label: 'Péages OSM', value: globalStats.totalTolls, color: 'bg-brand-orange' },
-                { label: 'Parkings poids lourds', value: globalStats.totalParkings, color: 'bg-brand-green' },
+                { label: t('motorwaySegments'), value: globalStats.totalMotorways, color: 'bg-brand-blue' },
+                { label: t('osmTolls'), value: globalStats.totalTolls, color: 'bg-brand-orange' },
+                { label: t('hgvParkings'), value: globalStats.totalParkings, color: 'bg-brand-green' },
               ].map((item, idx) => (
                 <div key={idx} className="space-y-2">
                   <div className="flex justify-between items-end">
                     <span className="text-[11px] font-bold text-brand-muted uppercase">{item.label}</span>
-                    <span className="text-sm font-black text-brand-text">{item.value.toLocaleString('fr-FR')}</span>
+                    <span className="text-sm font-black text-brand-text">{item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
                   </div>
                   <div className="h-1.5 w-full bg-brand-bg rounded-full overflow-hidden">
                     <div 
@@ -147,15 +149,15 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                 </div>
               ))}
               <p className="text-[10px] text-brand-muted mt-4 italic leading-tight">
-                Les éléments OSM exploités proviennent des couches autoroutes, péages et parkings poids lourds.
+                {t('osmSourceNote')}
               </p>
             </div>
           </div>
 
-          {/* Card 2 — Typologie des hubs */}
+          {/* Card 2 â€” Typologie des hubs */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">Typologie des hubs</h3>
-            <p className="text-xs text-brand-muted mb-6">Les ports et hubs frontaliers structurent la lecture logistique du périmètre.</p>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('hubTypology')}</h3>
+            <p className="text-xs text-brand-muted mb-6">{t('hubTypologySubtitle')}</p>
             <div className="flex-1 min-h-[180px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -179,10 +181,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
             </div>
           </div>
 
-          {/* Card 3 — Fiabilité des données */}
+          {/* Card 3 â€” FiabilitÃ© des donnÃ©es */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">Fiabilité des données</h3>
-            <p className="text-xs text-brand-muted mb-6">Les données réelles proviennent d'OpenStreetMap et des sources documentées. Les axes sont calculés à partir des tags OSM ref / int_ref.</p>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('dataReliability')}</h3>
+            <p className="text-xs text-brand-muted mb-6">{t('dataReliabilitySubtitle')}</p>
             <div className="flex-1 flex flex-col">
               <div className="flex-1 min-h-[160px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -214,7 +216,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                         <span className="text-[8px] text-brand-muted/70 font-medium leading-tight">{item.description}</span>
                       </div>
                     </div>
-                    <span className="text-xs font-black text-brand-text">{item.value.toLocaleString('fr-FR')}</span>
+                    <span className="text-xs font-black text-brand-text">{item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
                   </div>
                 ))}
               </div>
@@ -226,8 +228,8 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Card Top Hubs */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">Top hubs logistiques</h3>
-            <p className="text-xs text-brand-muted mb-6">Ces hubs structurent la lecture du réseau entre ports, frontières et distribution intérieure.</p>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('topLogisticsHubs')}</h3>
+            <p className="text-xs text-brand-muted mb-6">{t('topHubsSubtitle')}</p>
             <div className="flex-1 overflow-auto">
               <div className="space-y-3">
                 {representativeHubs.map((hub, idx) => (
@@ -240,7 +242,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                     </div>
                     <div className="flex items-center justify-between text-[10px]">
                       <span className="text-brand-muted font-medium">{t(hub.type as any)}</span>
-                      <span className="text-brand-blue font-bold">Documenté · {hub.dataSource}</span>
+                      <span className="text-brand-blue font-bold">{t('documented')} · {hub.dataSource}</span>
                     </div>
                   </div>
                 ))}
@@ -248,10 +250,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
             </div>
           </div>
 
-          {/* Card 4 — Top axes calculés */}
+          {/* Card 4 â€” Top axes calculÃ©s */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">Top axes OSM calculés</h3>
-            <p className="text-xs text-brand-muted mb-4 leading-tight">Les références sont issues des tags OSM ref / int_ref. Certaines valeurs reflètent la structure contributive OpenStreetMap.</p>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('topCalculatedAxes')}</h3>
+            <p className="text-xs text-brand-muted mb-4 leading-tight">{t('topAxesSubtitle')}</p>
             <div className="flex-1 space-y-3">
               {topAxes.map((axis, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-brand-bg/40 border border-brand-border/30 hover:border-brand-blue/30 transition-colors group">
@@ -274,8 +276,8 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-brand-muted mt-4 italic leading-tight border-t border-brand-border/30 pt-3">
-              Note : Le total des axes calculés dépend de la normalisation des références OSM ref / int_ref.
+            <p className="text-[10px] text-brand-muted mt-4 italic leading-relaxed border-t border-brand-border/30 pt-3">
+              {t('axesCalculationNote')}
             </p>
           </div>
         </div>
@@ -284,14 +286,14 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="bg-white rounded-[40px] p-8 md:p-12 border border-brand-border shadow-sm mb-16 overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div className="space-y-2">
-              <h3 className="text-2xl font-black text-brand-text tracking-tight">Connectivité routière documentée des hubs</h3>
+              <h3 className="text-2xl font-black text-brand-text tracking-tight">{t('hubConnectivityTitle')}</h3>
               <p className="text-sm text-brand-muted max-w-2xl leading-relaxed">
-                Lecture de la connectivité routière des hubs documentés, à partir des autoroutes renseignées pour chaque point nodal. Cette connectivité ne mesure pas les volumes de flux, le trafic réel ou les coûts transport.
+                {t('hubConnectivitySubtitle')}
               </p>
             </div>
             <div className="shrink-0 flex items-center gap-2 px-4 py-2 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl text-[10px] font-black text-brand-blue uppercase tracking-widest">
               <Route className="w-3.5 h-3.5" />
-              Focus Infrastructures
+              {t('focusInfrastructure')}
             </div>
           </div>
 
@@ -299,12 +301,12 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
             <table className="w-full min-w-[900px] border-collapse">
               <thead>
                 <tr className="border-b border-brand-border text-[10px] font-black text-brand-muted uppercase tracking-[0.15em]">
-                  <th className="text-left py-4 px-4 md:px-6">Hub</th>
-                  <th className="text-left py-4 px-4 md:px-6">Pays / Zone</th>
-                  <th className="text-left py-4 px-4 md:px-6">Typologie</th>
-                  <th className="text-left py-4 px-4 md:px-6">Autoroutes connectées</th>
-                  <th className="text-center py-4 px-4 md:px-6">Connectivité</th>
-                  <th className="text-right py-4 px-4 md:px-6">Source</th>
+                  <th className="text-left py-4 px-4 md:px-6">{t('colHub')}</th>
+                  <th className="text-left py-4 px-4 md:px-6">{t('colCountry')}</th>
+                  <th className="text-left py-4 px-4 md:px-6">{t('colTypology')}</th>
+                  <th className="text-left py-4 px-4 md:px-6">{t('colConnectedMotorways')}</th>
+                  <th className="text-center py-4 px-4 md:px-6">{t('colConnectivity')}</th>
+                  <th className="text-right py-4 px-4 md:px-6">{t('colSource')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-brand-border/40">
@@ -340,14 +342,14 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                               );
                             })
                           ) : (
-                            <span className="text-[10px] text-brand-muted italic">Non renseigné</span>
+                            <span className="text-[10px] text-brand-muted italic">{t('notProvided')}</span>
                           )}
                         </div>
                       </td>
                       <td className="py-5 px-4 md:px-6 text-center">
                         <div className="inline-flex flex-col items-center">
                           <span className="text-sm font-black text-brand-text">{hub.connectedHighways?.length || 0}</span>
-                          <span className="text-[9px] font-bold text-brand-muted/60 uppercase">axes</span>
+                          <span className="text-[9px] font-bold text-brand-muted/60 uppercase">{t('axes')}</span>
                         </div>
                       </td>
                       <td className="py-5 px-4 md:px-6 text-right">
@@ -362,7 +364,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
           </div>
           
           <div className="mt-8 pt-6 border-t border-brand-border/40 text-[10px] text-brand-muted italic leading-relaxed">
-            Note : La connectivité correspond au nombre d’axes autoroutiers renseignés dans les données du hub. Elle ne constitue pas un classement économique des plateformes logistiques.
+            {t('connectivityNote')}
           </div>
         </div>
 
@@ -371,45 +373,35 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
           <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-blue">
             <div className="flex items-center gap-3 mb-3">
               <Globe className="w-5 h-5 text-brand-blue" />
-              <h4 className="font-extrabold text-brand-text">Densité Benelux</h4>
+              <h4 className="font-extrabold text-brand-text">{t('beneluxDensity')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">
-              Le Benelux concentre plusieurs hubs dans une zone géographique réduite, ce qui renforce son rôle de carrefour logistique européen.
+              {t('beneluxText')}
             </p>
           </div>
           <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-turquoise">
             <div className="flex items-center gap-3 mb-3">
               <Anchor className="w-5 h-5 text-brand-turquoise" />
-              <h4 className="font-extrabold text-brand-text">Rôle des ports</h4>
+              <h4 className="font-extrabold text-brand-text">{t('portRole')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">
-              Les ports structurent l’accès maritime et l’intermodalité du réseau, reliant les flux terrestres aux grandes routes commerciales.
+              {t('portRoleText')}
             </p>
           </div>
           <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-orange">
             <div className="flex items-center gap-3 mb-3">
               <Info className="w-5 h-5 text-brand-orange" />
-              <h4 className="font-extrabold text-brand-text">Lecture open data</h4>
+              <h4 className="font-extrabold text-brand-text">{t('openDataReading')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">
-              Les données affichées restent dépendantes de la qualité de contribution OpenStreetMap, favorisant une lecture collaborative.
+              {t('openDataReadingText')}
             </p>
           </div>
         </div>
 
-        {/* Footer info */}
-        <div className="pt-8 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <div className="text-[10px] text-brand-muted uppercase tracking-widest flex items-center gap-4 flex-wrap justify-center md:justify-start">
-              <span className="flex items-center gap-1.5"><Shield className="w-3 h-3" /> Sources</span>
-              <span>OpenStreetMap / Overpass API</span>
-              <span>Ports officiels</span>
-              <span className="text-brand-blue">Données OSM sous licence ODbL</span>
-            </div>
-          <p className="text-[10px] text-brand-muted font-medium italic">
-            Aucun flux transporteur privé, coût, fréquence ou volume non sourcé n’est inventé.
-          </p>
-        </div>
+
       </div>
     </section>
   );
 };
+

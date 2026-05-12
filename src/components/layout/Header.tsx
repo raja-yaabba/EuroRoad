@@ -34,11 +34,10 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const navItems = [
-    { id: 'interactive-map', label: 'Carte' },
-    { id: 'analysis', label: 'Analyse' },
-    { id: 'methodology', label: 'Méthodologie' },
-    { id: 'limits', label: 'Limites' },
-    { id: 'skills', label: 'Compétences' },
+    { id: 'interactive-map', label: t('navExplore') },
+    { id: 'analysis',        label: t('navAnalysis') },
+    { id: 'methodology',     label: t('navMethod') },
+    { id: 'limits',          label: t('navTransparency') },
   ];
 
   return (
@@ -51,36 +50,38 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div>
               <h1 className="text-lg font-black tracking-tight text-brand-text leading-tight">
-                EuroRoad Atlas
+                {t('heroTitle')}
               </h1>
               <p className="text-[10px] text-brand-muted hidden md:block font-bold uppercase tracking-wider">
-                Infrastructures logistiques France / Belgique / Pays-Bas
+                {t('heroSublabel')}
               </p>
             </div>
           </div>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map(item => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className="px-4 py-2 text-xs font-bold text-brand-muted hover:text-brand-blue transition-colors rounded-lg hover:bg-brand-bg"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <div className="flex items-center gap-12">
+            <nav className="hidden lg:flex items-center gap-1">
+              {navItems.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="px-4 py-2 text-xs font-bold text-brand-muted hover:text-brand-blue transition-colors rounded-lg hover:bg-brand-bg"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
 
-          <div className="flex items-center gap-4">
-            {/* Custom Toggle Switch for i18n */}
-            <div className="flex bg-brand-bg rounded-full p-1 border border-brand-border relative items-center cursor-pointer select-none"
-                 onClick={() => onLangChange(lang === 'fr' ? 'en' : 'fr')}>
-              <div className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-transform duration-200 ${lang === 'en' ? 'translate-x-[calc(100%+4px)]' : 'translate-x-0'}`}></div>
-              <div className={`px-2 py-0.5 text-[10px] font-black rounded-full relative z-10 transition-colors ${lang === 'fr' ? 'text-brand-blue' : 'text-brand-muted'}`}>
-                FR
-              </div>
-              <div className={`px-2 py-0.5 text-[10px] font-black rounded-full relative z-10 transition-colors ${lang === 'en' ? 'text-brand-blue' : 'text-brand-muted'}`}>
-                EN
+            <div className="flex items-center gap-4">
+              {/* Custom Toggle Switch for i18n */}
+              <div className="flex bg-brand-bg rounded-full p-1 border border-brand-border relative items-center cursor-pointer select-none"
+                   onClick={() => onLangChange(lang === 'fr' ? 'en' : 'fr')}>
+                <div className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-transform duration-200 ${lang === 'en' ? 'translate-x-[calc(100%+4px)]' : 'translate-x-0'}`}></div>
+                <div className={`px-2 py-0.5 text-[10px] font-black rounded-full relative z-10 transition-colors ${lang === 'fr' ? 'text-brand-blue' : 'text-brand-muted'}`}>
+                  FR
+                </div>
+                <div className={`px-2 py-0.5 text-[10px] font-black rounded-full relative z-10 transition-colors ${lang === 'en' ? 'text-brand-blue' : 'text-brand-muted'}`}>
+                  EN
+                </div>
               </div>
             </div>
           </div>
@@ -93,27 +94,25 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="flex items-center gap-1.5">
                 <Database className="w-3 h-3 text-brand-blue" />
                 <span className="text-brand-text">{stats.totalHubs}</span>
-                <span>Hubs</span>
+                <span>{t('hubsCount')}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Layers className="w-3 h-3 text-brand-green" />
-                <span className="text-brand-text">{stats.osmElements.toLocaleString('fr-FR')}</span>
-                <span>Éléments OSM</span>
+                <span className="text-brand-text">{stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
+                <span>{t('osmElements')}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Route className="w-3 h-3 text-brand-turquoise" />
                 <span className="text-brand-text">{stats.totalAxes}</span>
-                <span>Axes calculés</span>
+                <span>{t('calculatedAxesLabel')}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Globe className="w-3 h-3 text-brand-orange" />
                 <span className="text-brand-text">3</span>
-                <span>Pays</span>
+                <span>{t('countries')}</span>
               </div>
             </div>
-            <div className="text-[9px] text-brand-muted/60 italic lowercase font-medium tracking-normal">
-              Atlas open data des infrastructures logistiques France / Belgique / Pays-Bas
-            </div>
+
           </div>
         )}
       </div>

@@ -55,7 +55,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
         </p>
         <div className="mt-6 text-xs text-brand-muted/60 flex items-center gap-1">
           <AlertCircle className="w-3 h-3" />
-          Données open source — OSM réel uniquement
+          {lang === 'fr' ? 'Données open source — OSM réel uniquement' : 'Open source data — OSM real only'}
         </div>
       </div>
     );
@@ -71,9 +71,9 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-brand-bg text-brand-muted border border-brand-border">
-                {hubItem.country}
+                {t(hubItem.country.toLowerCase() as any)}
               </span>
-              <DataBadge type={hubItem.dataType} />
+              <DataBadge type={hubItem.dataType} lang={lang} />
             </div>
             <h2 className="text-2xl font-extrabold text-brand-text leading-tight">{hubItem.name}</h2>
             <span className="text-sm font-medium text-brand-muted">
@@ -92,7 +92,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
           {/* Section des infos de base */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
-              🛣️ {lang === 'fr' ? 'Autoroutes connectées' : 'Connected highways'}
+              🛣️ {t('connectedHighways')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {hubItem.connectedHighways.length > 0 ? (
@@ -103,7 +103,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
                 ))
               ) : (
                 <span className="text-sm text-brand-muted italic">
-                  {lang === 'fr' ? 'Donnée non renseignée' : 'Data not available'}
+                  {t('dataNotAvailable')}
                 </span>
               )}
             </div>
@@ -113,7 +113,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
               <Info className="w-3.5 h-3.5" />
-              {lang === 'fr' ? 'Rôle logistique' : 'Logistics role'}
+              {t('logisticsRole')}
             </h3>
             <p className="text-sm text-brand-text leading-relaxed bg-brand-bg/50 p-3 rounded-xl">
               {lang === 'fr' ? hubItem.descriptionFr : hubItem.descriptionEn}
@@ -123,7 +123,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
           {/* Pourquoi stratégique */}
           <div className="space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">
-              {lang === 'fr' ? 'Importance stratégique' : 'Strategic importance'}
+              {t('strategicReasoning')}
             </h3>
             <div className="bg-gradient-to-r from-brand-blue-light/30 to-brand-turquoise-light/30 p-3 rounded-xl border-l-4 border-brand-blue">
               <p className="text-sm text-brand-text font-medium">
@@ -134,7 +134,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
           {/* Source badge */}
           <SourceBadge 
-            label={hubItem.dataSource || (lang === 'fr' ? 'Source non renseignée' : 'Source not available')} 
+            label={hubItem.dataSource || t('dataNotAvailable')} 
             url={hubItem.sourceUrl}
             reliability={hubItem.reliability}
             lastUpdated={hubItem.lastUpdated}
@@ -146,22 +146,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
   }
 
   const feature = selection.item;
-  const featureTypeLabel =
-    selection.type === 'motorway'
-      ? lang === 'fr' ? '🛣️ Autoroute OSM' : '🛣️ OSM motorway'
-      : selection.type === 'toll'
-      ? lang === 'fr' ? '€ Péage OSM' : '€ OSM toll point'
-      : selection.type === 'truck_parking'
-      ? lang === 'fr' ? '🅿️ Parking PL OSM' : '🅿️ OSM truck parking'
-      : lang === 'fr' ? '📐 Axe OSM calculé' : '📐 Calculated OSM axis';
-
-  const dataBadgeLabel = feature.dataType === 'calculated'
-    ? lang === 'fr'
-      ? 'Donnée calculée depuis OpenStreetMap'
-      : 'Calculated from OpenStreetMap'
-    : lang === 'fr'
-      ? 'Donnée réelle — OpenStreetMap'
-      : 'Real data — OpenStreetMap';
+  const featureTypeLabel = t(selection.type as any);
 
   const orderedTags = [
     'name',
@@ -186,23 +171,14 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-brand-bg text-brand-muted border border-brand-border">
-              {feature.country}
+              {t(feature.country.toLowerCase() as any)}
             </span>
-            <DataBadge type={feature.dataType} />
+            <DataBadge type={feature.dataType} lang={lang} />
           </div>
           <h2 className="text-xl font-extrabold text-brand-text leading-tight">
             {feature.ref || feature.name || (feature as any).intRef || featureTypeLabel}
           </h2>
           <span className="text-sm font-medium text-brand-muted">{featureTypeLabel}</span>
-          <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-full ${
-            feature.dataType === 'calculated'
-              ? 'bg-brand-blue-light text-brand-blue border border-brand-blue/30'
-              : 'bg-brand-green-light text-brand-green border border-brand-green/30'
-          }`}>
-            {feature.dataType === 'calculated'
-              ? (lang === 'fr' ? '🧮 Donnée calculée' : '🧮 Calculated data')
-              : (lang === 'fr' ? '✅ Donnée réelle — OSM' : '✅ Real data — OSM')}
-          </span>
         </div>
         <button 
           onClick={onClose}
@@ -214,37 +190,37 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
       <div className="p-6 flex flex-col gap-6 flex-1">
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">Identification OSM</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">{t('osmIdentification')}</h3>
           <div className="grid grid-cols-1 gap-2 text-sm">
             {/* Priorité à la référence pour les autoroutes */}
             {selection.type === 'motorway' || selection.type === 'axis' ? (
               <div className="bg-brand-bg/50 rounded-xl p-3 border border-brand-border/50">
-                <div className="text-[10px] uppercase font-bold text-brand-muted">Référence OSM</div>
-                <div className="font-mono text-base font-black text-brand-text">{formatValue(feature.ref || feature.intRef, lang)}</div>
+                <div className="text-[10px] uppercase font-bold text-brand-muted">{t('refLabel')}</div>
+                <div className="font-mono text-base font-black text-brand-text">{feature.ref || feature.intRef || t('notProvided')}</div>
               </div>
             ) : null}
 
             <div className="bg-brand-bg/50 rounded-xl p-3 border border-brand-border/50">
-              <div className="text-[10px] uppercase font-bold text-brand-muted">Nom OSM</div>
-              <div className="font-semibold text-brand-text">{formatValue(feature.name, lang)}</div>
+              <div className="text-[10px] uppercase font-bold text-brand-muted">{t('nameLabel')}</div>
+              <div className="font-semibold text-brand-text">{feature.name || t('notProvided')}</div>
             </div>
           </div>
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">Propriétés logistiques</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">{t('logisticsProperties')}</h3>
           <div className="grid grid-cols-2 gap-2 text-sm">
             {selection.type === 'axis' && (
               <div className="bg-brand-bg/50 rounded-xl p-3 col-span-2">
-                <div className="text-[10px] uppercase font-bold text-brand-muted">Méthode de calcul</div>
-                <div className="font-semibold text-brand-text">Regroupement analytique par tag ref</div>
+                <div className="text-[10px] uppercase font-bold text-brand-muted">{t('calculationMethod')}</div>
+                <div className="font-semibold text-brand-text">{t('analyticalGroupingRef')}</div>
               </div>
             )}
 
             {selection.type === 'truck_parking' && (
               <>
                 <div className="bg-brand-bg/50 rounded-xl p-3">
-                  <div className="text-[10px] uppercase font-bold text-brand-muted">Accès HGV</div>
+                  <div className="text-[10px] uppercase font-bold text-brand-muted">HGV</div>
                   <div className="font-semibold text-brand-text">{formatValue(feature.tags.hgv, lang)}</div>
                 </div>
                 <div className="bg-brand-bg/50 rounded-xl p-3">
@@ -256,18 +232,18 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
             {selection.type === 'toll' && (
               <div className="bg-brand-bg/50 rounded-xl p-3">
-                <div className="text-[10px] uppercase font-bold text-brand-muted">Type barrière</div>
+                <div className="text-[10px] uppercase font-bold text-brand-muted">{t('barrierType')}</div>
                 <div className="font-semibold text-brand-text">{formatValue(feature.tags.barrier || 'toll_booth', lang)}</div>
               </div>
             )}
 
             <div className="bg-brand-bg/50 rounded-xl p-3">
-              <div className="text-[10px] uppercase font-bold text-brand-muted">Pays / Zone</div>
-              <div className="font-semibold text-brand-text">{feature.country}</div>
+              <div className="text-[10px] uppercase font-bold text-brand-muted">{t('countryZone')}</div>
+              <div className="font-semibold text-brand-text">{t(feature.country.toLowerCase() as any)}</div>
             </div>
             
             <div className="bg-brand-bg/50 rounded-xl p-3">
-              <div className="text-[10px] uppercase font-bold text-brand-muted">Source</div>
+              <div className="text-[10px] uppercase font-bold text-brand-muted">{t('source')}</div>
               <div className="font-semibold text-brand-text">OpenStreetMap</div>
             </div>
           </div>
@@ -276,34 +252,36 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
         {/* Tags OSM List */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">Tags OSM bruts</h3>
-            <span className="text-[9px] font-bold text-brand-muted opacity-50 uppercase">Read-only</span>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">{t('rawOsmTags')}</h3>
+            <span className="text-[9px] font-bold text-brand-muted opacity-50 uppercase">{t('readOnly')}</span>
           </div>
-          <div className="flex flex-col gap-1">
-            {orderedTags
-              .filter((tagName) => feature.tags[tagName])
-              .map((tagName) => (
-                <div key={tagName} className="flex items-center justify-between py-1.5 px-3 rounded-lg bg-brand-bg/30 border border-brand-border/30 font-mono text-[11px]">
-                  <span className="text-brand-muted font-bold">{tagName}</span>
-                  <span className="text-brand-text font-bold">{feature.tags[tagName]}</span>
-                </div>
-              ))}
-            {Object.keys(feature.tags).length === 0 && (
-              <span className="text-xs text-brand-muted italic">Aucun tag renseigné</span>
-            )}
-          </div>
+          <table className="w-full text-[11px] font-mono border-separate border-spacing-y-0.5">
+            <tbody>
+              {orderedTags
+                .filter((tagName) => feature.tags[tagName])
+                .map((tagName) => (
+                  <tr key={tagName} className="bg-brand-bg/30 rounded-lg">
+                    <td className="py-1.5 pl-3 pr-2 w-1/3 text-brand-muted font-bold align-top rounded-l-lg whitespace-nowrap">{tagName}</td>
+                    <td className="py-1.5 pr-3 pl-1 text-brand-text font-bold align-top rounded-r-lg" style={{ wordBreak: 'break-word', overflowWrap: 'anywhere', whiteSpace: 'normal' }}>{feature.tags[tagName]}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          {orderedTags.filter((tagName) => feature.tags[tagName]).length === 0 && (
+            <span className="text-xs text-brand-muted italic">{t('dataNotAvailable')}</span>
+          )}
         </div>
 
         {/* Note de transparence */}
         <div className="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-100 flex gap-3">
           <AlertCircle className="w-5 h-5 text-amber-500 shrink-0" />
           <p className="text-[10px] leading-relaxed text-amber-800 font-medium">
-            Certains champs peuvent être absents dans OpenStreetMap. Les valeurs non renseignées ne sont pas complétées artificiellement pour garantir l'intégrité de la source.
+            {t('transparencyNote')}
           </p>
         </div>
 
         <SourceBadge 
-          label="Consulter sur OpenStreetMap"
+          label={t('viewOnOsm')}
           url={feature.sourceUrl}
           lang={lang} 
         />

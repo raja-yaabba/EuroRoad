@@ -33,7 +33,7 @@ const createMarkerIcon = (selected: boolean) =>
     iconAnchor: [selected ? 12 : 9, selected ? 12 : 9],
   });
 
-const formatTagValue = (value?: string) => value || 'Donnée non renseignée';
+const formatTagValue = (value: string | undefined, lang: string) => value || (lang === 'fr' ? 'Non renseigné' : 'Not provided');
 
 const COUNTRY_CODE: Record<Country, OsmCountryCode> = {
   France: 'fr',
@@ -44,7 +44,7 @@ const COUNTRY_CODE: Record<Country, OsmCountryCode> = {
 export const TollLayer: React.FC<TollLayerProps> = memo((
   { country, enabled, zoom, selectedItemId, onSelectItem }
 ) => {
-  const { osmData, ensureOsmLayerLoaded } = useApp();
+  const { osmData, ensureOsmLayerLoaded, lang } = useApp();
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export const TollLayer: React.FC<TollLayerProps> = memo((
           >
             {showTooltip && (
               <Tooltip direction="top" offset={[0, -10]} className="rounded-xl border-none px-3 py-2 text-sm shadow-lg">
-                <div className="font-bold">{formatTagValue(feature.name)}</div>
+                <div className="font-bold">{formatTagValue(feature.name, lang)}</div>
                 <div className="text-xs text-brand-muted">{country} · OSM</div>
               </Tooltip>
             )}
