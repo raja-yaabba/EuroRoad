@@ -1,0 +1,14 @@
+[out:json][timeout:120];
+area["ISO3166-1"="NL"][admin_level=2]->.searchArea;
+(
+  node["amenity"="parking"]["hgv"](area.searchArea);
+  way["amenity"="parking"]["hgv"](area.searchArea);
+  relation["amenity"="parking"]["hgv"](area.searchArea);
+  node["amenity"="parking"]["truck"](area.searchArea);
+  way["amenity"="parking"]["truck"](area.searchArea);
+  relation["amenity"="parking"]["truck"](area.searchArea);
+  node["amenity"="parking"]["access:hgv"](area.searchArea);
+  way["amenity"="parking"]["access:hgv"](area.searchArea);
+  relation["amenity"="parking"]["access:hgv"](area.searchArea);
+);
+out center tags;

@@ -1,0 +1,72 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Corridor Paris - Rotterdam",
+        "type": "cross_border",
+        "description": "Axe majeur Paris - Lille - Bruxelles - Anvers - Rotterdam"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [2.3522, 48.8566],
+          [3.0573, 50.6292],
+          [4.3517, 50.8503],
+          [4.4025, 51.2194],
+          [4.4792, 51.9225]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Corridor Seine - Escaut",
+        "type": "port",
+        "description": "Le Havre - Paris - Lille - Anvers"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [0.1079, 49.4944],
+          [2.3522, 48.8566],
+          [3.0573, 50.6292],
+          [4.4025, 51.2194]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Corridor Rotterdam - Ruhr (via Venlo)",
+        "type": "industrial",
+        "description": "Rotterdam - Venlo - Allemagne"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [4.4792, 51.9225],
+          [6.1724, 51.3704]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Randstad - Flandre",
+        "type": "urban_distribution",
+        "description": "Amsterdam - Rotterdam - Anvers - Bruxelles"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [4.9041, 52.3676],
+          [4.4792, 51.9225],
+          [4.4025, 51.2194],
+          [4.3517, 50.8503]
+        ]
+      }
+    }
+  ]
+}

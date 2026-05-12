@@ -1,0 +1,11 @@
+[out:json][timeout:120];
+area["ISO3166-1"="FR"][admin_level=2]->.searchArea;
+(
+  node["barrier"="toll_booth"](area.searchArea);
+  way["barrier"="toll_booth"](area.searchArea);
+  node["highway"="toll_gantry"](area.searchArea);
+  way["highway"="toll_gantry"](area.searchArea);
+  node["toll"="yes"](area.searchArea);
+  way["toll"="yes"](area.searchArea);
+);
+out center tags;

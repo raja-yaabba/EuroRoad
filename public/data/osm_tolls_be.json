@@ -1,0 +1,3622 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-05-12T15:11:45Z",
+    "timestamp_areas_base": "2026-05-12T07:36:16Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 26745788,
+      "lat": 51.2862969,
+      "lon": 4.2894327,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 9",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "9",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 26745791,
+      "lat": 51.2862754,
+      "lon": 4.289499,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 9",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "9",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 26748849,
+      "lat": 51.2358662,
+      "lon": 4.3007444,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 26983481,
+      "lat": 51.3179355,
+      "lon": 4.5758562,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 26983482,
+      "lat": 51.3177908,
+      "lon": 4.5760739,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 319145079,
+      "lat": 51.2861201,
+      "lon": 4.2900147,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 1",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "1",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 344601153,
+      "lat": 50.8973292,
+      "lon": 4.4803408,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 360015275,
+      "lat": 51.2444634,
+      "lon": 4.7587072,
+      "tags": {
+        "barrier": "toll_booth",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 360015279,
+      "lat": 51.2441609,
+      "lon": 4.7539456,
+      "tags": {
+        "barrier": "toll_booth",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 445878264,
+      "lat": 51.243935,
+      "lon": 4.7590016,
+      "tags": {
+        "barrier": "toll_booth",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 659836265,
+      "lat": 50.8951192,
+      "lon": 4.4811893,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1301727636,
+      "lat": 51.0027416,
+      "lon": 4.5214123,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1301727689,
+      "lat": 51.002803,
+      "lon": 4.5213059,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1495494610,
+      "lat": 50.9027179,
+      "lon": 4.6695836,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1495494614,
+      "lat": 50.9026437,
+      "lon": 4.6690971,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1629427642,
+      "lat": 51.0250361,
+      "lon": 3.6858496,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1634194760,
+      "lat": 50.5821584,
+      "lon": 4.08014,
+      "tags": {
+        "barrier": "toll_booth",
+        "bicycle": "no",
+        "foot": "no",
+        "horse": "no",
+        "motor_vehicle": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1793742665,
+      "lat": 51.079435,
+      "lon": 2.601109,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1793742758,
+      "lat": 51.0794165,
+      "lon": 2.6009919,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1793742886,
+      "lat": 51.0794252,
+      "lon": 2.6010488,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2297516627,
+      "lat": 51.155461,
+      "lon": 4.4124489,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2765746313,
+      "lat": 51.286455,
+      "lon": 4.2889228,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 1",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "1",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3999174035,
+      "lat": 50.8950828,
+      "lon": 4.4810676,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4486724116,
+      "lat": 51.2366427,
+      "lon": 4.4564591,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4488137079,
+      "lat": 51.2365773,
+      "lon": 4.4563852,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4547881524,
+      "lat": 51.2436019,
+      "lon": 4.7538546,
+      "tags": {
+        "barrier": "toll_booth",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4764147117,
+      "lat": 49.6787461,
+      "lon": 5.8210915,
+      "tags": {
+        "access": "customers",
+        "barrier": "lift_gate",
+        "bicycle": "yes",
+        "foot": "yes",
+        "toll": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4764147118,
+      "lat": 49.6787665,
+      "lon": 5.8210744,
+      "tags": {
+        "access": "customers",
+        "barrier": "lift_gate",
+        "bicycle": "yes",
+        "foot": "yes",
+        "toll": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4954437907,
+      "lat": 51.1610776,
+      "lon": 4.1509932,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6522029034,
+      "lat": 50.5723905,
+      "lon": 4.0676087,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6522029035,
+      "lat": 50.5722517,
+      "lon": 4.067541,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6862214762,
+      "lat": 50.6481862,
+      "lon": 5.624712,
+      "tags": {
+        "barrier": "toll_booth",
+        "currency:EUR": "yes",
+        "motorcar": "yes",
+        "payment:app": "yes",
+        "payment:apple_pay": "yes",
+        "payment:cards": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7820965893,
+      "lat": 50.4996661,
+      "lon": 5.7352392,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8423507651,
+      "lat": 50.2403246,
+      "lon": 6.0929118,
+      "tags": {
+        "highway": "toll_gantry",
+        "operator": "Société wallonne de Financement complémentaire des Infrastructures"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8637871745,
+      "lat": 51.2288971,
+      "lon": 4.4393849,
+      "tags": {
+        "barrier": "toll_booth",
+        "note": "Toll booth mag niet de juiste naam zijn, maar dit is waar gebruikers danwel betalen danwel aannemelijk maken dat zij hier zonder kosten mochten zijn"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9524653266,
+      "lat": 50.3086657,
+      "lon": 5.1162338,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9524653267,
+      "lat": 50.3087181,
+      "lon": 5.1162855,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9524653268,
+      "lat": 50.3086146,
+      "lon": 5.1161842,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9524653269,
+      "lat": 50.3085687,
+      "lon": 5.1161407,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9524653270,
+      "lat": 50.3085233,
+      "lon": 5.116094,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852904,
+      "lat": 51.2864279,
+      "lon": 4.2890069,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 2",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "2",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852907,
+      "lat": 51.2864114,
+      "lon": 4.2890688,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 3",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "3",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852910,
+      "lat": 51.2863892,
+      "lon": 4.2891308,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 4",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "4",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852913,
+      "lat": 51.2863717,
+      "lon": 4.2891942,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 5",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "no",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "5",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852916,
+      "lat": 51.2863514,
+      "lon": 4.2892531,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 6",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "no",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "6",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852919,
+      "lat": 51.2863349,
+      "lon": 4.2893104,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 7",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "7",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186852922,
+      "lat": 51.2863185,
+      "lon": 4.2893739,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 8",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "8",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867250,
+      "lat": 51.2862247,
+      "lon": 4.2896707,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 6",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "no",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "6",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867251,
+      "lat": 51.286264,
+      "lon": 4.2895551,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 8",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "8",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867252,
+      "lat": 51.2862432,
+      "lon": 4.2896136,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 7",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "7",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867253,
+      "lat": 51.2861519,
+      "lon": 4.289921,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 2",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "2",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867254,
+      "lat": 51.2861663,
+      "lon": 4.2898617,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 3",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "3",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867255,
+      "lat": 51.2861881,
+      "lon": 4.289798,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 4",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "yes",
+        "payment:cash": "no",
+        "payment:contactless": "yes",
+        "payment:telepass": "yes",
+        "ref": "4",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11186867256,
+      "lat": 51.2862071,
+      "lon": 4.2897395,
+      "tags": {
+        "barrier": "toll_booth",
+        "charge:conditional": "4.40 EUR @ height < 3 AND payment:membership_card; 4.40 EUR height>=3 AND 22:00-06:00 AND payment:membership_card; 17.60 EUR @ height>=3 AND 06:01-21:59 AND payment:membership_card; 6.20 EUR @ height < 3 AND payment:card; 6.20 EUR height>=3 AND 22:00-06:0",
+        "name": "Laan 5",
+        "operator": "NV Tunnel Liefkenshoek",
+        "payment:cards": "no",
+        "payment:cash": "no",
+        "payment:contactless": "no",
+        "payment:telepass": "yes",
+        "ref": "5",
+        "website": "https://www.liefkenshoektunnel.be/nl/tarieven-abonnementen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11398405059,
+      "lat": 49.9067133,
+      "lon": 5.3683204,
+      "tags": {
+        "description": "VIAPASS",
+        "highway": "toll_gantry",
+        "note": "https://www.viapass.be/en/control/",
+        "operator": "Société wallonne de Financement complémentaire des Infrastructures",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11520093316,
+      "lat": 50.2021602,
+      "lon": 4.4912975,
+      "tags": {
+        "description": "VIAPASS",
+        "highway": "toll_gantry",
+        "note": "https://www.viapass.be/en/control/",
+        "operator": "Société wallonne de Financement complémentaire des Infrastructures",
+        "toll:hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11618988607,
+      "lat": 50.8973314,
+      "lon": 4.4803853,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11618988608,
+      "lat": 50.8973112,
+      "lon": 4.4804277,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155541438,
+      "lat": 50.7313794,
+      "lon": 5.5798192,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155543666,
+      "lat": 50.4364246,
+      "lon": 5.6983785,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155543667,
+      "lat": 50.4363963,
+      "lon": 5.6986647,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155556773,
+      "lat": 50.8660624,
+      "lon": 3.4278054,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155556774,
+      "lat": 50.8659164,
+      "lon": 3.4279217,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155636092,
+      "lat": 50.672091,
+      "lon": 5.5394053,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155636093,
+      "lat": 50.6719297,
+      "lon": 5.5394356,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155864935,
+      "lat": 50.4108092,
+      "lon": 5.9890812,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155864936,
+      "lat": 50.4107843,
+      "lon": 5.9892517,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155868025,
+      "lat": 50.0827477,
+      "lon": 5.1685832,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155868026,
+      "lat": 50.0828105,
+      "lon": 5.1687174,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155880556,
+      "lat": 50.4931024,
+      "lon": 4.1127317,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155880557,
+      "lat": 50.4928888,
+      "lon": 4.1128543,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155880558,
+      "lat": 49.6702096,
+      "lon": 5.788077,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155886062,
+      "lat": 50.7749878,
+      "lon": 4.4477874,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155886063,
+      "lat": 50.7749542,
+      "lon": 4.447917,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155899557,
+      "lat": 50.7856729,
+      "lon": 4.3033789,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155899558,
+      "lat": 50.7856427,
+      "lon": 4.3037386,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155974379,
+      "lat": 51.0346603,
+      "lon": 4.4487477,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155974380,
+      "lat": 51.0345008,
+      "lon": 4.4494951,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155989828,
+      "lat": 50.9138368,
+      "lon": 4.0476733,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12155989829,
+      "lat": 50.9139755,
+      "lon": 4.0477283,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156198158,
+      "lat": 50.5988532,
+      "lon": 4.2968069,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156223119,
+      "lat": 50.7006183,
+      "lon": 5.6789424,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156224088,
+      "lat": 50.6472716,
+      "lon": 5.9705383,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156230150,
+      "lat": 50.6474553,
+      "lon": 5.9705778,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156269449,
+      "lat": 51.115687,
+      "lon": 2.7624674,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156292328,
+      "lat": 50.95984,
+      "lon": 4.9002725,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156292329,
+      "lat": 50.9599641,
+      "lon": 4.9002805,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156316650,
+      "lat": 50.4744091,
+      "lon": 4.5582937,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156316651,
+      "lat": 50.4745618,
+      "lon": 4.5581945,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156349114,
+      "lat": 51.132356,
+      "lon": 4.1201016,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12156349115,
+      "lat": 51.1321817,
+      "lon": 4.120147,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12157094154,
+      "lat": 51.2357753,
+      "lon": 4.3006865,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12157103438,
+      "lat": 51.1126774,
+      "lon": 4.9991469,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12157145796,
+      "lat": 51.1127902,
+      "lon": 4.9992087,
+      "tags": {
+        "camera:type": "fixed",
+        "description": "Toll camera",
+        "highway": "toll_gantry",
+        "man_made": "surveillance",
+        "surveillance": "outdoor",
+        "surveillance:type": "ALPR",
+        "surveillance:zone": "traffic"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12350923442,
+      "lat": 50.678558,
+      "lon": 4.6277578,
+      "tags": {
+        "highway": "toll_gantry"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12833725041,
+      "lat": 50.8973681,
+      "lon": 4.4803131,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12833725044,
+      "lat": 50.8973818,
+      "lon": 4.4802606,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13166577322,
+      "lat": 50.6482445,
+      "lon": 5.6246407,
+      "tags": {
+        "barrier": "toll_booth",
+        "currency:EUR": "yes",
+        "payment:app": "yes",
+        "payment:apple_pay": "yes",
+        "payment:cards": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13654922915,
+      "lat": 50.4997451,
+      "lon": 5.7351863,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13654922979,
+      "lat": 50.4995877,
+      "lon": 5.7354145,
+      "tags": {
+        "barrier": "toll_booth"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4326480,
+      "center": {
+        "lat": 51.3019534,
+        "lon": 4.3025728
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "cutting": "yes",
+        "destination:lanes": "Breda;Rotterdam|Breda;Rotterdam|Lillo",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "90",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|slight_right",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4382852,
+      "center": {
+        "lat": 51.2960264,
+        "lon": 4.2974085
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "2",
+        "layer": "-1",
+        "maxheight": "5.1",
+        "maxspeed": "100",
+        "maxwidth": "7.5",
+        "name": "Liefkenshoektunnel",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "tunnel": "yes",
+        "wikidata": "Q1569823",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4382857,
+      "center": {
+        "lat": 51.2960733,
+        "lon": 4.2972914
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "motorway",
+        "lanes": "2",
+        "layer": "-1",
+        "maxheight": "5.1",
+        "maxspeed": "100",
+        "maxwidth": "7.5",
+        "name": "Liefkenshoektunnel",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "tunnel": "yes",
+        "wikidata": "Q1569823",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4382978,
+      "center": {
+        "lat": 51.290024,
+        "lon": 4.2923465
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "cutting": "yes",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 18524075,
+      "center": {
+        "lat": 50.9255876,
+        "lon": 5.3580569
+      },
+      "tags": {
+        "bicycle": "no",
+        "highway": "residential",
+        "lit": "no",
+        "maxspeed": "50",
+        "name": "Gouverneur Roppesingel",
+        "oneway": "yes",
+        "surface": "asphalt",
+        "toll": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 42359819,
+      "center": {
+        "lat": 50.7771197,
+        "lon": 5.6980818
+      },
+      "tags": {
+        "alt_name": "Cramignon",
+        "bicycle": "yes",
+        "duration": "00:10",
+        "ferry:cable": "yes",
+        "foot": "yes",
+        "interval": "00:30",
+        "motor_vehicle": "no",
+        "name": "Ferry Cramignon",
+        "name:en": "Ferry Cramignon",
+        "name:fr": "Bac Cramignon",
+        "name:nl": "Veer Cramignon",
+        "opening_hours": "May-Aug 10:00-20:00; Apr 10:00-18:00; Sep-Oct 10:00-18:00",
+        "opening_hours:url": "https://veerponten.nl/veren/eijsden-lanaye",
+        "operator": "J. Martens",
+        "payment:cash": "yes",
+        "route": "ferry",
+        "toll": "yes",
+        "trailblazed": "symbols"
+      }
+    },
+    {
+      "type": "way",
+      "id": 84491954,
+      "center": {
+        "lat": 50.8049092,
+        "lon": 4.3801131
+      },
+      "tags": {
+        "charge": "1 EUR",
+        "fee": "yes",
+        "foot": "yes",
+        "motor_vehicle": "no",
+        "route": "ferry",
+        "toll": "yes",
+        "vehicle": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 96053700,
+      "center": {
+        "lat": 53.0020864,
+        "lon": 1.0223636
+      },
+      "tags": {
+        "bicycle": "no",
+        "duration": "15:00",
+        "foot": "no",
+        "hgv": "yes",
+        "horse": "no",
+        "motorcar": "no",
+        "motorcycle": "no",
+        "name": "Zeebrugge - Teesport",
+        "operator": "P&O Ferries",
+        "route": "ferry",
+        "toll": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 164733018,
+      "center": {
+        "lat": 51.3032753,
+        "lon": 4.3050691
+      },
+      "tags": {
+        "highway": "motorway",
+        "lanes": "2",
+        "maxheight": "default",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 164920254,
+      "center": {
+        "lat": 51.3038478,
+        "lon": 4.3061562
+      },
+      "tags": {
+        "destination": "(TOL);Gent;Brugge;Haven 1000-2000",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxheight": "default",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 183225829,
+      "center": {
+        "lat": 51.2850411,
+        "lon": 4.28839
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "70",
+        "maxspeed:type": "BE-VLG:rural",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 183225833,
+      "center": {
+        "lat": 51.2875133,
+        "lon": 4.2905181
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "70",
+        "maxspeed:type": "BE-VLG:rural",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 195008343,
+      "center": {
+        "lat": 51.0062792,
+        "lon": 5.7665991
+      },
+      "tags": {
+        "alt_name": "Hoal Euver II",
+        "bicycle": "yes",
+        "duration": "00:08",
+        "foot": "yes",
+        "interval": "00:16",
+        "maxaxleload": "6",
+        "maxweight": "16",
+        "motor_vehicle": "yes",
+        "name": "Berg - Meeswijk",
+        "opening_hours": "Jun 16-Sep 15: PH,Mo-Su 07:00-23:00, Sep 16-Jun 15: PH,Mo-Su 07:00-21:30",
+        "operator": "Ton Paulus Veerbedrijf",
+        "reservation": "no",
+        "route": "ferry",
+        "seamark:ferry_route:category": "swinging_wire",
+        "seamark:type": "ferry_route",
+        "toll": "yes",
+        "toll:bicycle": "no",
+        "toll:foot": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 269694590,
+      "center": {
+        "lat": 51.3025882,
+        "lon": 4.303569
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "cutting": "yes",
+        "destination": "Breda;Rotterdam;Haven 2,4,...998",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "90",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 269694593,
+      "center": {
+        "lat": 51.3022591,
+        "lon": 4.3028523
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "cutting": "yes",
+        "destination": "(TOL);Gent;Brugge;Haven 1000-2000",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|merge_to_left",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271502292,
+      "center": {
+        "lat": 51.2798967,
+        "lon": 4.2843423
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Gent;Brugge;Haven 1000-1499",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "surface": "asphalt",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271502981,
+      "center": {
+        "lat": 51.2766096,
+        "lon": 4.2819429
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "TOL;Breda;Rotterdam;Haven 1-999",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "surface": "asphalt",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271610135,
+      "center": {
+        "lat": 51.2829089,
+        "lon": 4.286702
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination:lanes": "Gent;Brugge;Haven 1000-1499|Gent;Brugge;Haven 1000-1499|Kallo-Centrum;Doel;Haven 1500-2000",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|slight_right",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271610495,
+      "center": {
+        "lat": 51.2831755,
+        "lon": 4.2871058
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "change:lanes": "yes|not_right|no",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271628170,
+      "center": {
+        "lat": 51.2862926,
+        "lon": 4.2894315
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 271628173,
+      "center": {
+        "lat": 51.2867858,
+        "lon": 4.2899182
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 558466250,
+      "center": {
+        "lat": 50.8049346,
+        "lon": 4.3802131
+      },
+      "tags": {
+        "charge": "1 EUR",
+        "fee": "yes",
+        "foot": "yes",
+        "motor_vehicle": "no",
+        "route": "ferry",
+        "toll": "yes",
+        "vehicle": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 638739423,
+      "center": {
+        "lat": 51.2856744,
+        "lon": 4.2886662
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 859392208,
+      "center": {
+        "lat": 51.2864464,
+        "lon": 4.2889092
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 859392209,
+      "center": {
+        "lat": 51.2868172,
+        "lon": 4.2898246
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 9",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 859392217,
+      "center": {
+        "lat": 51.2867066,
+        "lon": 4.2901739
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 859392218,
+      "center": {
+        "lat": 51.285596,
+        "lon": 4.2893089
+      },
+      "tags": {
+        "access:lanes": "yes|yes|no",
+        "bus:lanes": "yes|yes|designated",
+        "carriageway_ref": "h1",
+        "destination": "Laan 1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "3",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 859392219,
+      "center": {
+        "lat": 51.2862762,
+        "lon": 4.2894999
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230439,
+      "center": {
+        "lat": 51.2836841,
+        "lon": 4.2875049
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230440,
+      "center": {
+        "lat": 51.3016107,
+        "lon": 4.3018547
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "cutting": "yes",
+        "destination": "(TOL);Gent;Brugge;Haven 1000-2000",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230441,
+      "center": {
+        "lat": 51.288973,
+        "lon": 4.2915109
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "90",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230442,
+      "center": {
+        "lat": 51.2897942,
+        "lon": 4.2923162
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "cutting": "yes",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230444,
+      "center": {
+        "lat": 51.302829,
+        "lon": 4.3040063
+      },
+      "tags": {
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "90",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207230445,
+      "center": {
+        "lat": 51.3030583,
+        "lon": 4.3041679
+      },
+      "tags": {
+        "destination": "(TOL);Gent;Brugge;Haven 1000-2000",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|merge_to_left",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307292,
+      "center": {
+        "lat": 51.2844234,
+        "lon": 4.2879033
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "change:lanes": "yes|not_right|yes",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|merge_to_left",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307293,
+      "center": {
+        "lat": 51.2839765,
+        "lon": 4.2875456
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307301,
+      "center": {
+        "lat": 51.2857646,
+        "lon": 4.2887188
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307302,
+      "center": {
+        "lat": 51.2857563,
+        "lon": 4.2887498
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307303,
+      "center": {
+        "lat": 51.2857452,
+        "lon": 4.2887807
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307304,
+      "center": {
+        "lat": 51.2857365,
+        "lon": 4.2888124
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307305,
+      "center": {
+        "lat": 51.2857263,
+        "lon": 4.2888419
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307306,
+      "center": {
+        "lat": 51.285718,
+        "lon": 4.2888705
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307307,
+      "center": {
+        "lat": 51.2857098,
+        "lon": 4.2889022
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307308,
+      "center": {
+        "lat": 51.2856991,
+        "lon": 4.2889317
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307310,
+      "center": {
+        "lat": 51.2846272,
+        "lon": 4.2880689
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "change:lanes": "yes|yes|not_right|yes",
+        "highway": "motorway",
+        "lanes": "4",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "turn:lanes": "none|none|none|merge_to_left",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307311,
+      "center": {
+        "lat": 51.2860713,
+        "lon": 4.2886905
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307312,
+      "center": {
+        "lat": 51.2868281,
+        "lon": 4.2897953
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 8",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307313,
+      "center": {
+        "lat": 51.2868363,
+        "lon": 4.2897635
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 7",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307314,
+      "center": {
+        "lat": 51.2868445,
+        "lon": 4.2897349
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 6",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307315,
+      "center": {
+        "lat": 51.2868547,
+        "lon": 4.2897054
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 5",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307316,
+      "center": {
+        "lat": 51.2868634,
+        "lon": 4.2896737
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 4",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307317,
+      "center": {
+        "lat": 51.2868745,
+        "lon": 4.2896428
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 3",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307318,
+      "center": {
+        "lat": 51.2868828,
+        "lon": 4.2896118
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307319,
+      "center": {
+        "lat": 51.2864237,
+        "lon": 4.2890057
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307320,
+      "center": {
+        "lat": 51.2864072,
+        "lon": 4.2890676
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307321,
+      "center": {
+        "lat": 51.2863849,
+        "lon": 4.2891296
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307322,
+      "center": {
+        "lat": 51.2863675,
+        "lon": 4.289193
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307323,
+      "center": {
+        "lat": 51.2863471,
+        "lon": 4.2892519
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307324,
+      "center": {
+        "lat": 51.2863306,
+        "lon": 4.2893092
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307325,
+      "center": {
+        "lat": 51.2863142,
+        "lon": 4.2893726
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307326,
+      "center": {
+        "lat": 51.2868948,
+        "lon": 4.2895607
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Laan 1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307327,
+      "center": {
+        "lat": 51.2876362,
+        "lon": 4.2904516
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "70",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307328,
+      "center": {
+        "lat": 51.289277,
+        "lon": 4.2917524
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "cutting": "yes",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "90",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307329,
+      "center": {
+        "lat": 51.2888582,
+        "lon": 4.2915781
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307330,
+      "center": {
+        "lat": 51.2839294,
+        "lon": 4.2876979
+      },
+      "tags": {
+        "access:lanes": "yes|yes|yes|no",
+        "bus:lanes": "yes|yes|yes|designated",
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "4",
+        "maxspeed": "70",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307331,
+      "center": {
+        "lat": 51.2838166,
+        "lon": 4.2876097
+      },
+      "tags": {
+        "access:lanes": "yes|yes|yes|no",
+        "bus:lanes": "yes|yes|yes|designated",
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "4",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307332,
+      "center": {
+        "lat": 51.2849999,
+        "lon": 4.2885462
+      },
+      "tags": {
+        "access:lanes": "yes|yes|yes|yes|no",
+        "bus:lanes": "yes|yes|yes|yes|designated",
+        "carriageway_ref": "h1",
+        "highway": "trunk",
+        "lanes": "5",
+        "maxspeed": "70",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307333,
+      "center": {
+        "lat": 51.2867188,
+        "lon": 4.2901289
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307334,
+      "center": {
+        "lat": 51.2867283,
+        "lon": 4.2900982
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307335,
+      "center": {
+        "lat": 51.2867385,
+        "lon": 4.2900671
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307336,
+      "center": {
+        "lat": 51.2867478,
+        "lon": 4.2900356
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307337,
+      "center": {
+        "lat": 51.2867586,
+        "lon": 4.2900023
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307338,
+      "center": {
+        "lat": 51.2867677,
+        "lon": 4.2899746
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307339,
+      "center": {
+        "lat": 51.286776,
+        "lon": 4.2899478
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307340,
+      "center": {
+        "lat": 51.2881278,
+        "lon": 4.291005
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "trunk",
+        "lanes": "3",
+        "maxspeed": "70",
+        "maxspeed:type": "BE-VLG:rural",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307341,
+      "center": {
+        "lat": 51.2884627,
+        "lon": 4.2912673
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxspeed": "70",
+        "maxspeed:type": "BE-VLG:rural",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307342,
+      "center": {
+        "lat": 51.2883354,
+        "lon": 4.2910085
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "trunk",
+        "lanes": "4",
+        "maxspeed": "90",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307343,
+      "center": {
+        "lat": 51.2886636,
+        "lon": 4.291268
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "motorway",
+        "lanes": "3",
+        "maxspeed": "90",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307344,
+      "center": {
+        "lat": 51.2856104,
+        "lon": 4.289263
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 2",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307345,
+      "center": {
+        "lat": 51.2856178,
+        "lon": 4.2892326
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 3",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307346,
+      "center": {
+        "lat": 51.2856275,
+        "lon": 4.2892
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 4",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307347,
+      "center": {
+        "lat": 51.2856381,
+        "lon": 4.2891719
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 5",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307348,
+      "center": {
+        "lat": 51.2856484,
+        "lon": 4.2891416
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 6",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307349,
+      "center": {
+        "lat": 51.2856567,
+        "lon": 4.2891119
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 7",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307350,
+      "center": {
+        "lat": 51.2856664,
+        "lon": 4.2890816
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 8",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307351,
+      "center": {
+        "lat": 51.2843235,
+        "lon": 4.2880097
+      },
+      "tags": {
+        "access:lanes": "yes|yes|yes|yes|no",
+        "bus:lanes": "yes|yes|yes|yes|designated",
+        "carriageway_ref": "h1",
+        "highway": "motorway",
+        "lanes": "5",
+        "maxspeed": "70",
+        "maxspeed:type": "sign",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "right_of:1",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307352,
+      "center": {
+        "lat": 51.28612,
+        "lon": 4.29001
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "2",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "7.5",
+        "motorcar": "no",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307353,
+      "center": {
+        "lat": 51.2861467,
+        "lon": 4.2899191
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307354,
+      "center": {
+        "lat": 51.2861635,
+        "lon": 4.289858
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307355,
+      "center": {
+        "lat": 51.2861834,
+        "lon": 4.2897944
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "designated",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307356,
+      "center": {
+        "lat": 51.2862033,
+        "lon": 4.2897347
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307357,
+      "center": {
+        "lat": 51.2862418,
+        "lon": 4.2896136
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307358,
+      "center": {
+        "lat": 51.2862598,
+        "lon": 4.2895566
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "no",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "3",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307359,
+      "center": {
+        "lat": 51.2862244,
+        "lon": 4.289671
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207307360,
+      "center": {
+        "lat": 51.285673,
+        "lon": 4.2890545
+      },
+      "tags": {
+        "carriageway_ref": "h1",
+        "destination": "Laan 9",
+        "hgv": "yes",
+        "highway": "trunk",
+        "lanes": "1",
+        "maxheight": "5.1",
+        "maxspeed": "50",
+        "maxspeed:type": "sign",
+        "maxwidth": "2.9",
+        "motorcar": "yes",
+        "oneway": "yes",
+        "operator": "NV Tunnel Liefkenshoek",
+        "placement": "transition",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE-VLG:rural"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207318983,
+      "center": {
+        "lat": 51.2835214,
+        "lon": 4.2871851
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1302467870,
+      "center": {
+        "lat": 51.2754774,
+        "lon": 4.280841
+      },
+      "tags": {
+        "carriageway_ref": "h2",
+        "destination": "Gent;Brugge;Haven 1000-1499",
+        "highway": "motorway",
+        "lanes": "2",
+        "maxspeed": "100",
+        "oneway": "yes",
+        "operator": "Agentschap Wegen en Verkeer",
+        "ref": "R2",
+        "surface": "asphalt",
+        "toll": "yes",
+        "zone:traffic": "BE:motorway"
+      }
+    }
+  ]
+}

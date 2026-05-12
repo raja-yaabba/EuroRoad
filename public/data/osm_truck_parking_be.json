@@ -1,0 +1,5336 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-05-12T15:15:45Z",
+    "timestamp_areas_base": "2026-05-12T07:36:16Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 279325038,
+      "lat": 50.8357533,
+      "lon": 5.508233,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 279326328,
+      "lat": 50.8360339,
+      "lon": 5.5096611,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 764571045,
+      "lat": 50.7167378,
+      "lon": 4.5837633,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "name": "Aire de Bierges",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 765098955,
+      "lat": 50.6524669,
+      "lon": 4.6946756,
+      "tags": {
+        "amenity": "parking",
+        "comment": "Nil-Saint-Vincent is Not the name used on the ground",
+        "hgv": "yes",
+        "name": "Aire de Nil-Saint-Martin",
+        "parking": "surface",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 765098956,
+      "lat": 50.652574,
+      "lon": 4.6917958,
+      "tags": {
+        "amenity": "parking",
+        "comment": "Nil-Saint-Vincent is Not the name used on the ground",
+        "hgv": "yes",
+        "name": "Aire de Nil-Saint-Martin",
+        "parking": "surface",
+        "source": "survey"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1683562225,
+      "lat": 50.3188745,
+      "lon": 6.0853974,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3689073569,
+      "lat": 50.9941589,
+      "lon": 5.2409677,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "supervised": "yes",
+        "website": "https://www.securetruckstop.eu/parking"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4820509969,
+      "lat": 51.1531276,
+      "lon": 3.7712239,
+      "tags": {
+        "addr:city": "Gent",
+        "addr:postcode": "9000",
+        "addr:street": "Marco Polostraat",
+        "amenity": "parking",
+        "capacity": "45",
+        "fee": "no",
+        "hgv": "designated",
+        "name": "Marco Polostraat",
+        "operator": "Ghent Port Company",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5074257651,
+      "lat": 51.3300895,
+      "lon": 3.1943263,
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5835201142,
+      "lat": 49.9039711,
+      "lon": 5.1427024,
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517859154,
+      "lat": 51.3180752,
+      "lon": 4.3298253,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517866844,
+      "lat": 51.3183368,
+      "lon": 4.333088,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517917598,
+      "lat": 51.212005,
+      "lon": 4.5356419,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517920610,
+      "lat": 51.2425676,
+      "lon": 4.2624618,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517927285,
+      "lat": 51.0713024,
+      "lon": 5.1486021,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517927286,
+      "lat": 51.2822815,
+      "lon": 4.2698133,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9517932858,
+      "lat": 51.2680592,
+      "lon": 4.2699966,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532234881,
+      "lat": 51.2802661,
+      "lon": 4.762446,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532275478,
+      "lat": 50.318191,
+      "lon": 6.0860065,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532281671,
+      "lat": 50.8961004,
+      "lon": 5.4023955,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532281688,
+      "lat": 50.6409114,
+      "lon": 5.7304945,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532293635,
+      "lat": 51.1750578,
+      "lon": 4.8508509,
+      "tags": {
+        "amenity": "parking",
+        "description": "Вдоль дороги",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532316577,
+      "lat": 51.1558451,
+      "lon": 4.8497214,
+      "tags": {
+        "amenity": "parking",
+        "description": "Вдоль дороги",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532316841,
+      "lat": 51.1864439,
+      "lon": 4.8415914,
+      "tags": {
+        "amenity": "parking",
+        "description": "Вдоль дороги",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532322170,
+      "lat": 50.7360269,
+      "lon": 5.5777924,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532322171,
+      "lat": 50.7415091,
+      "lon": 5.5770149,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532350054,
+      "lat": 50.2523972,
+      "lon": 6.1696145,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9532350055,
+      "lat": 50.2525952,
+      "lon": 6.1706998,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9550673552,
+      "lat": 51.1539028,
+      "lon": 4.852011,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9550690496,
+      "lat": 51.1728233,
+      "lon": 4.8492828,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9550717048,
+      "lat": 51.3301696,
+      "lon": 4.74625,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557512964,
+      "lat": 51.2645083,
+      "lon": 4.3951063,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557542708,
+      "lat": 51.0572314,
+      "lon": 5.1736186,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557548747,
+      "lat": 51.0593882,
+      "lon": 5.1707526,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557555173,
+      "lat": 51.1777842,
+      "lon": 4.7456147,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557560592,
+      "lat": 51.1805132,
+      "lon": 4.7149683,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557560593,
+      "lat": 51.2388733,
+      "lon": 4.4270214,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557563652,
+      "lat": 51.0616381,
+      "lon": 5.1677674,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557565325,
+      "lat": 51.2395285,
+      "lon": 4.4182258,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "ground"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557567489,
+      "lat": 51.2412929,
+      "lon": 4.4196936,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557567993,
+      "lat": 51.2651835,
+      "lon": 4.4023349,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557578218,
+      "lat": 51.2673384,
+      "lon": 4.3757217,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557580481,
+      "lat": 51.239437,
+      "lon": 4.419673,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9557582115,
+      "lat": 51.2803573,
+      "lon": 4.3849199,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9563164322,
+      "lat": 51.2908266,
+      "lon": 4.3603808,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9563181118,
+      "lat": 51.3700441,
+      "lon": 4.2941251,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9563202773,
+      "lat": 51.3724642,
+      "lon": 4.2826931,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9563221678,
+      "lat": 51.3178534,
+      "lon": 4.3472584,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575802555,
+      "lat": 50.9475166,
+      "lon": 5.7038546,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575853427,
+      "lat": 51.2891833,
+      "lon": 4.3038911,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575918771,
+      "lat": 50.9482859,
+      "lon": 5.7015278,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575918772,
+      "lat": 50.9464857,
+      "lon": 5.7028222,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575929786,
+      "lat": 51.2424752,
+      "lon": 4.2674883,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575938489,
+      "lat": 50.9439583,
+      "lon": 5.6970409,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575948416,
+      "lat": 51.2427123,
+      "lon": 4.2678512,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9575998378,
+      "lat": 50.9505822,
+      "lon": 5.6927176,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9576004708,
+      "lat": 50.945344,
+      "lon": 5.6974451,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9576008852,
+      "lat": 51.2703318,
+      "lon": 4.3002517,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9576015571,
+      "lat": 50.9480639,
+      "lon": 5.6948933,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9576021202,
+      "lat": 51.2672953,
+      "lon": 4.2960547,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176214316,
+      "lat": 51.2776611,
+      "lon": 4.2852259,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176244302,
+      "lat": 50.6951647,
+      "lon": 5.5778488,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176291556,
+      "lat": 51.3472258,
+      "lon": 4.2803297,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176303397,
+      "lat": 51.3282074,
+      "lon": 4.3449191,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176321618,
+      "lat": 51.2121787,
+      "lon": 4.4976577,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176334185,
+      "lat": 51.353642,
+      "lon": 4.2754963,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176334299,
+      "lat": 51.3693349,
+      "lon": 4.2949291,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176334300,
+      "lat": 51.3696286,
+      "lon": 4.294873,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10176336128,
+      "lat": 51.3705643,
+      "lon": 4.2946306,
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12230044648,
+      "lat": 51.313715,
+      "lon": 4.35303,
+      "tags": {
+        "amenity": "parking",
+        "description": "Lorry parking area",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "paved"
+      }
+    },
+    {
+      "type": "way",
+      "id": 8058301,
+      "center": {
+        "lat": 51.2331245,
+        "lon": 4.4177504
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "yes",
+        "name": "voormalige LKW-parking",
+        "note": "Waarneming ter plaatse : parking niet meer bereikbaar voor camions : gewichtsbeperking 3,5ton en wegens werf ZNA Cadix. Blijft 'voorlopig' als personenwagen parking.",
+        "operator": "Stad Antwerpen",
+        "park_ride": "no",
+        "parking": "surface",
+        "source": "local knowledge",
+        "supervised": "no",
+        "surface": "cobblestone"
+      }
+    },
+    {
+      "type": "way",
+      "id": 25678874,
+      "center": {
+        "lat": 51.2854432,
+        "lon": 4.2879873
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 27758924,
+      "center": {
+        "lat": 49.5508657,
+        "lon": 5.8078174
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity:hgv": "55",
+        "hgv": "yes",
+        "parking": "street_side",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 27758931,
+      "center": {
+        "lat": 49.5508007,
+        "lon": 5.8065535
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity:hgv": "60",
+        "hgv": "yes",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 31182713,
+      "center": {
+        "lat": 50.5921426,
+        "lon": 5.3022979
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "tourist_bus": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 31182716,
+      "center": {
+        "lat": 50.5933339,
+        "lon": 5.3045416
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "tourist_bus": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 43173762,
+      "center": {
+        "lat": 51.2056311,
+        "lon": 2.8715806
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "125",
+        "description": "truck/bus parking",
+        "fee": "yes",
+        "hgv": "private",
+        "name": "P4",
+        "operator": "Parking LO",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 58299735,
+      "center": {
+        "lat": 50.5294061,
+        "lon": 4.9859259
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "18",
+        "hgv": "designated",
+        "motorhome": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 58299737,
+      "center": {
+        "lat": 50.5290895,
+        "lon": 4.9835944
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "39",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 58299740,
+      "center": {
+        "lat": 50.5290291,
+        "lon": 4.9879819
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 72414967,
+      "center": {
+        "lat": 50.7484791,
+        "lon": 5.6929762
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 77109090,
+      "center": {
+        "lat": 51.324507,
+        "lon": 4.3478243
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 88298435,
+      "center": {
+        "lat": 51.4737006,
+        "lon": 4.7262133
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface",
+        "source": "Bing"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89562531,
+      "center": {
+        "lat": 49.6444506,
+        "lon": 5.8294521
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89562532,
+      "center": {
+        "lat": 49.6441612,
+        "lon": 5.8305363
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89562540,
+      "center": {
+        "lat": 49.6442703,
+        "lon": 5.8295693
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89562923,
+      "center": {
+        "lat": 49.6434462,
+        "lon": 5.8319342
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89563797,
+      "center": {
+        "lat": 49.6425169,
+        "lon": 5.8295664
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89563798,
+      "center": {
+        "lat": 49.6420956,
+        "lon": 5.8302768
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89563803,
+      "center": {
+        "lat": 49.6422871,
+        "lon": 5.8305179
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89563809,
+      "center": {
+        "lat": 49.6425084,
+        "lon": 5.8306005
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89579670,
+      "center": {
+        "lat": 49.7135655,
+        "lon": 5.6050611
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89692668,
+      "center": {
+        "lat": 50.0351366,
+        "lon": 5.2107314
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89692705,
+      "center": {
+        "lat": 50.034855,
+        "lon": 5.2119396
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "orientation": "parallel",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89700405,
+      "center": {
+        "lat": 50.1444645,
+        "lon": 5.0801653
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89701206,
+      "center": {
+        "lat": 50.142808,
+        "lon": 5.0776383
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89710650,
+      "center": {
+        "lat": 50.3042116,
+        "lon": 5.0184068
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89710661,
+      "center": {
+        "lat": 50.3043632,
+        "lon": 5.0173057
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89889347,
+      "center": {
+        "lat": 50.5394788,
+        "lon": 5.1224602
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 89889348,
+      "center": {
+        "lat": 50.5392092,
+        "lon": 5.1235329
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 90078102,
+      "center": {
+        "lat": 50.527935,
+        "lon": 4.9881113
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 90078138,
+      "center": {
+        "lat": 50.5279546,
+        "lon": 4.9825936
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 92029248,
+      "center": {
+        "lat": 50.5544254,
+        "lon": 4.8445059
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 92029253,
+      "center": {
+        "lat": 50.5549206,
+        "lon": 4.845307
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93222144,
+      "center": {
+        "lat": 51.2174201,
+        "lon": 4.8253052
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799003,
+      "center": {
+        "lat": 50.5235261,
+        "lon": 5.668501
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799006,
+      "center": {
+        "lat": 50.5220915,
+        "lon": 5.6645275
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface",
+        "source": "20cm-near PICC http://geoportail.wallonie.be 2015"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799030,
+      "center": {
+        "lat": 50.5250243,
+        "lon": 5.6671129
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799066,
+      "center": {
+        "lat": 50.5235825,
+        "lon": 5.6631139
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799089,
+      "center": {
+        "lat": 50.5233751,
+        "lon": 5.662986
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799114,
+      "center": {
+        "lat": 50.5237398,
+        "lon": 5.6686318
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799117,
+      "center": {
+        "lat": 50.5221935,
+        "lon": 5.6647839
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 93799121,
+      "center": {
+        "lat": 50.524938,
+        "lon": 5.6668162
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 96289839,
+      "center": {
+        "lat": 50.9507308,
+        "lon": 4.7930465
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bin": "yes",
+        "fee": "no",
+        "hgv": "no",
+        "motor_vehicle": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "waste_basket": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 97949379,
+      "center": {
+        "lat": 50.5038453,
+        "lon": 4.8237464
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 97949382,
+      "center": {
+        "lat": 50.5044283,
+        "lon": 4.8231553
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 97949383,
+      "center": {
+        "lat": 50.504473,
+        "lon": 4.8237876
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 97949385,
+      "center": {
+        "lat": 50.5039198,
+        "lon": 4.8238617
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 98412676,
+      "center": {
+        "lat": 50.4758957,
+        "lon": 4.4833562
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 98412679,
+      "center": {
+        "lat": 50.4757988,
+        "lon": 4.483481
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 98412890,
+      "center": {
+        "lat": 50.4751247,
+        "lon": 4.4830224
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 98412895,
+      "center": {
+        "lat": 50.4752295,
+        "lon": 4.4830313
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 101203597,
+      "center": {
+        "lat": 51.3146198,
+        "lon": 4.4255043
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "103",
+        "capacity:disabled": "3",
+        "hgv": "no",
+        "maxheight": "2",
+        "maxweight": "3.5",
+        "name": "Watertoren",
+        "opening_hours": "24/7",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 106388695,
+      "center": {
+        "lat": 50.6838317,
+        "lon": 3.8998888
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "bus": "designated",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 106388707,
+      "center": {
+        "lat": 50.6840432,
+        "lon": 3.8967808
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 106388713,
+      "center": {
+        "lat": 50.6834884,
+        "lon": 3.8953828
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "bus": "designated",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 106388728,
+      "center": {
+        "lat": 50.6834656,
+        "lon": 3.8984632
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 136457583,
+      "center": {
+        "lat": 50.9051052,
+        "lon": 4.4586048
+      },
+      "tags": {
+        "access:hgv": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "yes",
+        "capacity:standard": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 139428938,
+      "center": {
+        "lat": 50.4380446,
+        "lon": 3.6681231
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "30",
+        "hgv": "designated",
+        "parking": "surface",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2011",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 142903874,
+      "center": {
+        "lat": 51.1768524,
+        "lon": 4.7587133
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 148219650,
+      "center": {
+        "lat": 50.5716777,
+        "lon": 4.064163
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 165369434,
+      "center": {
+        "lat": 50.494277,
+        "lon": 4.7031967
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 165369438,
+      "center": {
+        "lat": 50.4954736,
+        "lon": 4.7003274
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "57",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 165518418,
+      "center": {
+        "lat": 49.7037632,
+        "lon": 5.6243406
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "capacity": "100",
+        "fee": "no",
+        "hgv": "designated",
+        "name": "Truck Center Habay",
+        "operator": "truck center",
+        "parking": "surface",
+        "source": "local knowledge"
+      }
+    },
+    {
+      "type": "way",
+      "id": 166523953,
+      "center": {
+        "lat": 50.490815,
+        "lon": 3.9862136
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "110",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 166523957,
+      "center": {
+        "lat": 50.4910297,
+        "lon": 3.9859624
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "50",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 166526639,
+      "center": {
+        "lat": 50.4915845,
+        "lon": 3.9832862
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "36",
+        "fee": "no",
+        "hgv": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 169680689,
+      "center": {
+        "lat": 51.3401999,
+        "lon": 3.1878858
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "description": "Parking trailers voor ferry Zeebrugge - Hull",
+        "hgv": "private",
+        "operator": "P&O",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 169870797,
+      "center": {
+        "lat": 50.5290071,
+        "lon": 4.9869743
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 170327642,
+      "center": {
+        "lat": 51.0929788,
+        "lon": 3.78993
+      },
+      "tags": {
+        "access": "permissive",
+        "access:hgv": "no",
+        "amenity": "parking",
+        "parking": "surface",
+        "surface": "gravel"
+      }
+    },
+    {
+      "type": "way",
+      "id": 170424883,
+      "center": {
+        "lat": 50.9455272,
+        "lon": 3.1506071
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "description": "Bleijko vrachtwagens",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 171575180,
+      "center": {
+        "lat": 51.1344924,
+        "lon": 2.8194321
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "hgv": "yes",
+        "motorcar": "no",
+        "parking": "surface",
+        "source": "Bing",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 171656780,
+      "center": {
+        "lat": 51.0414896,
+        "lon": 3.7842147
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "source": "Bing"
+      }
+    },
+    {
+      "type": "way",
+      "id": 171656784,
+      "center": {
+        "lat": 51.0414131,
+        "lon": 3.7823442
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 172153662,
+      "center": {
+        "lat": 51.0428326,
+        "lon": 3.7851146
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 172153664,
+      "center": {
+        "lat": 51.0423111,
+        "lon": 3.7829255
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 173086630,
+      "center": {
+        "lat": 51.3109776,
+        "lon": 3.1274771
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "no",
+        "maxlength": "6",
+        "name": "De Perse",
+        "note": "\"geen grote camionetten, geen aanhangwagens, geen fietsdragers, geen auto's langer dan 6 meter\"",
+        "opening_hours": "09:00-24:00",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 175479739,
+      "center": {
+        "lat": 50.5988943,
+        "lon": 4.7915401
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 188374391,
+      "center": {
+        "lat": 51.0753423,
+        "lon": 3.4481617
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "no",
+        "hgv": "no",
+        "name": "Carpoolparking E40 Aalter",
+        "panoramax": "c36f2de9-f6a1-4d7c-ae95-190d4ed8fc41",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224912638,
+      "center": {
+        "lat": 50.6190728,
+        "lon": 3.341188
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224912646,
+      "center": {
+        "lat": 50.6195213,
+        "lon": 3.3422728
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224912648,
+      "center": {
+        "lat": 50.6181413,
+        "lon": 3.3394175
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224914112,
+      "center": {
+        "lat": 50.6204824,
+        "lon": 3.341216
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224914113,
+      "center": {
+        "lat": 50.61956,
+        "lon": 3.339238
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224914114,
+      "center": {
+        "lat": 50.6195557,
+        "lon": 3.3389103
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224914119,
+      "center": {
+        "lat": 50.6204301,
+        "lon": 3.340441
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "12",
+        "hgv": "yes",
+        "hgv:national_network": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 224914122,
+      "center": {
+        "lat": 50.6192735,
+        "lon": 3.3381802
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity:hgv": "20",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227372895,
+      "center": {
+        "lat": 50.6528748,
+        "lon": 5.7086083
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227372899,
+      "center": {
+        "lat": 50.6531333,
+        "lon": 5.7090924
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227372908,
+      "center": {
+        "lat": 50.653054,
+        "lon": 5.7087613
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227477638,
+      "center": {
+        "lat": 50.6563003,
+        "lon": 5.7108453
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227477662,
+      "center": {
+        "lat": 50.6563299,
+        "lon": 5.7112383
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 227477692,
+      "center": {
+        "lat": 50.6565264,
+        "lon": 5.7113844
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 229764511,
+      "center": {
+        "lat": 51.2984266,
+        "lon": 4.8303857
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "bus": "yes",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 233832466,
+      "center": {
+        "lat": 51.0124732,
+        "lon": 5.3307242
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 238934529,
+      "center": {
+        "lat": 50.6006793,
+        "lon": 4.7909643
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "23",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 255087510,
+      "center": {
+        "lat": 50.881399,
+        "lon": 4.2529928
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Trucks"
+      }
+    },
+    {
+      "type": "way",
+      "id": 262776940,
+      "center": {
+        "lat": 50.7645316,
+        "lon": 3.1721104
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "120",
+        "fee": "no",
+        "hgv": "designated",
+        "operator": "Agentschap Wegen en Verkeer",
+        "operator:type": "government",
+        "parking": "surface",
+        "surface": "asphalt",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275499082,
+      "center": {
+        "lat": 50.897979,
+        "lon": 3.4781728
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity": "21",
+        "fee": "yes",
+        "goods": "yes",
+        "hgv": "yes",
+        "lit": "yes",
+        "operator": "TotalEnergies",
+        "operator:type": "private",
+        "parking": "surface",
+        "supervised": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275499084,
+      "center": {
+        "lat": 50.8969061,
+        "lon": 3.4771199
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity": "14",
+        "fee": "yes",
+        "goods": "yes",
+        "hgv": "yes",
+        "lit": "yes",
+        "operator": "TotalEnergies",
+        "operator:type": "private",
+        "parking": "surface",
+        "supervised": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275499085,
+      "center": {
+        "lat": 50.8957322,
+        "lon": 3.4743921
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity": "25",
+        "fee": "yes",
+        "goods": "yes",
+        "hgv": "yes",
+        "lit": "yes",
+        "operator": "TotalEnergies",
+        "operator:type": "private",
+        "parking": "surface",
+        "supervised": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 300943609,
+      "center": {
+        "lat": 50.9625477,
+        "lon": 3.0223373
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 309790330,
+      "center": {
+        "lat": 50.4601163,
+        "lon": 5.9979482
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Cronchamps",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 309790331,
+      "center": {
+        "lat": 50.4601775,
+        "lon": 5.9970562
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Cronchamps",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 326194219,
+      "center": {
+        "lat": 50.3634363,
+        "lon": 5.8736966
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 330281539,
+      "center": {
+        "lat": 51.195602,
+        "lon": 3.2161509
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "charge": "10 ct",
+        "fee": "yes",
+        "hgv": "no",
+        "kiss_ride": "yes",
+        "maxstay": "30 minutes",
+        "name": "Kiss and ride",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 340093740,
+      "center": {
+        "lat": 50.8533278,
+        "lon": 4.6597108
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 340093741,
+      "center": {
+        "lat": 50.8521947,
+        "lon": 4.6598692
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 340265992,
+      "center": {
+        "lat": 50.854034,
+        "lon": 4.6569472
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 347933909,
+      "center": {
+        "lat": 50.5404526,
+        "lon": 5.8734977
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "markings": "no",
+        "park_ride": "no",
+        "parking": "surface",
+        "supervised": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 347933914,
+      "center": {
+        "lat": 50.5400044,
+        "lon": 5.8727018
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "markings": "no",
+        "park_ride": "no",
+        "parking": "surface",
+        "supervised": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 360278441,
+      "center": {
+        "lat": 50.7183039,
+        "lon": 6.1213147
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "15",
+        "check_date": "2024-06-29",
+        "description": "NUR LKW",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 371377311,
+      "center": {
+        "lat": 50.7155179,
+        "lon": 6.1153802
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "12",
+        "description": "NUR LKW",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 387026834,
+      "center": {
+        "lat": 51.2343529,
+        "lon": 4.3084292
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 406726662,
+      "center": {
+        "lat": 51.2875616,
+        "lon": 4.2756908
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 420818148,
+      "center": {
+        "lat": 51.2364477,
+        "lon": 4.3290167
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "lit": "yes",
+        "parking": "surface",
+        "source": "survey areal bing 25-05-16",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 420818150,
+      "center": {
+        "lat": 51.2365018,
+        "lon": 4.329417
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "lit": "yes",
+        "motor_vehicle": "no",
+        "parking": "surface",
+        "source": "survey areal bing 25-05-16",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 420822162,
+      "center": {
+        "lat": 51.2378554,
+        "lon": 4.3309063
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "lit": "yes",
+        "parking": "surface",
+        "source": "survey areal bing 25-05-16",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 426010350,
+      "center": {
+        "lat": 51.1096029,
+        "lon": 3.7377923
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 426010353,
+      "center": {
+        "lat": 51.1100744,
+        "lon": 3.7370566
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 426010354,
+      "center": {
+        "lat": 51.1099465,
+        "lon": 3.7366886
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 427180444,
+      "center": {
+        "lat": 51.0801518,
+        "lon": 3.7318653
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 450262576,
+      "center": {
+        "lat": 51.0695658,
+        "lon": 5.1463111
+      },
+      "tags": {
+        "access": "hgv",
+        "amenity": "parking",
+        "capacity": "21",
+        "fee": "no",
+        "hgv": "designated",
+        "park_ride": "no",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 450262580,
+      "center": {
+        "lat": 51.0710804,
+        "lon": 5.1454716
+      },
+      "tags": {
+        "amenity": "parking",
+        "capacity": "46",
+        "fee": "no",
+        "hgv": "no",
+        "park_ride": "no",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 462661792,
+      "center": {
+        "lat": 50.494226,
+        "lon": 4.7019259
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 464176934,
+      "center": {
+        "lat": 50.5944538,
+        "lon": 5.302343
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity:hgv": "70",
+        "hgv": "yes",
+        "hgv:national_network": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 464182260,
+      "center": {
+        "lat": 50.5940039,
+        "lon": 5.3030509
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity:hgv": "50",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 464183625,
+      "center": {
+        "lat": 50.593163,
+        "lon": 5.3005881
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "hgv": "no",
+        "tourist_bus": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 464195554,
+      "center": {
+        "lat": 50.5913455,
+        "lon": 5.3031628
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 464196497,
+      "center": {
+        "lat": 50.5909673,
+        "lon": 5.3041884
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 465590562,
+      "center": {
+        "lat": 51.2919545,
+        "lon": 4.8695377
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 472666215,
+      "center": {
+        "lat": 51.1883709,
+        "lon": 3.1058788
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 472666223,
+      "center": {
+        "lat": 51.1878158,
+        "lon": 3.1048924
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 472675479,
+      "center": {
+        "lat": 51.035485,
+        "lon": 3.6369022
+      },
+      "tags": {
+        "access": "hgv",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "street_side",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 472675480,
+      "center": {
+        "lat": 51.0352968,
+        "lon": 3.6367457
+      },
+      "tags": {
+        "access": "hgv",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 472676825,
+      "center": {
+        "lat": 50.9519667,
+        "lon": 4.7915607
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bin": "yes",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "waste_basket": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 473566618,
+      "center": {
+        "lat": 49.6341585,
+        "lon": 5.3440777
+      },
+      "tags": {
+        "access": "permissive",
+        "amenity": "parking",
+        "hgv": "no",
+        "name": "Parking Hostellerie",
+        "parking": "surface",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 475147661,
+      "center": {
+        "lat": 50.6034961,
+        "lon": 3.2753669
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "40",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 479248353,
+      "center": {
+        "lat": 50.4486478,
+        "lon": 4.3175114
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "yes",
+        "hgv": "yes",
+        "parking": "surface",
+        "start_date": "1988",
+        "vehicle": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 479248356,
+      "center": {
+        "lat": 50.4496781,
+        "lon": 4.3183058
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "yes",
+        "hgv": "yes",
+        "parking": "surface",
+        "start_date": "1988",
+        "vehicle": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 479870448,
+      "center": {
+        "lat": 51.312706,
+        "lon": 5.1928033
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Parking Postel",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 479870449,
+      "center": {
+        "lat": 51.313077,
+        "lon": 5.1922078
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Parking Postel",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 479870450,
+      "center": {
+        "lat": 51.3139547,
+        "lon": 5.1921928
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Parking Postel",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 480388859,
+      "center": {
+        "lat": 51.2878533,
+        "lon": 4.3872175
+      },
+      "tags": {
+        "access": "yes",
+        "addr:city": "Antwerpen",
+        "addr:housenumber": "626",
+        "addr:street": "Noorderlaan",
+        "amenity": "parking",
+        "barrier": "fence",
+        "capacity": "208",
+        "fee": "no",
+        "fence_type": "chain_link",
+        "hazmat": "no",
+        "hgv": "designated",
+        "lit": "yes",
+        "mapillary": "https://www.mapillary.com/app/?pKey=bYgOawP79y-kymXY-lP40A&lat=51.285048667500746&lng=4.385138759210122&z=17&focus=photo&x=0.6108174855818718&y=0.5386290545285298&zoom=0.787610619469026",
+        "motorcar": "no",
+        "name": "Goordijk",
+        "operator": "Port of Antwerp",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt",
+        "surveillance:type": "camera",
+        "website": "https://www.portofantwerp.com/nl/vernieuwende-initiatieven-wegvervoer"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197485,
+      "center": {
+        "lat": 50.6553481,
+        "lon": 5.7114886
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197488,
+      "center": {
+        "lat": 50.6547034,
+        "lon": 5.7070815
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197489,
+      "center": {
+        "lat": 50.6543607,
+        "lon": 5.7070975
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197490,
+      "center": {
+        "lat": 50.6546957,
+        "lon": 5.70665
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197491,
+      "center": {
+        "lat": 50.6540143,
+        "lon": 5.7071219
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197492,
+      "center": {
+        "lat": 50.6544143,
+        "lon": 5.7065753
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197493,
+      "center": {
+        "lat": 50.6538662,
+        "lon": 5.7068737
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197494,
+      "center": {
+        "lat": 50.6543383,
+        "lon": 5.7062354
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197495,
+      "center": {
+        "lat": 50.6542972,
+        "lon": 5.7058332
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481197496,
+      "center": {
+        "lat": 50.653846,
+        "lon": 5.7064494
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 489844143,
+      "center": {
+        "lat": 51.0851792,
+        "lon": 3.7504026
+      },
+      "tags": {
+        "addr:city": "Gent",
+        "addr:postcode": "9000",
+        "addr:street": "Daniël Kinetstraat",
+        "amenity": "parking",
+        "capacity": "16",
+        "fee": "no",
+        "hgv": "designated",
+        "name": "Daniël Kinetstraat",
+        "operator": "Ghent Port Company",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 489844144,
+      "center": {
+        "lat": 51.113239,
+        "lon": 3.7904261
+      },
+      "tags": {
+        "addr:city": "Gent",
+        "addr:postcode": "9000",
+        "addr:street": "Skaldenstraat",
+        "amenity": "parking",
+        "capacity": "20",
+        "fee": "no",
+        "hgv": "designated",
+        "name": "Skaldenstraat",
+        "operator": "Ghent Port Company",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 493659201,
+      "center": {
+        "lat": 50.7166747,
+        "lon": 6.1177485
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "18",
+        "description": "NUR LKW",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 503604857,
+      "center": {
+        "lat": 51.3201509,
+        "lon": 3.1864776
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 512150851,
+      "center": {
+        "lat": 50.8673061,
+        "lon": 3.6016413
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "lane"
+      }
+    },
+    {
+      "type": "way",
+      "id": 515311626,
+      "center": {
+        "lat": 50.7181682,
+        "lon": 6.1178284
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 521376385,
+      "center": {
+        "lat": 50.9365776,
+        "lon": 5.3135682
+      },
+      "tags": {
+        "access": "permissive",
+        "amenity": "parking",
+        "bus": "yes",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 521664413,
+      "center": {
+        "lat": 50.9726431,
+        "lon": 3.6122355
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "18",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 544861092,
+      "center": {
+        "lat": 50.8166735,
+        "lon": 3.2090707
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt",
+        "traffic_sign": "BE:C23"
+      }
+    },
+    {
+      "type": "way",
+      "id": 546205714,
+      "center": {
+        "lat": 51.0727532,
+        "lon": 3.9196523
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "park_ride": "no",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 546209377,
+      "center": {
+        "lat": 51.0692964,
+        "lon": 3.9212266
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 548111606,
+      "center": {
+        "lat": 51.2210868,
+        "lon": 3.4094126
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "motor_vehicle": "no",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 548111607,
+      "center": {
+        "lat": 51.2210412,
+        "lon": 3.4096623
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "parking": "surface",
+        "supervised": "no",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 560033103,
+      "center": {
+        "lat": 51.2082923,
+        "lon": 4.54741
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 560035585,
+      "center": {
+        "lat": 51.2094908,
+        "lon": 4.5491344
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 565005032,
+      "center": {
+        "lat": 50.4942269,
+        "lon": 4.700792
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 565059242,
+      "center": {
+        "lat": 50.4954527,
+        "lon": 4.702267
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 626486678,
+      "center": {
+        "lat": 51.1851767,
+        "lon": 4.289667
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "street_side",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 626486679,
+      "center": {
+        "lat": 51.1850362,
+        "lon": 4.2889228
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 626486682,
+      "center": {
+        "lat": 51.1834058,
+        "lon": 4.28878
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 626486686,
+      "center": {
+        "lat": 51.1829004,
+        "lon": 4.2879017
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 626486688,
+      "center": {
+        "lat": 51.1856923,
+        "lon": 4.2906065
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "street_side",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 627355372,
+      "center": {
+        "lat": 50.8968014,
+        "lon": 3.4754485
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity": "10",
+        "fee": "yes",
+        "goods": "yes",
+        "hgv": "yes",
+        "lit": "yes",
+        "operator": "TotalEnergies",
+        "operator:type": "private",
+        "parking": "surface",
+        "supervised": "yes",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 630197935,
+      "center": {
+        "lat": 50.7515266,
+        "lon": 4.9531445
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "20",
+        "fee": "no",
+        "hgv": "designated",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 648865142,
+      "center": {
+        "lat": 51.2567816,
+        "lon": 4.3462603
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 649080204,
+      "center": {
+        "lat": 51.2511576,
+        "lon": 4.3396511
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825603,
+      "center": {
+        "lat": 50.488203,
+        "lon": 4.0978793
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825604,
+      "center": {
+        "lat": 50.488506,
+        "lon": 4.0983189
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "16",
+        "hgv": "designated",
+        "parking": "surface",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825605,
+      "center": {
+        "lat": 50.4885848,
+        "lon": 4.0979667
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "14",
+        "hgv": "yes",
+        "parking": "surface",
+        "toilets": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825611,
+      "center": {
+        "lat": 50.4902094,
+        "lon": 4.0938851
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825620,
+      "center": {
+        "lat": 50.4906922,
+        "lon": 4.0968283
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825621,
+      "center": {
+        "lat": 50.4909143,
+        "lon": 4.0959294
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825625,
+      "center": {
+        "lat": 50.4898735,
+        "lon": 4.0935128
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 656825626,
+      "center": {
+        "lat": 50.4899408,
+        "lon": 4.0931922
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559533,
+      "center": {
+        "lat": 50.4523349,
+        "lon": 3.802169
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "32",
+        "hgv": "designated",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "start_date": "1972",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559542,
+      "center": {
+        "lat": 50.4524507,
+        "lon": 3.8050723
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "street_side",
+        "start_date": "1972"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559544,
+      "center": {
+        "lat": 50.4525573,
+        "lon": 3.8067278
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "designated",
+        "hgv": "no",
+        "parking": "street_side",
+        "start_date": "1972"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559547,
+      "center": {
+        "lat": 50.4527869,
+        "lon": 3.8066366
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "parking": "street_side",
+        "start_date": "1972"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559557,
+      "center": {
+        "lat": 50.4518065,
+        "lon": 3.8054379
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "street_side",
+        "start_date": "1972"
+      }
+    },
+    {
+      "type": "way",
+      "id": 658559563,
+      "center": {
+        "lat": 50.4518931,
+        "lon": 3.8074918
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:hgv": "30",
+        "fee": "no",
+        "hgv": "designated",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "start_date": "1972"
+      }
+    },
+    {
+      "type": "way",
+      "id": 659311826,
+      "center": {
+        "lat": 51.2256902,
+        "lon": 3.2275506
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 662913943,
+      "center": {
+        "lat": 50.5391341,
+        "lon": 5.1232284
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 662913946,
+      "center": {
+        "lat": 50.5395198,
+        "lon": 5.1227268
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 667915458,
+      "center": {
+        "lat": 51.2504912,
+        "lon": 4.3844892
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 699871600,
+      "center": {
+        "lat": 51.3200391,
+        "lon": 3.1856144
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Zeebrugge public truck parking",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 701291505,
+      "center": {
+        "lat": 51.133154,
+        "lon": 4.9416052
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 733672843,
+      "center": {
+        "lat": 50.9195972,
+        "lon": 4.1565506
+      },
+      "tags": {
+        "access": "yes",
+        "agricultural": "no",
+        "amenity": "parking",
+        "goods": "no",
+        "hgv": "no",
+        "motor_vehicle": "yes",
+        "psv": "no",
+        "tourist_bus": "no",
+        "traffic_sign": "BE:E9b"
+      }
+    },
+    {
+      "type": "way",
+      "id": 758735864,
+      "center": {
+        "lat": 50.2900132,
+        "lon": 6.0953414
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "gravel"
+      }
+    },
+    {
+      "type": "way",
+      "id": 792256843,
+      "center": {
+        "lat": 50.862853,
+        "lon": 4.6276613
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "smoothness": "good",
+        "surface": "paving_stones"
+      }
+    },
+    {
+      "type": "way",
+      "id": 836761334,
+      "center": {
+        "lat": 49.7136897,
+        "lon": 5.6063056
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 836761343,
+      "center": {
+        "lat": 49.7134558,
+        "lon": 5.6049621
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 858951619,
+      "center": {
+        "lat": 51.3116286,
+        "lon": 4.3280351
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 860294520,
+      "center": {
+        "lat": 51.3132255,
+        "lon": 4.3315652
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 862547795,
+      "center": {
+        "lat": 50.6374522,
+        "lon": 5.7644107
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 862549565,
+      "center": {
+        "lat": 51.2640469,
+        "lon": 4.4155685
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "yes",
+        "parking": "lane",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 862950251,
+      "center": {
+        "lat": 50.6418075,
+        "lon": 5.7895352
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 875035939,
+      "center": {
+        "lat": 51.2515445,
+        "lon": 4.3400653
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 875035944,
+      "center": {
+        "lat": 51.2521492,
+        "lon": 4.3391079
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 875120654,
+      "center": {
+        "lat": 51.2449644,
+        "lon": 4.3518198
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 876108568,
+      "center": {
+        "lat": 51.0502525,
+        "lon": 4.6125122
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "surface": "asphalt",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 883871461,
+      "center": {
+        "lat": 51.239515,
+        "lon": 5.4275153
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "operator": "Agentschap Wegen en Verkeer",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 887625329,
+      "center": {
+        "lat": 51.3517046,
+        "lon": 4.6307132
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes",
+        "operator": "Christine van Bavel",
+        "parking": "surface",
+        "phone": "+32 3 660 25 50",
+        "truck": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 888071683,
+      "center": {
+        "lat": 50.5420011,
+        "lon": 5.8088013
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "parking": "surface",
+        "surface": "gravel",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 913310221,
+      "center": {
+        "lat": 50.5282128,
+        "lon": 4.9851596
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 921699393,
+      "center": {
+        "lat": 50.9087473,
+        "lon": 3.3494627
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "yes",
+        "hgv": "permit",
+        "motorcar": "permit",
+        "name": "Vrachtwagenparking Ridder de Ghellinckstraat",
+        "operator": "Gemeente Wielsbeke",
+        "operator:type": "government",
+        "parking": "surface",
+        "vehicle": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 939331017,
+      "center": {
+        "lat": 51.0347569,
+        "lon": 5.225644
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "designated",
+        "lhv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 939331019,
+      "center": {
+        "lat": 51.0325188,
+        "lon": 5.2266997
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "designated",
+        "lhv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 939331020,
+      "center": {
+        "lat": 51.0327509,
+        "lon": 5.2254254
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "designated",
+        "lhv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 943235911,
+      "center": {
+        "lat": 51.0127942,
+        "lon": 5.3329541
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity:disabled": "2",
+        "fee": "no",
+        "hgv": "no",
+        "parking": "street_side",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 943235945,
+      "center": {
+        "lat": 51.0124536,
+        "lon": 5.333843
+      },
+      "tags": {
+        "access": "hgv",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 951700864,
+      "center": {
+        "lat": 50.8697155,
+        "lon": 4.5451631
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 951702748,
+      "center": {
+        "lat": 50.8688492,
+        "lon": 4.5454991
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 952470803,
+      "center": {
+        "lat": 50.8799316,
+        "lon": 4.2548156
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Trucks"
+      }
+    },
+    {
+      "type": "way",
+      "id": 964595376,
+      "center": {
+        "lat": 49.638401,
+        "lon": 5.9027547
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 964595379,
+      "center": {
+        "lat": 49.6392345,
+        "lon": 5.9029086
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 996114174,
+      "center": {
+        "lat": 51.0854218,
+        "lon": 4.4447738
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "116",
+        "fee": "no",
+        "hgv": "no",
+        "maxweight": "5.5",
+        "name": "P+R Rumst",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1000354684,
+      "center": {
+        "lat": 51.0496678,
+        "lon": 4.4554838
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "no",
+        "motorcar": "yes",
+        "name": "DB Schenker personeelsparking",
+        "parking": "surface",
+        "surface": "grass_paver"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1002664441,
+      "center": {
+        "lat": 51.0113556,
+        "lon": 5.3342371
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "caravan": "no",
+        "coach": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "no",
+        "motorhome": "no",
+        "parking": "surface",
+        "surface": "asphalt",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1002664442,
+      "center": {
+        "lat": 51.011719,
+        "lon": 5.3342398
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "coach": "designated",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "tourist_bus": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1002664443,
+      "center": {
+        "lat": 51.0117118,
+        "lon": 5.3314385
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1004666091,
+      "center": {
+        "lat": 50.9517054,
+        "lon": 3.5424257
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "yes",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1009302469,
+      "center": {
+        "lat": 50.6178293,
+        "lon": 3.3380887
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1013003347,
+      "center": {
+        "lat": 50.9446308,
+        "lon": 3.1342508
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "goods": "yes",
+        "hgv": "yes",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "traffic_sign": "BE:E9c,GV[van maandag tot vrijdag van 9u tot 17u]",
+        "vehicle:conditional": "no @ (Mo-Fr 09:00-17:00)"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1025593408,
+      "center": {
+        "lat": 51.1841718,
+        "lon": 4.290173
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1025593412,
+      "center": {
+        "lat": 51.1844317,
+        "lon": 4.2884621
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1062565718,
+      "center": {
+        "lat": 49.6344355,
+        "lon": 5.3444605
+      },
+      "tags": {
+        "access": "permissive",
+        "amenity": "parking",
+        "hgv": "no",
+        "name": "Parking Hostellerie",
+        "parking": "surface",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1123404142,
+      "center": {
+        "lat": 50.4917388,
+        "lon": 3.9848758
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1123404143,
+      "center": {
+        "lat": 50.4918997,
+        "lon": 3.9849116
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1131818603,
+      "center": {
+        "lat": 51.1056866,
+        "lon": 5.0198729
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "no",
+        "name": "P+R Geel-Oost",
+        "operator": "Agentschap Wegen en Verkeer",
+        "operator:wikidata": "Q2743535",
+        "park_ride": "yes",
+        "parking": "surface",
+        "surface": "paving_stones"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1158262277,
+      "center": {
+        "lat": 51.2656063,
+        "lon": 4.2849646
+      },
+      "tags": {
+        "access": "no",
+        "alt_name": "Parking Ketenis",
+        "amenity": "parking",
+        "capacity": "280",
+        "fee": "no",
+        "goods": "yes",
+        "hgv": "yes",
+        "name": "Ketenis",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1173636830,
+      "center": {
+        "lat": 51.1176518,
+        "lon": 4.0082537
+      },
+      "tags": {
+        "access": "permit",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "surface",
+        "surface": "gravel"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1211784622,
+      "center": {
+        "lat": 50.8797481,
+        "lon": 4.2547033
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Trucks"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1211799370,
+      "center": {
+        "lat": 50.8812223,
+        "lon": 4.252809
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "yes",
+        "name": "Trucks"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1212612612,
+      "center": {
+        "lat": 51.1744872,
+        "lon": 3.0072658
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "20",
+        "description": "HGV/truck parking only",
+        "fee": "no",
+        "hgv": "designated",
+        "image": "https://i.imgur.com/20z3pdf.jpg",
+        "operator": "none",
+        "orientation": "diagonal",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1224996827,
+      "center": {
+        "lat": 50.7192466,
+        "lon": 4.5836203
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1224996828,
+      "center": {
+        "lat": 50.7194885,
+        "lon": 4.5835935
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1224996829,
+      "center": {
+        "lat": 50.7197186,
+        "lon": 4.5836766
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1229634942,
+      "center": {
+        "lat": 50.9514602,
+        "lon": 4.7915244
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bin": "yes",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "waste_basket": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1229634943,
+      "center": {
+        "lat": 50.9512517,
+        "lon": 4.7916218
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bin": "yes",
+        "fee": "no",
+        "hgv": "no",
+        "motor_vehicle": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "waste_basket": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1229636203,
+      "center": {
+        "lat": 50.9504943,
+        "lon": 4.7930954
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bin": "yes",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "asphalt",
+        "waste_basket": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1279265676,
+      "center": {
+        "lat": 51.178592,
+        "lon": 2.8048201
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bicycle": "no",
+        "bus": "no",
+        "capacity": "4",
+        "fee": "yes",
+        "hgv": "no",
+        "motorcar": "yes",
+        "no:network": "yes",
+        "panoramax": "ca71801c-17c6-419c-89da-ee1df3e72831",
+        "panoramax:0": "9181d09c-f1c8-4d41-ae10-23deb00cbc44",
+        "panoramax:1": "45e0273e-2050-4d3e-82e7-790b7f033f06",
+        "parking:fee": "yes",
+        "scooter": "no",
+        "socket:type2": "1"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1280938985,
+      "center": {
+        "lat": 51.1511893,
+        "lon": 4.395725
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "check_date": "2024-07-15",
+        "hgv": "no",
+        "note": "gezien type verharding en verlichting betreft dit een tijdelijke voorziening tijdens bouw multistorey aan Atomiumlaan",
+        "operator": "Atlas-Copco",
+        "operator:type": "business",
+        "parking": "surface",
+        "surface": "compacted"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1292608903,
+      "center": {
+        "lat": 50.6365836,
+        "lon": 4.6592437
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1315795141,
+      "center": {
+        "lat": 50.6480957,
+        "lon": 6.0011555
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1333313809,
+      "center": {
+        "lat": 50.7040589,
+        "lon": 5.6824088
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "maxwidth": "2.5",
+        "orientation": "parallel",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1333313812,
+      "center": {
+        "lat": 50.7031819,
+        "lon": 5.6815369
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "maxwidth": "2.5",
+        "orientation": "parallel",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1333496334,
+      "center": {
+        "lat": 51.1087031,
+        "lon": 2.838178
+      },
+      "tags": {
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "street_side",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1357820060,
+      "center": {
+        "lat": 51.1786334,
+        "lon": 2.8051892
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bicycle": "no",
+        "bus": "no",
+        "capacity": "10",
+        "fee": "yes",
+        "hgv": "no",
+        "motorcar": "yes",
+        "no:network": "yes",
+        "panoramax": "ca71801c-17c6-419c-89da-ee1df3e72831",
+        "panoramax:0": "9181d09c-f1c8-4d41-ae10-23deb00cbc44",
+        "panoramax:1": "45e0273e-2050-4d3e-82e7-790b7f033f06",
+        "parking:fee": "yes",
+        "scooter": "no",
+        "socket:type2": "1"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1357820061,
+      "center": {
+        "lat": 51.178523,
+        "lon": 2.8046818
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bicycle": "no",
+        "bus": "no",
+        "capacity": "4",
+        "fee": "yes",
+        "hgv": "no",
+        "motorcar": "yes",
+        "no:network": "yes",
+        "panoramax": "ca71801c-17c6-419c-89da-ee1df3e72831",
+        "panoramax:0": "9181d09c-f1c8-4d41-ae10-23deb00cbc44",
+        "panoramax:1": "45e0273e-2050-4d3e-82e7-790b7f033f06",
+        "parking:fee": "yes",
+        "scooter": "no",
+        "socket:type2": "1"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1367342087,
+      "center": {
+        "lat": 50.9067505,
+        "lon": 4.6766083
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1388850547,
+      "center": {
+        "lat": 50.8951202,
+        "lon": 5.40055
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side",
+        "traffic_sign": "BE:E9c"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1388852752,
+      "center": {
+        "lat": 50.8960659,
+        "lon": 5.4040678
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "hgv": "yes",
+        "parking": "street_side",
+        "traffic_sign": "BE:E9c"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1393462260,
+      "center": {
+        "lat": 51.0696307,
+        "lon": 3.9214861
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface",
+        "surface": "concrete"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1418373990,
+      "center": {
+        "lat": 49.923088,
+        "lon": 5.3538033
+      },
+      "tags": {
+        "access": "no",
+        "amenity": "parking",
+        "capacity": "6",
+        "hgv": "yes",
+        "parking": "street_side"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1422564055,
+      "center": {
+        "lat": 50.9427865,
+        "lon": 4.7266945
+      },
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "motor_vehicle": "delivery",
+        "operator": "Danone",
+        "operator:type": "private",
+        "parking": "surface",
+        "surface": "concrete",
+        "truck": "designated",
+        "vehicle": "delivery"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1425743901,
+      "center": {
+        "lat": 51.2951794,
+        "lon": 4.9347331
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "private"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1430811165,
+      "center": {
+        "lat": 51.0419327,
+        "lon": 3.7845271
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1442994985,
+      "center": {
+        "lat": 50.9020218,
+        "lon": 4.7150744
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "capacity": "16",
+        "fee": "no",
+        "parking": "surface",
+        "truck": "designated",
+        "vehicle": "private"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1447380947,
+      "center": {
+        "lat": 50.4514683,
+        "lon": 3.8040794
+      },
+      "tags": {
+        "amenity": "parking",
+        "bus": "no",
+        "hgv": "no",
+        "motorhome": "designated",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1447426703,
+      "center": {
+        "lat": 50.4913194,
+        "lon": 3.9832542
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468640,
+      "center": {
+        "lat": 51.0989712,
+        "lon": 4.4374069
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "25",
+        "capacity:disabled": "0",
+        "caravan": "no",
+        "coach": "no",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "yes",
+        "motorhome": "yes",
+        "orientation": "perpendicular",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468641,
+      "center": {
+        "lat": 51.0989481,
+        "lon": 4.4376197
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "14",
+        "capacity:disabled": "2",
+        "caravan": "no",
+        "coach": "no",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "yes",
+        "motorhome": "yes",
+        "orientation": "perpendicular",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468642,
+      "center": {
+        "lat": 51.0990786,
+        "lon": 4.4376552
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "21",
+        "capacity:disabled": "0",
+        "caravan": "no",
+        "coach": "no",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "yes",
+        "motorhome": "yes",
+        "orientation": "perpendicular",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468656,
+      "center": {
+        "lat": 51.0999763,
+        "lon": 4.4370196
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "designated",
+        "capacity": "3",
+        "capacity:disabled": "0",
+        "caravan": "yes",
+        "coach": "designated",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "designated",
+        "motorcar": "no",
+        "motorcycle": "designated",
+        "motorhome": "yes",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468657,
+      "center": {
+        "lat": 51.0995064,
+        "lon": 4.4374209
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "designated",
+        "capacity": "9",
+        "capacity:disabled": "0",
+        "caravan": "yes",
+        "coach": "designated",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "designated",
+        "motorcar": "no",
+        "motorcycle": "designated",
+        "motorhome": "yes",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468658,
+      "center": {
+        "lat": 51.0973724,
+        "lon": 4.4385704
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "designated",
+        "capacity": "7",
+        "capacity:disabled": "0",
+        "caravan": "yes",
+        "coach": "designated",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "designated",
+        "motorcar": "no",
+        "motorcycle": "designated",
+        "motorhome": "yes",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468659,
+      "center": {
+        "lat": 51.0977021,
+        "lon": 4.4380687
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "21",
+        "capacity:disabled": "2",
+        "caravan": "no",
+        "coach": "no",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "yes",
+        "motorhome": "yes",
+        "orientation": "diagonal",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1452468660,
+      "center": {
+        "lat": 51.0970715,
+        "lon": 4.4383817
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bus": "no",
+        "capacity": "7",
+        "capacity:disabled": "0",
+        "caravan": "designated",
+        "coach": "no",
+        "covered": "no",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "designated",
+        "motorcycle": "yes",
+        "motorhome": "yes",
+        "orientation": "parallel",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "trailer": "yes",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1454905543,
+      "center": {
+        "lat": 51.011598,
+        "lon": 5.3342475
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bicycle": "no",
+        "bus": "designated",
+        "coach": "designated",
+        "fee": "no",
+        "hgv": "no",
+        "motorcar": "no",
+        "motorcycle": "no",
+        "orientation": "parallel",
+        "parking": "street_side",
+        "surface": "asphalt",
+        "tourist_bus": "designated",
+        "truck": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1455136921,
+      "center": {
+        "lat": 50.6454676,
+        "lon": 5.8245473
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1455136931,
+      "center": {
+        "lat": 50.6460028,
+        "lon": 5.8240209
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1461916720,
+      "center": {
+        "lat": 50.8163288,
+        "lon": 3.2076574
+      },
+      "tags": {
+        "amenity": "parking",
+        "goods": "no",
+        "hgv": "no",
+        "traffic_sign": "BE:C23"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1491965276,
+      "center": {
+        "lat": 51.290402,
+        "lon": 4.7135629
+      },
+      "tags": {
+        "amenity": "parking",
+        "hgv": "designated"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1493860941,
+      "center": {
+        "lat": 50.6161654,
+        "lon": 3.3403473
+      },
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "hgv": "yes",
+        "operator": "Groupe Dufour",
+        "operator:type": "private",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1510201542,
+      "center": {
+        "lat": 51.1956324,
+        "lon": 5.2454064
+      },
+      "tags": {
+        "amenity": "parking",
+        "goods": "no",
+        "hgv": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1510201543,
+      "center": {
+        "lat": 51.1961086,
+        "lon": 5.2447768
+      },
+      "tags": {
+        "amenity": "parking",
+        "goods": "no",
+        "hgv": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1510324876,
+      "center": {
+        "lat": 50.7844011,
+        "lon": 3.1654738
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bdouble": "no",
+        "goods": "yes",
+        "hgv": "no",
+        "name": "P2",
+        "parking": "surface"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1510324877,
+      "center": {
+        "lat": 50.7841215,
+        "lon": 3.1646782
+      },
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "bdouble": "no",
+        "goods": "no",
+        "hgv": "no",
+        "name": "P1",
+        "parking": "surface"
+      }
+    }
+  ]
+}
