@@ -243,7 +243,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                     </div>
                     <div className="flex items-center justify-between text-[10px]">
                       <span className="text-brand-muted font-medium">{t(hub.type as any)}</span>
-                      <span className="text-brand-blue font-bold">{t('documented')} · {hub.dataSource}</span>
+                      <span className="text-brand-blue font-bold">{t('documented')} · {t(hub.dataSource as any)}</span>
                     </div>
                   </div>
                 ))}
@@ -285,7 +285,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
         {/* Connectivity Matrix Section */}
         <div className="bg-white rounded-[40px] p-8 md:p-12 border border-brand-border shadow-sm mb-16 overflow-hidden">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mb-10">
               <div className="space-y-2">
                 <h3 className="text-2xl font-black text-brand-text tracking-tight">{t('hubConnectivityTitle')}</h3>
                 <p className="text-sm text-brand-muted max-w-2xl leading-relaxed">

@@ -141,7 +141,7 @@ export const translations = {
     topAxesSubtitle: "Les références sont issues des tags OSM ref / int_ref. Elles ne constituent pas des corridors officiels.",
     axesCalculationNote: "Note : Les axes sont calculés par regroupement des segments OpenStreetMap selon les tags ref / int_ref. Ils ne représentent pas des corridors officiels ni des flux transporteurs mesurés.",
     hubConnectivityTitle: "Comparer les hubs documentés",
-    hubConnectivitySubtitle: "Comparez les hubs selon leur typologie, leur pays, leurs axes routiers renseignés et leur source documentaire. Cette comparaison ne mesure pas les flux, les volumes, le trafic réel ou les coûts transport.",
+    hubConnectivitySubtitle: "Comparez les hubs selon leur typologie, leur pays, leurs axes routiers renseignés et leur source documentaire. Cette comparaison ne mesure ni les flux, ni les volumes, ni le trafic réel, ni les coûts de transport.",
     hubFullTableTitle: "Vue complète des hubs documentés",
     colHub: "Hub",
     colCountry: "Pays / Zone",
@@ -162,6 +162,7 @@ export const translations = {
     osmLicence: "Données OSM sous licence ODbL",
     noPrivateFlowsFooter: "Aucun flux privé, coût, fréquence ou volume non sourcé n'est inventé.",
     methodologySectionTitle: "Méthode open data",
+    interactiveMapTitle: "Carte interactive",
     interactiveMapSubtitle: "Activez les couches, zoomez, cliquez sur les hubs ou infrastructures pour afficher les détails.",
     // Hub sources
     "Dunkerque Port": "Port de Dunkerque",
@@ -372,7 +373,7 @@ export const translations = {
     topAxesSubtitle: "References come from OSM ref / int_ref tags. They do not represent official corridors.",
     axesCalculationNote: "Note: Axes are calculated by grouping OpenStreetMap segments by ref / int_ref tags. They do not represent official corridors or measured carrier flows.",
     hubConnectivityTitle: "Compare documented hubs",
-    hubConnectivitySubtitle: "Compare hubs by type, country, documented road axes, and data source. This comparison does not measure flows, volumes, real traffic or transport costs.",
+    hubConnectivitySubtitle: "Compare hubs by type, country, documented road axes, and data source. This comparison does not measure flows, volumes, real traffic, or transport costs.",
     hubFullTableTitle: "Full view of documented hubs",
     colHub: "Hub",
     colCountry: "Country / Zone",
@@ -394,13 +395,13 @@ export const translations = {
     noPrivateFlowsFooter: "No private carrier flow, cost, frequency or unsourced volume is invented.",
     methodologySectionTitle: "Open Data Methodology",
     interactiveMapTitle: "Interactive Map",
+    interactiveMapSubtitle: "Activate layers, zoom in, and click on hubs or infrastructures to view details.",
     // Hub sources
     "Dunkerque Port": "Port of Dunkirk",
     "Haropa Port": "Haropa Port",
     "OpenStreetMap": "OpenStreetMap",
     "Port of Antwerp-Bruges": "Port of Antwerp-Bruges",
     "Port of Rotterdam": "Port of Rotterdam",
-    interactiveMapSubtitle: "Activate layers, zoom in, and click on hubs or infrastructures to view details.",
 
     // Limits section
     transparencyTitle: "Transparency and limits",
