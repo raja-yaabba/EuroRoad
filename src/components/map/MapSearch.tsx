@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { Search, X, Navigation2, Route, ParkingSquare, Euro, TrendingUp, MapPin } from 'lucide-react';
+import { Search, X, Database, Layers, MapPin, Truck, Route } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { SelectedItemType } from '../../types';
 import { hubsData } from '../../data/hubs';
@@ -42,26 +42,12 @@ function computeBounds(coords: [number, number][]): [[number, number], [number, 
   return [[minLat, minLng], [maxLat, maxLng]];
 }
 
-const TYPE_LABEL_FR: Record<SelectedItemType, string> = {
-  hub: 'Hub',
-  motorway: 'Autoroute OSM',
-  toll: 'Péage OSM',
-  truck_parking: 'Parking PL',
-  axis: 'Axe calculé',
-};
-const TYPE_LABEL_EN: Record<SelectedItemType, string> = {
-  hub: 'Hub',
-  motorway: 'OSM Motorway',
-  toll: 'OSM Toll',
-  truck_parking: 'HGV Parking',
-  axis: 'Calculated axis',
-};
 const TYPE_ICON: Record<SelectedItemType, React.FC<{ className?: string }>> = {
-  hub: Navigation2,
-  motorway: Route,
-  toll: Euro,
-  truck_parking: ParkingSquare,
-  axis: TrendingUp,
+  hub: Database,
+  motorway: Layers,
+  toll: MapPin,
+  truck_parking: Truck,
+  axis: Route,
 };
 const TYPE_COLOR: Record<SelectedItemType, string> = {
   hub: 'text-brand-blue bg-brand-blue-light border-brand-blue/20',
@@ -344,7 +330,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
                             <span className="font-black text-sm text-brand-text truncate">{result.label}</span>
                             {result.dataType === 'calculated' ? (
                               <span className="shrink-0 text-[9px] font-black uppercase tracking-widest text-brand-blue bg-brand-blue-light px-1.5 py-0.5 rounded-full border border-brand-blue/20">
-                                {lang === 'fr' ? 'Calculé' : 'Calculated'}
+                                {t('calculatedLabel')}
                               </span>
                             ) : (
                               <span className="shrink-0 text-[9px] font-black uppercase tracking-widest text-brand-green bg-brand-green-light px-1.5 py-0.5 rounded-full border border-brand-green/20">
@@ -354,8 +340,8 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
                           </div>
                           <div className="text-[11px] text-brand-muted truncate">{result.sublabel}</div>
                         </div>
-                        <span className="text-[10px] font-bold text-brand-muted shrink-0 hidden sm:block">
-                          {(lang === 'fr' ? TYPE_LABEL_FR : TYPE_LABEL_EN)[result.type]}
+                        <span className="text-[10px] font-bold text-brand-muted shrink-0 hidden sm:block uppercase tracking-wider">
+                          {t(result.type as any)}
                         </span>
                       </button>
                     </li>

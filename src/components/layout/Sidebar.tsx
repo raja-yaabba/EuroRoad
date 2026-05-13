@@ -3,8 +3,10 @@ import { FilterState, Language, Country, HubType } from '../../types';
 import { useTranslation } from '../../utils/i18n';
 import {
   Settings2, RotateCcw, Box, Map, Ship, Warehouse, Factory,
-  Globe, Route, Filter, Database, Shield, Check, MapPin, Truck, Layers
+  Globe, Route, Filter, Database, Shield, Check, MapPin, Truck, Layers,
+  ChevronDown, ChevronRight, X, ZoomIn
 } from 'lucide-react';
+import { MAP_CONSTANTS } from '../../constants/map';
 
 interface SidebarProps {
   filters: FilterState;
@@ -112,7 +114,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
         {/* 2. Couches OSM */}
         <div className="space-y-3">
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
-            <Route className="w-3.5 h-3.5" />
+            <Layers className="w-3.5 h-3.5" />
             {t('mapLayers')}
           </h3>
           <div className="grid grid-cols-2 gap-2">
@@ -169,7 +171,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                     <MapPin className="w-3 h-3" />
                     {t('toll')}
                   </div>
-                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ 9</span>
+                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ {MAP_CONSTANTS.ZOOM_TOLLS_MIN}</span>
                 </button>
                 <button
                   onClick={() => setFilters(prev => ({ ...prev, showTruckParkings: !prev.showTruckParkings }))}
@@ -180,9 +182,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                 >
                   <div className="flex items-center gap-1.5">
                     <Truck className="w-3 h-3" />
-                    {t('truck_parking')}
+                    {t('hgv_parking')}
                   </div>
-                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ 10</span>
+                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ {MAP_CONSTANTS.ZOOM_HGV_PARKING_MIN}</span>
                 </button>
               </div>
             </div>
@@ -190,7 +192,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
             {/* Analytical layer group */}
             <div className="col-span-2 border-t border-brand-border/50 pt-4 flex flex-col gap-2">
               <div className="text-[9px] font-bold uppercase tracking-wider text-brand-muted mb-1 flex items-center gap-1 opacity-70">
-                <Layers className="w-3 h-3" />
+                <Route className="w-3.5 h-3.5" />
                 {t('analyticalLayer')}
               </div>
               <div className="flex bg-brand-bg p-1 rounded-xl border border-brand-border gap-1">
@@ -219,7 +221,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
                     : 'text-brand-muted hover:text-brand-text'
                     }`}
                 >
-                  <Layers className="w-3.5 h-3.5" />
+                  <Route className="w-3.5 h-3.5" />
                   {t('showAllAxes')}
                 </button>
               </div>

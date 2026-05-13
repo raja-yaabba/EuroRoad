@@ -6,7 +6,7 @@ import { DetailPanel } from './components/panels/DetailPanel';
 import { DataInsights } from './components/dashboard/DataInsights';
 import { AppProvider, useApp } from './context/AppContext';
 import { useTranslation } from './utils/i18n';
-import { ArrowDown, Code2, Database, Layers, Layout, Map as MapIcon, Microscope, ShieldCheck, Zap, Route, Info } from 'lucide-react';
+import { ArrowDown, Code2, Database, Layers, Layout, Map as MapIcon, Microscope, ShieldCheck, Zap, Route, Info, Globe } from 'lucide-react';
 import { computeGlobalStats } from './utils/calculations';
 
 const Hero: React.FC = () => {
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
 
         
         <h1 className="text-5xl md:text-7xl font-black text-brand-text tracking-tight leading-[1.1]">
-          {lang === 'fr' ? 'EuroRoad' : 'EuroRoad'} <span className="text-brand-blue">{lang === 'fr' ? 'Atlas' : 'Atlas'}</span>
+          EuroRoad <span className="text-brand-blue">Atlas</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-brand-muted font-medium max-w-2xl mx-auto leading-relaxed">
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
             { label: t('hubsDocumented'), value: stats.totalHubs.toString(), icon: Database, color: 'text-brand-blue' },
             { label: t('osmElementsLabel'), value: stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'), icon: Layers, color: 'text-brand-green' },
             { label: t('calculatedAxesLabel'), value: stats.totalAxes.toString(), icon: Route, color: 'text-brand-turquoise' },
-            { label: t('countriesCoveredLabel'), value: '3', icon: MapIcon, color: 'text-brand-orange' },
+            { label: t('countriesCoveredLabel'), value: stats.countriesCount.toString(), icon: Globe, color: 'text-brand-orange' },
           ].map((kpi, idx) => (
             <div key={idx} className="flex flex-col items-center gap-1 group">
               <div className={`w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center ${kpi.color} mb-2 shadow-sm group-hover:scale-110 transition-transform`}>
@@ -140,7 +140,7 @@ const MapSection: React.FC = () => {
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className={`absolute top-20 z-[1001] p-2 bg-white rounded-xl shadow-md border border-brand-border text-brand-muted hover:text-brand-blue transition-all duration-300 ${isSidebarOpen ? 'left-[336px]' : 'left-4'}`}
-            title={isSidebarOpen ? (lang === 'fr' ? "Fermer le panneau" : "Close panel") : (lang === 'fr' ? "Ouvrir le panneau" : "Open panel")}
+            title={isSidebarOpen ? t('closePanel') : t('openPanel')}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isSidebarOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}

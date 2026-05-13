@@ -1,19 +1,16 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, useMap, useMapEvents, ZoomControl } from 'react-leaflet';
-import { Layers } from 'lucide-react';
+import { Layers, Route, Box, Info } from 'lucide-react';
 import L from 'leaflet';
 import { Country, FilterState, Hub, Language, SelectedItemType } from '../../types';
 import { useTranslation } from '../../utils/i18n';
-import { hubsData } from '../../data/hubs';
 import { MotorwayLayer } from './MotorwayLayer';
 import { TollLayer } from './TollLayer';
 import { TruckParkingLayer } from './TruckParkingLayer';
 import { RealCorridorLayer } from './RealCorridorLayer';
 import { MapSearch } from './MapSearch';
 import { useApp } from '../../context/AppContext';
-
-// FR/BE/NL bounds
-const FR_BE_NL_BOUNDS: L.LatLngBoundsExpression = [[49.0, 1.8], [53.5, 7.2]];
+import { MAP_CONSTANTS } from '../../constants/map';
 
 // Custom hub icons
 const getHubIcon = (type: Hub['type'], isSelected: boolean) => {
@@ -38,7 +35,7 @@ const getHubIcon = (type: Hub['type'], isSelected: boolean) => {
       justify-content: center;
       font-size: ${isSelected ? '22px' : '17px'};
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     ">${emoji}</div>`,
     iconSize: [isSelected ? 42 : 34, isSelected ? 42 : 34],
@@ -46,14 +43,7 @@ const getHubIcon = (type: Hub['type'], isSelected: boolean) => {
   });
 };
 
-interface MapExplorerProps {
-  lang?: Language;
-  filters?: FilterState;
-  selectedItemId: string | null;
-  onSelectItem: (id: string | null, type: SelectedItemType | null) => void;
-}
-
-// Map state tracker (zoom & bounds)
+// Map state tracker
 const MapStateTracker: React.FC<{ 
   onStateChange: (zoom: number, bounds: L.LatLngBounds) => void 
 }> = ({ onStateChange }) => {
@@ -71,18 +61,16 @@ const MapStateTracker: React.FC<{
   return null;
 };
 
-// Component that calls invalidateSize and fits bounds when fullScreen changes
+// Map resizer
 const MapResizer: React.FC<{ isFullScreen: boolean }> = ({ isFullScreen }) => {
   const map = useMap();
   useEffect(() => {
-    // Sequence of invalidations to ensure Leaflet captures the final container size
     const timeouts = [100, 300, 600, 1000].map(delay => 
       setTimeout(() => {
         map.invalidateSize();
-        map.fitBounds(FR_BE_NL_BOUNDS, { padding: [40, 40] });
+        map.fitBounds(MAP_CONSTANTS.FR_BE_NL_BOUNDS, { padding: [40, 40] });
       }, delay)
     );
-    
     return () => timeouts.forEach(clearTimeout);
   }, [isFullScreen, map]);
   return null;
@@ -90,32 +78,31 @@ const MapResizer: React.FC<{ isFullScreen: boolean }> = ({ isFullScreen }) => {
 
 import { HubLayer } from './HubLayer';
 
+interface MapExplorerProps {
+  lang: Language;
+  filters: FilterState;
+  selectedItemId: string | null;
+  onSelectItem: (id: string, type: SelectedItemType) => void;
+}
+
 export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, selectedItemId, onSelectItem }) => {
   const { t } = useTranslation(lang);
-  const [zoom, setZoom] = useState(7);
+  const [zoom, setZoom] = useState(MAP_CONSTANTS.INITIAL_ZOOM);
   const { isFullScreen, setIsFullScreen, setIsSidebarOpen, osmData } = useApp();
   const [showHelp, setShowHelp] = useState(true);
   const [showZoomHint, setShowZoomHint] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Browser zoom protection (Ctrl + Wheel) specifically on the map
   useEffect(() => {
     const mapElement = document.querySelector(".leaflet-container");
     if (!mapElement) return;
 
     const preventBrowserZoomOnMap = (event: WheelEvent) => {
-      if (event.ctrlKey) {
-        event.preventDefault();
-      }
+      if (event.ctrlKey) event.preventDefault();
     };
 
-    mapElement.addEventListener("wheel", preventBrowserZoomOnMap, {
-      passive: false,
-    });
-
-    return () => {
-      mapElement.removeEventListener("wheel", preventBrowserZoomOnMap);
-    };
+    mapElement.addEventListener("wheel", preventBrowserZoomOnMap, { passive: false });
+    return () => mapElement.removeEventListener("wheel", preventBrowserZoomOnMap);
   }, []);
 
   useEffect(() => {
@@ -142,7 +129,6 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
       onSelectItem(null, null);
     } else {
       setIsSidebarOpen(true);
-      // Instant repositioning with a small top margin
       setTimeout(() => {
         const el = document.getElementById('map-viewport');
         if (el) {
@@ -156,10 +142,10 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
   return (
     <div ref={containerRef} className="relative z-0 h-full w-full overflow-hidden">
       <MapContainer
-        center={[50.8, 4.6]}
-        zoom={7}
-        minZoom={5}
-        maxZoom={18}
+        center={MAP_CONSTANTS.INITIAL_CENTER}
+        zoom={MAP_CONSTANTS.INITIAL_ZOOM}
+        minZoom={MAP_CONSTANTS.MIN_ZOOM}
+        maxZoom={MAP_CONSTANTS.MAX_ZOOM}
         className="h-full w-full"
         style={{ height: "100%", width: "100%" }}
         zoomControl={false}
@@ -172,16 +158,14 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://carto.com/attributions">CARTO</a> · Données OSM sous licence ODbL'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://carto.com/attributions">CARTO</a> · OSM ODbL'
         />
         <ZoomControl position="topleft" />
         <MapStateTracker onStateChange={(z) => setZoom(z)} />
         <MapResizer isFullScreen={isFullScreen} />
         
-        {/* Global search — MapSearch must be inside MapContainer to access useMap */}
         <MapSearch onSelectResult={(id, type) => handleSelect(id, type)} />
 
-        {/* Hubs — Now isolated */}
         {filters && (
           <HubLayer 
             lang={lang}
@@ -249,9 +233,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
             <Layers className="w-4 h-4 text-white" />
           </div>
           <p className="text-xs font-bold leading-tight">
-            {lang === 'fr' 
-              ? "Pincez ou utilisez le pavé tactile pour zoomer la carte."
-              : "Pinch or use the trackpad to zoom the map."}
+            {t('zoomHintTrackpad')}
           </p>
           <button onClick={() => setShowZoomHint(false)} className="ml-2 opacity-50 hover:opacity-100 transition-opacity text-base">✕</button>
         </div>
@@ -259,7 +241,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
 
       {/* Help card */}
       {showHelp && (
-        <div className="absolute top-4 right-4 z-[1000] flex items-start gap-3 rounded-2xl border border-brand-blue/20 bg-white/96 px-5 py-3 text-xs font-medium text-brand-text shadow-xl backdrop-blur-sm max-w-sm">
+        <div className="absolute top-4 right-4 z-[1000] flex items-start gap-3 rounded-2xl border border-brand-blue/20 bg-white/96 px-5 py-3 text-xs font-medium text-brand-text shadow-xl backdrop-blur-sm max-w-sm animate-in fade-in slide-in-from-top-2">
           <span className="text-lg shrink-0 mt-0.5">💡</span>
           <div className="leading-relaxed">
             <span className="font-bold block mb-0.5">{t('mapHelpTitle')}</span>
@@ -268,7 +250,6 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
           <button
             onClick={() => setShowHelp(false)}
             className="shrink-0 ml-1 text-brand-muted hover:text-brand-text transition-colors text-base leading-none"
-            title={lang === 'fr' ? 'Fermer' : 'Close'}
           >
             ✕
           </button>
@@ -276,15 +257,13 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
       )}
 
       {/* Consolidated zoom warning / Performance hint */}
-      {(zoom < 10 && (filters?.showTolls || filters?.showTruckParkings)) || (zoom < 9 && filters?.showAllMotorways) ? (
+      {(zoom < MAP_CONSTANTS.ZOOM_TOLLS_MIN && (filters?.showTolls || filters?.showTruckParkings)) || (zoom < MAP_CONSTANTS.ZOOM_ALL_MOTORWAYS_MIN && filters?.showAllMotorways) ? (
         <div className="pointer-events-none absolute left-6 bottom-36 z-[1000] rounded-xl border-2 border-brand-orange/30 bg-white/95 px-5 py-3 text-xs font-bold text-brand-orange shadow-2xl backdrop-blur-md max-w-[280px] animate-in fade-in slide-in-from-left-4">
           <div className="flex items-center gap-2 mb-1">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <span>{lang === 'fr' ? 'Couche disponible' : 'Layer available'}</span>
+            <Info className="w-4 h-4" />
+            <span>{t('layerAvailable')}</span>
           </div>
-          {lang === 'fr' 
-            ? "Zoomez davantage pour l'afficher."
-            : "Zoom in further to display it."}
+          {t('zoomFurtherToDisplay')}
         </div>
       ) : null}
 
@@ -294,19 +273,19 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
           {osmData.loading.motorways.fr && (
             <div className="bg-brand-blue/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
               <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
-              {lang === 'fr' ? 'Chargement des couches OSM...' : 'Loading OSM layers...'}
+              {t('loadingOsmLayers')}
             </div>
           )}
           {osmData.loading.tolls.fr && (
             <div className="bg-brand-orange/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
               <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
-              {lang === 'fr' ? 'Chargement des péages...' : 'Loading tolls...'}
+              {t('loadingTolls')}
             </div>
           )}
           {osmData.loading.truckParkings.fr && (
             <div className="bg-brand-green/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
               <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
-              {lang === 'fr' ? 'Chargement des parkings PL...' : 'Loading HGV parkings...'}
+              {t('loadingHGVParkings')}
             </div>
           )}
         </div>
@@ -320,7 +299,6 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
             ? 'fixed bottom-8 right-8 bg-brand-text text-white border-white/20 hover:bg-black' 
             : 'absolute bottom-6 right-6 bg-white text-brand-text border-brand-border hover:bg-brand-bg'
         }`}
-        title={isFullScreen ? t('exitFullScreen') : t('immersiveMode')}
       >
         {isFullScreen ? (
           <>

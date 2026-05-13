@@ -3,7 +3,7 @@ import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pi
 import { Hub, Language } from '../../types';
 import { getAggregatedStats, computeGlobalStats } from '../../utils/calculations';
 import { useTranslation } from '../../utils/i18n';
-import { Map as MapIcon, MapPin, Truck, Route, Shield, BarChart3, Info, Anchor, Globe } from 'lucide-react';
+import { Map as MapIcon, MapPin, Truck, Route, Shield, BarChart3, Info, Anchor, Globe, Layers, Database } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { HubComparison } from './HubComparison';
 
@@ -74,8 +74,8 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
       value: globalStats.totalRealDocumented, 
       color: '#22C55E',
       description: lang === 'fr' 
-        ? `${globalStats.osmElements.toLocaleString('fr-FR')} éléments OSM + ${globalStats.totalHubs} hubs documentés` 
-        : `${globalStats.osmElements.toLocaleString('en-US')} OSM elements + ${globalStats.totalHubs} documented hubs`
+        ? `${globalStats.osmElements.toLocaleString('fr-FR')} ${t('osmElements')} + ${globalStats.totalHubs} ${t('documentedHubs').toLowerCase()}` 
+        : `${globalStats.osmElements.toLocaleString('en-US')} ${t('osmElements')} + ${globalStats.totalHubs} ${t('documentedHubs').toLowerCase()}`
     },
     { 
       name: t('calculatedOsmData'), 
@@ -114,23 +114,37 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
               { 
                 label: t('osmElementsUsed'), 
                 value: globalStats.states.motorways === 'loading' ? '...' : globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'),
-                isLoading: globalStats.states.motorways === 'loading'
+                isLoading: globalStats.states.motorways === 'loading',
+                icon: Layers
               },
-              { label: t('documentedHubs'), value: globalStats.totalHubs },
               { 
-                label: t('calculatedAxes'), 
-                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.totalAxes,
-                isLoading: globalStats.states.motorways === 'loading'
+                label: t('documentedHubs'), 
+                value: globalStats.totalHubs,
+                icon: Database
               },
-              { label: t('countriesCovered'), value: globalStats.countriesCount },
-            ].map((kpi, idx) => (
-              <div key={idx} className="bg-white p-5 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
-                <div className={`text-2xl font-black text-brand-blue mb-1 ${kpi.isLoading ? 'animate-pulse opacity-50' : ''}`}>
-                  {kpi.value}
+              { 
+                label: t('calculatedAxesLabel'), 
+                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.totalAxes,
+                isLoading: globalStats.states.motorways === 'loading',
+                icon: Route
+              },
+              { 
+                label: t('countriesCovered'), 
+                value: globalStats.countriesCount,
+                icon: Globe
+              },
+            ].map((kpi, idx) => {
+              const Icon = kpi.icon;
+              return (
+                <div key={idx} className="bg-white p-5 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center group hover:border-brand-blue/30 transition-colors">
+                  <div className={`text-2xl font-black text-brand-blue mb-1 flex items-center gap-2 ${kpi.isLoading ? 'animate-pulse opacity-50' : ''}`}>
+                    <Icon className="w-4 h-4 text-brand-muted/40 group-hover:text-brand-blue transition-colors" />
+                    {kpi.value}
+                  </div>
+                  <div className="text-[10px] uppercase font-bold tracking-wider text-brand-muted leading-tight">{kpi.label}</div>
                 </div>
-                <div className="text-[10px] uppercase font-bold tracking-wider text-brand-muted leading-tight">{kpi.label}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -138,7 +152,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Card OSM Composition */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('osmComposition')}</h3>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2 flex items-center gap-2">
+              <Layers className="w-5 h-5 text-brand-blue" />
+              {t('osmComposition')}
+            </h3>
             <p className="text-xs text-brand-muted mb-6">
               {t('osmCompositionSubtitle').replace('{count}', globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'))}
             </p>
@@ -166,9 +183,9 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                 const isLoading = item.state === 'loading';
                 const isIdle = item.state === 'idle';
                 const displayValue = isLoading 
-                  ? (lang === 'fr' ? 'Chargement...' : 'Loading...') 
+                  ? t('loadingShort')
                   : isIdle 
-                    ? (lang === 'fr' ? '---' : '---')
+                    ? '---'
                     : item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US');
 
                 return (
@@ -181,7 +198,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                     </div>
                     <div className="h-1.5 w-full bg-brand-bg rounded-full overflow-hidden">
                       <div 
-                        className={`h-full ${item.color} rounded-full transition-all duration-500`} 
+                        className={`h-full ${item.color} rounded-full transition-all duration-700`} 
                         style={{ width: isLoading || isIdle ? '0%' : `${(item.value / (globalStats.osmElements || 1)) * 100}%` }}
                       />
                     </div>
@@ -196,7 +213,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
           {/* Card 2 â€” Typologie des hubs */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('hubTypology')}</h3>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2 flex items-center gap-2">
+              <Database className="w-5 h-5 text-brand-purple" />
+              {t('hubTypology')}
+            </h3>
             <p className="text-xs text-brand-muted mb-6">{t('hubTypologySubtitle')}</p>
             <div className="flex-1 min-h-[180px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -223,7 +243,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
           {/* Card 3 â€” FiabilitÃ© des donnÃ©es */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('dataReliability')}</h3>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-brand-green" />
+              {t('dataReliability')}
+            </h3>
             <p className="text-xs text-brand-muted mb-6">{t('dataReliabilitySubtitle')}</p>
             <div className="flex-1 flex flex-col">
               <div className="flex-1 min-h-[160px]">
@@ -268,7 +291,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Card Top Hubs */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('topLogisticsHubs')}</h3>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2 flex items-center gap-2">
+              <Anchor className="w-5 h-5 text-brand-blue" />
+              {t('topLogisticsHubs')}
+            </h3>
             <p className="text-xs text-brand-muted mb-6">{t('topHubsSubtitle')}</p>
             <div className="flex-1 overflow-auto">
               <div className="space-y-3">
@@ -292,7 +318,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
           {/* Card 4 â€” Top axes calculÃ©s */}
           <div className="bg-white rounded-3xl p-8 border border-brand-border shadow-sm flex flex-col">
-            <h3 className="text-lg font-extrabold text-brand-text mb-2">{t('topCalculatedAxes')}</h3>
+            <h3 className="text-lg font-extrabold text-brand-text mb-2 flex items-center gap-2">
+              <Route className="w-5 h-5 text-brand-blue" />
+              {t('topCalculatedAxes')}
+            </h3>
             <p className="text-xs text-brand-muted mb-4 leading-tight">{t('topAxesSubtitle')}</p>
             <div className="flex-1 space-y-3">
               {topAxes.map((axis, idx) => (
@@ -326,7 +355,10 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
         <div className="bg-white rounded-[40px] p-8 md:p-12 border border-brand-border shadow-sm mb-16 overflow-hidden">
           <div className="flex flex-col gap-4 mb-10">
               <div className="space-y-2">
-                <h3 className="text-2xl font-black text-brand-text tracking-tight">{t('hubConnectivityTitle')}</h3>
+                <h3 className="text-2xl font-black text-brand-text tracking-tight flex items-center gap-3">
+                  <BarChart3 className="w-8 h-8 text-brand-blue" />
+                  {t('hubConnectivityTitle')}
+                </h3>
                 <p className="text-sm text-brand-muted max-w-2xl leading-relaxed">
                   {t('hubConnectivitySubtitle')}
                 </p>
@@ -414,27 +446,27 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
         {/* 3 Insight Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-blue">
+          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-blue group hover:shadow-lg transition-all">
             <div className="flex items-center gap-3 mb-3">
-              <Globe className="w-5 h-5 text-brand-blue" />
+              <Globe className="w-5 h-5 text-brand-blue group-hover:scale-110 transition-transform" />
               <h4 className="font-extrabold text-brand-text">{t('beneluxDensity')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">
               {t('beneluxText')}
             </p>
           </div>
-          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-turquoise">
+          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-turquoise group hover:shadow-lg transition-all">
             <div className="flex items-center gap-3 mb-3">
-              <Anchor className="w-5 h-5 text-brand-turquoise" />
+              <Anchor className="w-5 h-5 text-brand-turquoise group-hover:scale-110 transition-transform" />
               <h4 className="font-extrabold text-brand-text">{t('portRole')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">
               {t('portRoleText')}
             </p>
           </div>
-          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-orange">
+          <div className="bg-brand-bg rounded-2xl p-6 border-l-4 border-l-brand-orange group hover:shadow-lg transition-all">
             <div className="flex items-center gap-3 mb-3">
-              <Info className="w-5 h-5 text-brand-orange" />
+              <Info className="w-5 h-5 text-brand-orange group-hover:scale-110 transition-transform" />
               <h4 className="font-extrabold text-brand-text">{t('openDataReading')}</h4>
             </div>
             <p className="text-sm text-brand-text leading-relaxed opacity-80">

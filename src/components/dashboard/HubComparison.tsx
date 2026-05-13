@@ -115,31 +115,44 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
   // Generate synthesis sentence
   const getSynthesisAxes = (): string => {
     if (axesA === axesB) {
-      return lang === 'fr'
-        ? `Les deux hubs présentent le même nombre d'axes routiers documentés (${axesA}). La comparaison reste descriptive et ne mesure pas l'intensité réelle des flux.`
-        : `Both hubs have the same number of documented road axes (${axesA}). This comparison is descriptive and does not measure actual flow intensity.`;
+      return t('bothHubsSameAxes').replace('{count}', axesA.toString());
     }
     
+    const diffText = diff.toString();
+    const axisLabel = lang === 'fr' 
+      ? `axe${diff > 1 ? 's' : ''} routier${diff > 1 ? 's' : ''} documenté${diff > 1 ? 's' : ''}`
+      : `documented road ax${diff > 1 ? 'es' : 'is'}`;
+
     if (axesA > axesB) {
-      return lang === 'fr'
-        ? `${hubA.name} dispose de ${diff} axe${diff > 1 ? 's' : ''} routier${diff > 1 ? 's' : ''} documenté${diff > 1 ? 's' : ''} de plus que ${hubB.name}. Cette différence reflète uniquement les axes renseignés dans les données disponibles.`
-        : `${hubA.name} has ${diff} more documented road ax${diff > 1 ? 'es' : 'is'} than ${hubB.name}. This difference reflects only the axes recorded in the available data.`;
+      return t('hubMoreAxes')
+        .replace('{name}', hubA.name)
+        .replace('{diff}', diffText)
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{axis_label}', axisLabel)
+        .replace('{other}', hubB.name);
     } else {
-      return lang === 'fr'
-        ? `${hubA.name} dispose de ${diff} axe${diff > 1 ? 's' : ''} routier${diff > 1 ? 's' : ''} documenté${diff > 1 ? 's' : ''} de moins que ${hubB.name}. Cette différence reflète uniquement les axes renseignés dans les données disponibles.`
-        : `${hubA.name} has ${diff} fewer documented road ax${diff > 1 ? 'es' : 'is'} than ${hubB.name}. This difference reflects only the axes recorded in the available data.`;
+      return t('hubFewerAxes')
+        .replace('{name}', hubA.name)
+        .replace('{diff}', diffText)
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{s}', diff > 1 ? 's' : '')
+        .replace('{axis_label}', axisLabel)
+        .replace('{other}', hubB.name);
     }
   };
 
   const getSynthesisType = (): string => {
     if (hubA.type === hubB.type) {
-      return lang === 'fr'
-        ? `Les deux hubs appartiennent à la même typologie : ${t(hubA.type as any)}.`
-        : `Both hubs share the same type: ${t(hubA.type as any)}.`;
+      return t('bothHubsSameType').replace('{type}', t(hubA.type as any));
     }
-    return lang === 'fr'
-      ? `Les deux hubs jouent des rôles différents dans le réseau : ${t(hubA.type as any)} pour ${hubA.name} et ${t(hubB.type as any)} pour ${hubB.name}.`
-      : `The two hubs play different roles in the network: ${t(hubA.type as any)} for ${hubA.name} and ${t(hubB.type as any)} for ${hubB.name}.`;
+    return t('hubsDifferentTypes')
+      .replace('{typeA}', t(hubA.type as any))
+      .replace('{nameA}', hubA.name)
+      .replace('{typeB}', t(hubB.type as any))
+      .replace('{nameB}', hubB.name);
   };
 
   const selectClass = "bg-white border-2 border-brand-border rounded-2xl px-4 py-3 text-sm font-bold text-brand-text w-full appearance-none cursor-pointer focus:outline-none focus:border-brand-blue transition-colors hover:border-brand-blue/40";
@@ -150,7 +163,7 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
       <div className="flex flex-col md:flex-row gap-4 items-end">
         <div className="flex-1 flex flex-col gap-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-brand-muted pl-1">
-            {lang === 'fr' ? 'Hub A' : 'Hub A'}
+            Hub A
           </label>
           <div className="relative">
             <select
@@ -171,7 +184,7 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
           <button
             onClick={swapHubs}
             className="w-10 h-10 rounded-full bg-white border-2 border-brand-border text-brand-text hover:border-brand-blue hover:text-brand-blue transition-all flex items-center justify-center shadow-sm group"
-            title={lang === 'fr' ? 'Inverser les hubs' : 'Swap hubs'}
+            title={t('swapHubs')}
           >
             <span className="text-xl group-hover:rotate-180 transition-transform duration-500">↔</span>
           </button>
@@ -179,7 +192,7 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
 
         <div className="flex-1 flex flex-col gap-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-brand-muted pl-1">
-            {lang === 'fr' ? 'Hub B' : 'Hub B'}
+            Hub B
           </label>
           <div className="relative">
             <select
@@ -214,7 +227,7 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
       <div className="bg-brand-blue/5 border border-brand-blue/15 rounded-3xl p-8 space-y-3">
         <div className="text-[10px] font-black uppercase tracking-widest text-brand-blue flex items-center gap-2 mb-2">
           <span className="w-2 h-2 rounded-full bg-brand-blue" />
-          {lang === 'fr' ? 'Lecture comparative' : 'Comparative reading'}
+          {t('comparativeReading')}
         </div>
         <p className="text-sm text-brand-text font-bold leading-relaxed">{getSynthesisAxes()}</p>
         <p className="text-sm text-brand-muted leading-relaxed italic">{getSynthesisType()}</p>
@@ -222,9 +235,7 @@ export const HubComparison: React.FC<HubComparisonProps> = ({ lang }) => {
 
       {/* Prudence note */}
       <p className="text-[10px] text-brand-muted italic leading-relaxed border-t border-brand-border/40 pt-4">
-        {lang === 'fr'
-          ? "Note : Comparez les hubs selon leur typologie, leur pays, leurs axes routiers renseignés et leur source documentaire. Cette comparaison ne mesure ni les flux, ni les volumes, ni le trafic réel, ni les coûts de transport."
-          : "Note: Compare hubs by type, country, documented road axes, and data source. This comparison does not measure flows, volumes, real traffic, or transport costs."}
+        {t('comparisonNote')}
       </p>
     </div>
   );

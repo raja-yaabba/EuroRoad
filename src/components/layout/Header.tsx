@@ -89,30 +89,38 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Floating Stats Bar in Sub-header (only when not scrolled) */}
         {!isScrolled && (
-          <div className="hidden md:flex h-12 items-center justify-between border-t border-brand-border/50 text-[10px] font-black text-brand-muted uppercase tracking-widest">
+          <div className="hidden md:flex h-12 items-center justify-between border-t border-brand-border/50 text-[10px] font-black text-brand-muted uppercase tracking-widest overflow-hidden">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-1.5">
-                <Database className="w-3 h-3 text-brand-blue" />
-                <span className="text-brand-text">{stats.totalHubs}</span>
-                <span>{t('hubsCount')}</span>
+              <div className="flex items-center gap-1.5 group">
+                <Database className="w-3 h-3 text-brand-blue/60 group-hover:text-brand-blue transition-colors" />
+                <span className="text-brand-text min-w-[1ch] text-center">{stats.totalHubs}</span>
+                <span className="opacity-80">{t('hubsCount')}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Layers className="w-3 h-3 text-brand-green" />
-                <span className="text-brand-text">{stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
-                <span>{t('osmElements')}</span>
+              <div className="flex items-center gap-1.5 group">
+                <Layers className="w-3 h-3 text-brand-green/60 group-hover:text-brand-green transition-colors" />
+                <span className={`text-brand-text min-w-[2ch] text-center ${stats.states.motorways === 'loading' ? 'animate-pulse opacity-50' : ''}`}>
+                  {stats.states.motorways === 'loading' ? '...' : stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}
+                </span>
+                <span className="opacity-80">{t('osmElements')}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Route className="w-3 h-3 text-brand-turquoise" />
-                <span className="text-brand-text">{stats.totalAxes}</span>
-                <span>{t('calculatedAxesLabel')}</span>
+              <div className="flex items-center gap-1.5 group">
+                <Route className="w-3 h-3 text-brand-turquoise/60 group-hover:text-brand-turquoise transition-colors" />
+                <span className={`text-brand-text min-w-[1ch] text-center ${stats.states.motorways === 'loading' ? 'animate-pulse opacity-50' : ''}`}>
+                  {stats.states.motorways === 'loading' ? '...' : stats.totalAxes}
+                </span>
+                <span className="opacity-80">{t('calculatedAxesLabel')}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Globe className="w-3 h-3 text-brand-orange" />
-                <span className="text-brand-text">3</span>
-                <span>{t('countries')}</span>
+              <div className="flex items-center gap-1.5 group">
+                <Globe className="w-3 h-3 text-brand-orange/60 group-hover:text-brand-orange transition-colors" />
+                <span className="text-brand-text">{stats.countriesCount}</span>
+                <span className="opacity-80">{t('countries')}</span>
               </div>
             </div>
-
+            
+            <div className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
+              <span className="text-[9px] font-bold tracking-normal">{t('osmLicenceShort')}</span>
+            </div>
           </div>
         )}
       </div>

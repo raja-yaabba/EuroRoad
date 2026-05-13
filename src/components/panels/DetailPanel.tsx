@@ -3,7 +3,7 @@ import { Hub, Language, OsmAxisFeature, OsmLineFeature, OsmPointFeature, Selecte
 import { useTranslation } from '../../utils/i18n';
 import { DataBadge } from '../cards/DataBadge';
 import { SourceBadge } from '../cards/SourceBadge';
-import { Map, Info, X, AlertCircle } from 'lucide-react';
+import { Map, Info, X, AlertCircle, Route } from 'lucide-react';
 
 type OsmFeature = OsmLineFeature | OsmPointFeature | OsmAxisFeature;
 
@@ -44,19 +44,17 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
   // État vide
   if (!selection) {
     return (
-      <div className="w-80 bg-white border-l border-brand-border p-8 flex flex-col items-center justify-center text-center shrink-0 z-20 shadow-xl">
+      <div className="w-80 bg-white border-l border-brand-border p-8 flex flex-col items-center justify-center text-center shrink-0 z-20 shadow-xl animate-in fade-in slide-in-from-right-4 duration-500">
         <div className="w-20 h-20 bg-gradient-to-br from-brand-blue-light to-brand-turquoise-light rounded-2xl flex items-center justify-center mb-5 shadow-inner">
           <Map className="w-10 h-10 text-brand-blue" />
         </div>
         <h2 className="text-xl font-bold text-brand-text mb-2">EuroRoad Atlas</h2>
         <p className="text-sm text-brand-muted leading-relaxed">
-          {lang === 'fr' 
-            ? "Sélectionnez un élément sur la carte pour explorer ses données."
-            : "Select an item on the map to explore its data."}
+          {t('noSelection')}
         </p>
         <div className="mt-6 text-xs text-brand-muted/60 flex items-center gap-1">
           <AlertCircle className="w-3 h-3" />
-          {lang === 'fr' ? 'Données open source — OSM réel uniquement' : 'Open source data — OSM real only'}
+          {t('osmLicenceShort')}
         </div>
       </div>
     );
@@ -66,7 +64,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
     const hubItem = selection.item;
 
     return (
-      <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto z-20 shadow-xl shrink-0 relative">
+      <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto z-20 shadow-xl shrink-0 relative animate-in fade-in slide-in-from-right-4 duration-500">
         {/* Header avec gradient */}
         <div className="p-6 pb-4 border-b border-brand-border sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex justify-between items-start">
           <div className="flex flex-col gap-2">
@@ -93,12 +91,13 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
           {/* Section des infos de base */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
-              🛣️ {t('connectedHighways')}
+              <Route className="w-3.5 h-3.5" />
+              {t('connectedHighways')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {hubItem.connectedHighways.length > 0 ? (
                 hubItem.connectedHighways.map(hw => (
-                  <span key={hw} className="px-3 py-1.5 bg-brand-bg border border-brand-border text-brand-text font-mono text-xs font-bold rounded-lg">
+                  <span key={hw} className="px-3 py-1.5 bg-brand-bg border border-brand-border text-brand-text font-mono text-xs font-bold rounded-lg shadow-sm">
                     {hw}
                   </span>
                 ))
@@ -123,7 +122,8 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
           {/* Pourquoi stratégique */}
           <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
+              <AlertCircle className="w-3.5 h-3.5" />
               {t('strategicReasoning')}
             </h3>
             <div className="bg-gradient-to-r from-brand-blue-light/30 to-brand-turquoise-light/30 p-3 rounded-xl border-l-4 border-brand-blue">
@@ -135,7 +135,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
           {/* Source badge */}
           <SourceBadge 
-            label={hubItem.dataSource || t('dataNotAvailable')} 
+            label={t(hubItem.dataSource as any) || t('dataNotAvailable')} 
             url={hubItem.sourceUrl}
             reliability={hubItem.reliability}
             lastUpdated={hubItem.lastUpdated}
@@ -167,7 +167,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
   ];
 
   return (
-    <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto shadow-xl shrink-0 relative">
+    <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto shadow-xl shrink-0 relative animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="p-6 pb-4 border-b border-brand-border sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex justify-between items-start">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 flex-wrap">
@@ -191,7 +191,10 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
 
       <div className="p-6 flex flex-col gap-6 flex-1">
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">{t('osmIdentification')}</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
+            <Info className="w-3.5 h-3.5" />
+            {t('osmIdentification')}
+          </h3>
           <div className="grid grid-cols-1 gap-2 text-sm">
             {/* Priorité à la référence pour les autoroutes */}
             {selection.type === 'motorway' || selection.type === 'axis' ? (
@@ -209,7 +212,10 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted">{t('logisticsProperties')}</h3>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-2">
+            <Map className="w-3.5 h-3.5" />
+            {t('logisticsProperties')}
+          </h3>
           <div className="grid grid-cols-2 gap-2 text-sm">
             {selection.type === 'axis' && (
               <div className="bg-brand-bg/50 rounded-xl p-3 col-span-2">
@@ -218,7 +224,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
               </div>
             )}
 
-            {selection.type === 'truck_parking' && (
+            {(selection.type === 'truck_parking' || (selection.type as string) === 'hgv_parking') && (
               <>
                 <div className="bg-brand-bg/50 rounded-xl p-3">
                   <div className="text-[10px] uppercase font-bold text-brand-muted">HGV</div>
@@ -274,7 +280,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
         </div>
 
         {/* Note de transparence */}
-        <div className="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-100 flex gap-3">
+        <div className="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-100 flex gap-3 shadow-sm">
           <AlertCircle className="w-5 h-5 text-amber-500 shrink-0" />
           <p className="text-[10px] leading-relaxed text-amber-800 font-medium">
             {t('transparencyNote')}
