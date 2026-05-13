@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import { Route, Database, Layers, Globe, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { Language, Hub } from '../../types';
 import { useTranslation } from '../../utils/i18n';
 import { useApp } from '../../context/AppContext';
@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   const { t } = useTranslation(lang);
   const { osmData } = useApp();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -45,8 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
       <div className={`mx-auto max-w-7xl transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md rounded-2xl border border-brand-border shadow-lg px-6' : 'bg-white border-b border-brand-border px-6'}`}>
         <header className="h-16 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-9 h-9 rounded-xl bg-brand-blue-light flex items-center justify-center text-brand-blue shadow-inner">
-              <Route className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-brand-border overflow-hidden">
+              <img src="/favicon.png" alt="EuroRoad Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <h1 className="text-lg font-black tracking-tight text-brand-text leading-tight">
@@ -58,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-4 lg:gap-12">
             <nav className="hidden lg:flex items-center gap-1">
               {navItems.map(item => (
                 <button
@@ -71,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
               ))}
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
               {/* Custom Toggle Switch for i18n */}
               <div className="flex bg-brand-bg rounded-full p-1 border border-brand-border relative items-center cursor-pointer select-none"
                    onClick={() => onLangChange(lang === 'fr' ? 'en' : 'fr')}>
@@ -83,9 +84,37 @@ export const Header: React.FC<HeaderProps> = ({
                   EN
                 </div>
               </div>
+
+              {/* Mobile Menu Button */}
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden p-2 text-brand-muted hover:text-brand-blue hover:bg-brand-bg rounded-xl transition-colors"
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
         </header>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMenuOpen && (
+          <div className="lg:hidden border-t border-brand-border bg-white animate-in slide-in-from-top-4 duration-300">
+            <nav className="flex flex-col p-4 gap-2">
+              {navItems.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollTo(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-3 text-sm font-bold text-brand-muted hover:text-brand-blue hover:bg-brand-bg rounded-xl transition-all"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        )}
 
         {/* Floating Stats Bar in Sub-header (only when not scrolled) */}
         {!isScrolled && (
@@ -93,26 +122,25 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-1.5 group">
                 <Database className="w-3 h-3 text-brand-blue/60 group-hover:text-brand-blue transition-colors" />
-                <span className="text-brand-text min-w-[1ch] text-center">{stats.totalHubs}</span>
-                <span className="opacity-80">{t('hubsCount')}</span>
+                <span className="text-brand-text">15</span>
+                <span className="opacity-80">{t('hubs')}</span>
               </div>
+              <span className="opacity-30">·</span>
               <div className="flex items-center gap-1.5 group">
                 <Layers className="w-3 h-3 text-brand-green/60 group-hover:text-brand-green transition-colors" />
-                <span className={`text-brand-text min-w-[2ch] text-center ${stats.states.motorways === 'loading' ? 'animate-pulse opacity-50' : ''}`}>
-                  {stats.states.motorways === 'loading' ? '...' : stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}
-                </span>
-                <span className="opacity-80">{t('osmElements')}</span>
+                <span className="text-brand-text">55 751</span>
+                <span className="opacity-80">{t('osmElementsLabel')}</span>
               </div>
+              <span className="opacity-30">·</span>
               <div className="flex items-center gap-1.5 group">
                 <Route className="w-3 h-3 text-brand-turquoise/60 group-hover:text-brand-turquoise transition-colors" />
-                <span className={`text-brand-text min-w-[1ch] text-center ${stats.states.motorways === 'loading' ? 'animate-pulse opacity-50' : ''}`}>
-                  {stats.states.motorways === 'loading' ? '...' : stats.totalAxes}
-                </span>
-                <span className="opacity-80">{t('calculatedAxesLabel')}</span>
+                <span className="text-brand-text">241</span>
+                <span className="opacity-80">{t('calculatedAxesHeader')}</span>
               </div>
+              <span className="opacity-30">·</span>
               <div className="flex items-center gap-1.5 group">
                 <Globe className="w-3 h-3 text-brand-orange/60 group-hover:text-brand-orange transition-colors" />
-                <span className="text-brand-text">{stats.countriesCount}</span>
+                <span className="text-brand-text">3</span>
                 <span className="opacity-80">{t('countries')}</span>
               </div>
             </div>

@@ -44,7 +44,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
   // État vide
   if (!selection) {
     return (
-      <div className="w-80 bg-white border-l border-brand-border p-8 flex flex-col items-center justify-center text-center shrink-0 z-20 shadow-xl animate-in fade-in slide-in-from-right-4 duration-500">
+      <div className="w-full h-full md:w-80 bg-white border-l border-brand-border p-8 flex flex-col items-center justify-center text-center z-20 shadow-xl animate-in fade-in md:slide-in-from-right-4 duration-500">
         <div className="w-20 h-20 bg-gradient-to-br from-brand-blue-light to-brand-turquoise-light rounded-2xl flex items-center justify-center mb-5 shadow-inner">
           <Map className="w-10 h-10 text-brand-blue" />
         </div>
@@ -64,7 +64,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
     const hubItem = selection.item;
 
     return (
-      <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto z-20 shadow-xl shrink-0 relative animate-in fade-in slide-in-from-right-4 duration-500">
+      <div className="w-full h-full md:w-[380px] bg-white border-l border-brand-border flex flex-col z-20 shadow-xl relative animate-in fade-in md:slide-in-from-right-4 duration-500 overflow-y-auto md:overflow-y-visible">
         {/* Header avec gradient */}
         <div className="p-6 pb-4 border-b border-brand-border sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex justify-between items-start">
           <div className="flex flex-col gap-2">
@@ -167,7 +167,7 @@ export const DetailPanel: React.FC<DetailPanelProps> = ({ selection, lang, onClo
   ];
 
   return (
-    <div className="w-[380px] bg-white border-l border-brand-border flex flex-col h-full overflow-y-auto shadow-xl shrink-0 relative animate-in fade-in slide-in-from-right-4 duration-500">
+    <div className="w-full h-full md:w-[380px] bg-white border-l border-brand-border flex flex-col z-20 shadow-xl relative animate-in fade-in md:slide-in-from-right-4 duration-500 overflow-y-auto md:overflow-y-visible">
       <div className="p-6 pb-4 border-b border-brand-border sticky top-0 bg-white/95 backdrop-blur-sm z-10 flex justify-between items-start">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2 flex-wrap">

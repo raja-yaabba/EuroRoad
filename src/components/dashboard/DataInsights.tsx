@@ -74,8 +74,8 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
       value: globalStats.totalRealDocumented, 
       color: '#22C55E',
       description: lang === 'fr' 
-        ? `${globalStats.osmElements.toLocaleString('fr-FR')} ${t('osmElements')} + ${globalStats.totalHubs} ${t('documentedHubs').toLowerCase()}` 
-        : `${globalStats.osmElements.toLocaleString('en-US')} ${t('osmElements')} + ${globalStats.totalHubs} ${t('documentedHubs').toLowerCase()}`
+        ? `${globalStats.osmElements.toLocaleString('fr-FR')} ${t('osmElementsLabel')} + ${globalStats.totalHubs} ${t('hubsDocumented').toLowerCase()}` 
+        : `${globalStats.osmElements.toLocaleString('en-US')} ${t('osmElementsLabel')} + ${globalStats.totalHubs} ${t('hubsDocumented').toLowerCase()}`
     },
     { 
       name: t('calculatedOsmData'), 
@@ -112,32 +112,30 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
           <div className="grid grid-cols-2 gap-6 w-full md:w-auto shrink-0">
             {[
               { 
-                label: t('osmElementsUsed'), 
-                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'),
-                isLoading: globalStats.states.motorways === 'loading',
+                label: t('osmElementsLabel'), 
+                value: "55 751",
                 icon: Layers
               },
               { 
-                label: t('documentedHubs'), 
-                value: globalStats.totalHubs,
+                label: t('hubsDocumented'), 
+                value: "15",
                 icon: Database
               },
               { 
                 label: t('calculatedAxesLabel'), 
-                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.totalAxes,
-                isLoading: globalStats.states.motorways === 'loading',
+                value: "241",
                 icon: Route
               },
               { 
-                label: t('countriesCovered'), 
-                value: globalStats.countriesCount,
+                label: t('countriesCoveredLabel'), 
+                value: "3",
                 icon: Globe
               },
             ].map((kpi, idx) => {
               const Icon = kpi.icon;
               return (
                 <div key={idx} className="bg-white p-5 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center group hover:border-brand-blue/30 transition-colors">
-                  <div className={`text-2xl font-black text-brand-blue mb-1 flex items-center gap-2 ${kpi.isLoading ? 'animate-pulse opacity-50' : ''}`}>
+                  <div className="text-2xl font-black text-brand-blue mb-1 flex items-center gap-2">
                     <Icon className="w-4 h-4 text-brand-muted/40 group-hover:text-brand-blue transition-colors" />
                     {kpi.value}
                   </div>
@@ -156,56 +154,48 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
               <Layers className="w-5 h-5 text-brand-blue" />
               {t('osmComposition')}
             </h3>
-            <p className="text-xs text-brand-muted mb-6">
-              {t('osmCompositionSubtitle').replace('{count}', globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'))}
+            <p className="text-xs text-brand-muted mb-6 leading-relaxed">
+              {t('osmCompositionSubtitle')}
             </p>
             <div className="space-y-4 flex-1">
               {[
                 { 
                   label: t('motorwaySegments'), 
-                  value: globalStats.totalMotorways, 
+                  value: 52597, 
                   color: 'bg-brand-blue',
-                  state: globalStats.states.motorways
                 },
                 { 
                   label: t('osmTolls'), 
-                  value: globalStats.totalTolls, 
+                  value: 1176, 
                   color: 'bg-brand-orange',
-                  state: globalStats.states.tolls
                 },
                 { 
                   label: t('hgvParkings'), 
-                  value: globalStats.totalParkings, 
+                  value: 1978, 
                   color: 'bg-brand-green',
-                  state: globalStats.states.parkings
                 },
               ].map((item, idx) => {
-                const isLoading = item.state === 'loading';
-                const isIdle = item.state === 'idle';
-                const displayValue = isLoading 
-                  ? t('loadingShort')
-                  : isIdle 
-                    ? '---'
-                    : item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US');
+                const total = 55751;
+                const displayValue = item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US');
 
                 return (
                   <div key={idx} className="space-y-2">
                     <div className="flex justify-between items-end">
                       <span className="text-[11px] font-bold text-brand-muted uppercase">{item.label}</span>
-                      <span className={`text-sm font-black text-brand-text ${isLoading ? 'animate-pulse text-brand-blue' : ''}`}>
+                      <span className="text-sm font-black text-brand-text">
                         {displayValue}
                       </span>
                     </div>
                     <div className="h-1.5 w-full bg-brand-bg rounded-full overflow-hidden">
                       <div 
                         className={`h-full ${item.color} rounded-full transition-all duration-700`} 
-                        style={{ width: isLoading || isIdle ? '0%' : `${(item.value / (globalStats.osmElements || 1)) * 100}%` }}
+                        style={{ width: `${(item.value / total) * 100}%` }}
                       />
                     </div>
                   </div>
                 );
               })}
-              <p className="text-[10px] text-brand-muted mt-4 italic leading-tight">
+              <p className="text-[10px] text-brand-muted mt-4 italic leading-relaxed">
                 {t('osmSourceNote')}
               </p>
             </div>

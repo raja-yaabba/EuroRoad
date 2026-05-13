@@ -11,12 +11,16 @@ export const translations = {
     navMethod: "Méthode",
     navTransparency: "Transparence",
     navData: "Données",
-    osmElements: "Éléments OSM",
-    calculatedAxesLabel: "Axes OSM calculés",
+    osmElementsLabel: "éléments OSM",
+    calculatedAxesLabel: "axes OSM calculés",
+    calculatedAxesHeader: "axes calculés",
+    countriesCoveredLabel: "pays couverts",
+    hubsDocumented: "hubs documentés",
+    countries: "pays",
+    hubs: "hubs",
     
     // Sidebar
     filters: "Filtres",
-    countries: "Pays",
     elementTypes: "Infrastructures",
     hubTypes: "Types de hubs",
     resetFilters: "Réinitialiser",
@@ -37,7 +41,6 @@ export const translations = {
     osmLicenceShort: "🔓 Données OSM sous licence ODbL",
     
     // Map
-    hubs: "Hubs logistiques",
     seaport: "Port maritime",
     urban_hub: "Hub urbain",
     border_hub: "Hub frontalier",
@@ -136,7 +139,7 @@ export const translations = {
     calculatedAxes: "Axes OSM calculés",
     countriesCovered: "Pays couverts",
     osmComposition: "Composition OSM",
-    osmCompositionSubtitle: "Répartition technique des {count} éléments exploités.",
+    osmCompositionSubtitle: "Répartition technique des 55 751 éléments OSM exploités",
     motorwaySegments: "Segments autoroutiers",
     osmTolls: "Péages OSM",
     hgvParkings: "Parkings poids lourds",
@@ -179,7 +182,8 @@ export const translations = {
     openDataReadingText: "Les données affichées restent dépendantes de la qualité de contribution OpenStreetMap, favorisant une lecture collaborative.",
     sourcesLabel: "Sources",
     osmLicence: "Données OSM sous licence ODbL",
-    noPrivateFlowsFooter: "Aucun flux privé, coût, fréquence ou volume non sourcé n'est inventé.",
+    footerDataSources: "Données : OpenStreetMap / Overpass API · Ports officiels · Licence ODbL",
+    noPrivateFlowsFooter: "Aucun flux privé, coût, fréquence ou volume non sourcé n’est inventé.",
     methodologySectionTitle: "Méthode open data",
     interactiveMapTitle: "Carte interactive",
     interactiveMapSubtitle: "Activez les couches, zoomez, cliquez sur les hubs ou infrastructures pour afficher les détails.",
@@ -230,8 +234,6 @@ export const translations = {
     // Hero
     explorerBtn: "Explorer la carte",
     methodologyBtnHero: "Voir la méthodologie",
-    hubsDocumented: "Hubs documentés",
-    osmElementsLabel: "Éléments OSM",
 
     // Methodology
     methodologyStep1Title: "Extraction",
@@ -243,7 +245,6 @@ export const translations = {
     methodologyStep4Title: "Analyse",
     methodologyStep4Text: "Calcul des axes logistiques par regroupement analytique des tags.",
     axesDisclaimer: "“Les axes calculés sont des regroupements analytiques issus d’OpenStreetMap. Ils ne représentent pas des corridors officiels ni des flux transporteur réels.”",
-    countriesCoveredLabel: "Pays couverts",
 
     // Footer
     footerData: "Données : OpenStreetMap / Overpass API · Ports officiels · Licence ODbL",
@@ -261,12 +262,16 @@ export const translations = {
     navMethod: "Method",
     navTransparency: "Transparency",
     navData: "Data",
-    osmElements: "OSM Elements",
-    calculatedAxesLabel: "Calculated OSM axes",
+    osmElementsLabel: "OSM elements",
+    calculatedAxesLabel: "calculated OSM axes",
+    calculatedAxesHeader: "calculated axes",
+    countriesCoveredLabel: "countries covered",
+    hubsDocumented: "documented hubs",
+    countries: "countries",
+    hubs: "hubs",
     
     // Sidebar
     filters: "Filters",
-    countries: "Countries",
     elementTypes: "Infrastructures",
     hubTypes: "Hub types",
     resetFilters: "Reset",
@@ -287,7 +292,6 @@ export const translations = {
     osmLicenceShort: "🔓 OSM data under ODbL license",
     
     // Map
-    hubs: "Logistics hubs",
     seaport: "Seaport",
     urban_hub: "Urban hub",
     border_hub: "Border hub",
@@ -428,8 +432,9 @@ export const translations = {
     openDataReading: "Open data reading",
     openDataReadingText: "The displayed data depends on the quality of OpenStreetMap contributions, promoting a collaborative reading.",
     sourcesLabel: "Sources",
-    osmLicence: "OSM data under ODbL license",
-    noPrivateFlowsFooter: "No private carrier flow, cost, frequency or unsourced volume is invented.",
+    osmLicence: "OSM Data under ODbL licence",
+    footerDataSources: "Data: OpenStreetMap / Overpass API · Official Ports · ODbL Licence",
+    noPrivateFlowsFooter: "No private flows, costs, frequency or non-sourced volumes are invented.",
     methodologySectionTitle: "Open Data Methodology",
     interactiveMapTitle: "Interactive Map",
     interactiveMapSubtitle: "Activate layers, zoom in, and click on hubs or infrastructures to view details.",
@@ -480,8 +485,6 @@ export const translations = {
     // Hero
     explorerBtn: "Explore the map",
     methodologyBtnHero: "View methodology",
-    hubsDocumented: "Documented hubs",
-    osmElementsLabel: "OSM Elements",
 
     // Methodology
     methodologyStep1Title: "Extraction",
@@ -493,7 +496,6 @@ export const translations = {
     methodologyStep4Title: "Analysis",
     methodologyStep4Text: "Calculation of logistics axes by analytical grouping of tags.",
     axesDisclaimer: "“Calculated axes are analytical groupings from OpenStreetMap. They do not represent official corridors or real carrier flows.”",
-    countriesCoveredLabel: "Countries covered",
 
     // Footer
     footerData: "Data: OpenStreetMap / Overpass API · Official ports · ODbL License",

@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import { MAP_CONSTANTS } from '../../constants/map';
 
+import { useApp } from '../../context/AppContext';
+
 interface SidebarProps {
   filters: FilterState;
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
@@ -30,6 +32,7 @@ const HUB_TYPES: { type: HubType; icon: React.ElementType; labelKey: string; col
 
 export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) => {
   const { t } = useTranslation(lang);
+  const { setIsSidebarOpen } = useApp();
 
   const toggleCountry = (country: Country) => {
     setFilters(prev => ({
@@ -73,13 +76,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
           </div>
           <span className="font-extrabold text-brand-text text-lg">{t('filters')}</span>
         </div>
-        <button
-          onClick={resetFilters}
-          className="text-brand-muted hover:text-brand-blue transition-colors p-2 rounded-full hover:bg-brand-blue-light"
-          title={t('resetFilters')}
-        >
-          <RotateCcw className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={resetFilters}
+            className="text-brand-muted hover:text-brand-blue transition-colors p-2 rounded-full hover:bg-brand-blue-light"
+            title={t('resetFilters')}
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
+          {/* Mobile Close Button */}
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className="md:hidden text-brand-muted hover:text-brand-red transition-colors p-2 rounded-full hover:bg-red-50"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       <div className="p-5 flex flex-col gap-8">

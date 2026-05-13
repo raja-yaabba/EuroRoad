@@ -62,17 +62,29 @@ const MapStateTracker: React.FC<{
 };
 
 // Map resizer
-const MapResizer: React.FC<{ isFullScreen: boolean }> = ({ isFullScreen }) => {
+const MapResizer: React.FC<{ isFullScreen: boolean; isSidebarOpen: boolean; selectedItemId: string | null }> = ({ isFullScreen, isSidebarOpen, selectedItemId }) => {
   const map = useMap();
+  
   useEffect(() => {
-    const timeouts = [100, 300, 600, 1000].map(delay => 
+    const handleResize = () => {
+      map.invalidateSize();
+    };
+
+    // Initial and periodic invalidations to catch animation ends
+    const timeouts = [0, 100, 300, 500, 1000].map(delay => 
       setTimeout(() => {
         map.invalidateSize();
-        map.fitBounds(MAP_CONSTANTS.FR_BE_NL_BOUNDS, { padding: [40, 40] });
       }, delay)
     );
-    return () => timeouts.forEach(clearTimeout);
-  }, [isFullScreen, map]);
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      timeouts.forEach(clearTimeout);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isFullScreen, isSidebarOpen, selectedItemId, map]);
+
   return null;
 };
 
@@ -88,7 +100,7 @@ interface MapExplorerProps {
 export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, selectedItemId, onSelectItem }) => {
   const { t } = useTranslation(lang);
   const [zoom, setZoom] = useState(MAP_CONSTANTS.INITIAL_ZOOM);
-  const { isFullScreen, setIsFullScreen, setIsSidebarOpen, osmData } = useApp();
+  const { isFullScreen, setIsFullScreen, isSidebarOpen, setIsSidebarOpen, osmData } = useApp();
   const [showHelp, setShowHelp] = useState(true);
   const [showZoomHint, setShowZoomHint] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -162,7 +174,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         />
         <ZoomControl position="topleft" />
         <MapStateTracker onStateChange={(z) => setZoom(z)} />
-        <MapResizer isFullScreen={isFullScreen} />
+        <MapResizer isFullScreen={isFullScreen} isSidebarOpen={isSidebarOpen} selectedItemId={selectedItemId} />
         
         <MapSearch onSelectResult={(id, type) => handleSelect(id, type)} />
 

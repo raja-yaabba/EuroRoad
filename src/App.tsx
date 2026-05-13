@@ -29,7 +29,6 @@ const Hero: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/5 rounded-full blur-[120px] -z-10 animate-pulse"></div>
       
       <div className="max-w-4xl w-full text-center space-y-8 relative">
-
         
         <h1 className="text-5xl md:text-7xl font-black text-brand-text tracking-tight leading-[1.1]">
           EuroRoad <span className="text-brand-blue">Atlas</span>
@@ -41,10 +40,10 @@ const Hero: React.FC = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
           {[
-            { label: t('hubsDocumented'), value: stats.totalHubs.toString(), icon: Database, color: 'text-brand-blue' },
-            { label: t('osmElementsLabel'), value: stats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'), icon: Layers, color: 'text-brand-green' },
-            { label: t('calculatedAxesLabel'), value: stats.totalAxes.toString(), icon: Route, color: 'text-brand-turquoise' },
-            { label: t('countriesCoveredLabel'), value: stats.countriesCount.toString(), icon: Globe, color: 'text-brand-orange' },
+            { label: t('hubsDocumented'), value: "15", icon: Database, color: 'text-brand-blue' },
+            { label: t('osmElementsLabel'), value: "55 751", icon: Layers, color: 'text-brand-green' },
+            { label: t('calculatedAxesLabel'), value: "241", icon: Route, color: 'text-brand-turquoise' },
+            { label: t('countriesCoveredLabel'), value: "3", icon: Globe, color: 'text-brand-orange' },
           ].map((kpi, idx) => (
             <div key={idx} className="flex flex-col items-center gap-1 group">
               <div className={`w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center ${kpi.color} mb-2 shadow-sm group-hover:scale-110 transition-transform`}>
@@ -126,20 +125,24 @@ const MapSection: React.FC = () => {
       <div id="map-viewport" className={`transition-all duration-500 overflow-hidden ${
         isFullScreen 
           ? 'fixed inset-0 z-[9999] bg-white' 
-          : 'relative w-full h-[70vh] min-h-[600px] max-w-[1440px] mx-auto md:rounded-3xl border border-brand-border shadow-2xl'
+          : 'relative w-full h-[80vh] md:h-[70vh] md:min-h-[600px] max-w-[1440px] mx-auto md:rounded-3xl border border-brand-border shadow-2xl'
       }`}>
         <div className="flex w-full h-full relative">
           {/* Sidebar */}
-          <div className={`absolute top-0 left-0 transition-all duration-300 ease-in-out h-full z-40 bg-white border-r border-brand-border overflow-hidden ${isSidebarOpen ? 'w-80 translate-x-0' : 'w-0 -translate-x-full'}`}>
-            <div className="w-80 h-full">
+          <div className={`absolute top-0 left-0 transition-all duration-300 ease-in-out h-full z-[1500] bg-white border-r border-brand-border overflow-hidden ${
+            isSidebarOpen 
+              ? 'w-full md:w-80 translate-x-0 shadow-2xl' 
+              : 'w-0 -translate-x-full'
+          }`}>
+            <div className="w-full md:w-80 h-full">
               <Sidebar filters={filters} setFilters={setFilters} lang={lang} />
             </div>
           </div>
 
-          {/* Toggle Sidebar Button */}
+          {/* Desktop Toggle Sidebar Button (hidden on mobile, mobile has its own toggle in the map area) */}
           <button 
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className={`absolute top-20 z-[1001] p-2 bg-white rounded-xl shadow-md border border-brand-border text-brand-muted hover:text-brand-blue transition-all duration-300 ${isSidebarOpen ? 'left-[336px]' : 'left-4'}`}
+            className={`absolute top-20 z-[1001] p-2 bg-white rounded-xl shadow-md border border-brand-border text-brand-muted hover:text-brand-blue transition-all duration-300 hidden md:block ${isSidebarOpen ? 'left-[336px]' : 'left-4'}`}
             title={isSidebarOpen ? t('closePanel') : t('openPanel')}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,8 +177,8 @@ const MapSection: React.FC = () => {
             
             {/* Detail Panel */}
             {selectedItemId && (
-              <div className="absolute top-0 right-0 h-full w-full md:w-96 z-[2000] pointer-events-none p-0 md:p-4">
-                <div className="h-full pointer-events-auto">
+              <div className="absolute inset-0 md:inset-auto md:top-0 md:right-0 h-full w-full md:w-96 z-[2000] pointer-events-none p-0 md:p-4 flex flex-col justify-end md:justify-start">
+                <div className="h-[70vh] md:h-full w-full pointer-events-auto animate-in slide-in-from-bottom md:slide-in-from-right duration-500">
                   <DetailPanel 
                     selection={selectedSelection}
                     onClose={() => setSelectedItemId(null)}
@@ -325,16 +328,18 @@ const AppContent: React.FC = () => {
       <MethodologySection />
       <LimitsSection />
       
-      <footer className="bg-brand-bg py-10 border-t border-brand-border text-center">
-        <div className="text-[10px] font-black text-brand-text uppercase tracking-[0.2em] mb-2">
-          EuroRoad Atlas
+      <footer className="bg-white py-12 md:py-16 border-t border-brand-border text-center px-6">
+        <div className="max-w-2xl mx-auto space-y-4">
+          <div className="text-sm font-black text-brand-text uppercase tracking-widest">
+            EuroRoad Atlas
+          </div>
+          <p className="text-xs text-brand-muted font-bold leading-relaxed">
+            {t('footerDataSources')}
+          </p>
+          <p className="text-[11px] text-brand-muted/70 italic leading-relaxed">
+            {t('noPrivateFlowsFooter')}
+          </p>
         </div>
-        <p className="text-[11px] text-brand-muted font-bold mb-2">
-          {t('footerData')}
-        </p>
-        <p className="text-[10px] text-brand-muted/60 italic">
-          {t('footerDisclaimer')}
-        </p>
       </footer>
     </div>
   );
