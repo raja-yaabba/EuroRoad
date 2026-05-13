@@ -5,6 +5,7 @@ import { getAggregatedStats, computeGlobalStats } from '../../utils/calculations
 import { useTranslation } from '../../utils/i18n';
 import { Map as MapIcon, MapPin, Truck, Route, Shield, BarChart3, Info, Anchor, Globe } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { HubComparison } from './HubComparison';
 
 interface DataInsightsProps {
   hubs: Hub[];
@@ -284,18 +285,21 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
 
         {/* Connectivity Matrix Section */}
         <div className="bg-white rounded-[40px] p-8 md:p-12 border border-brand-border shadow-sm mb-16 overflow-hidden">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-            <div className="space-y-2">
-              <h3 className="text-2xl font-black text-brand-text tracking-tight">{t('hubConnectivityTitle')}</h3>
-              <p className="text-sm text-brand-muted max-w-2xl leading-relaxed">
-                {t('hubConnectivitySubtitle')}
-              </p>
+          <div className="flex flex-col gap-4">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-black text-brand-text tracking-tight">{t('hubConnectivityTitle')}</h3>
+                <p className="text-sm text-brand-muted max-w-2xl leading-relaxed">
+                  {t('hubConnectivitySubtitle')}
+                </p>
+              </div>
             </div>
-            <div className="shrink-0 flex items-center gap-2 px-4 py-2 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl text-[10px] font-black text-brand-blue uppercase tracking-widest">
-              <Route className="w-3.5 h-3.5" />
-              {t('focusInfrastructure')}
-            </div>
-          </div>
+
+          {/* Interactive Hub Comparison */}
+          <HubComparison lang={lang} />
+
+          {/* Full table sub-section */}
+          <div className="mt-12 pt-10 border-t border-brand-border/40">
+            <h4 className="text-lg font-black text-brand-text tracking-tight mb-6">{t('hubFullTableTitle')}</h4>
 
           <div className="overflow-x-auto -mx-8 md:mx-0">
             <table className="w-full min-w-[900px] border-collapse">
@@ -354,7 +358,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
                       </td>
                       <td className="py-5 px-4 md:px-6 text-right">
                         <span className="text-[10px] font-bold text-brand-blue bg-brand-blue-light px-2 py-1 rounded-lg border border-brand-blue/10">
-                          {hub.dataSource}
+                          {t(hub.dataSource as any)}
                         </span>
                       </td>
                     </tr>
@@ -366,6 +370,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
           <div className="mt-8 pt-6 border-t border-brand-border/40 text-[10px] text-brand-muted italic leading-relaxed">
             {t('connectivityNote')}
           </div>
+          </div>{/* end full table sub-section */}
         </div>
 
         {/* 3 Insight Cards */}
