@@ -170,6 +170,22 @@ const normalizeRouteKey = (tags: Record<string, string>) => {
 
 const buildSourceUrl = (kind: string, osmId: number) => `https://www.openstreetmap.org/${kind}/${osmId}`;
 
+const computeBbox = (coords: [number, number][]): [number, number, number, number] => {
+  if (!coords.length) return [0, 0, 0, 0];
+  let minLat = coords[0][0];
+  let maxLat = coords[0][0];
+  let minLon = coords[0][1];
+  let maxLon = coords[0][1];
+  for (let i = 1; i < coords.length; i++) {
+    const [lat, lon] = coords[i];
+    if (lat < minLat) minLat = lat;
+    if (lat > maxLat) maxLat = lat;
+    if (lon < minLon) minLon = lon;
+    if (lon > maxLon) maxLon = lon;
+  }
+  return [minLat, minLon, maxLat, maxLon];
+};
+
 const formatFeature = <T extends OsmLineFeature | OsmPointFeature>(
   base: Omit<T, 'source' | 'sourceUrl' | 'lastUpdated' | 'tags' | 'name' | 'ref' | 'intRef' | 'highway' | 'toll' | 'amenity' | 'parking' | 'hgv' | 'openingHours'> & {
     osmId: number;
@@ -177,6 +193,7 @@ const formatFeature = <T extends OsmLineFeature | OsmPointFeature>(
     sourceUrl: string;
     lastUpdated: string;
     dataType: 'real' | 'calculated' | 'unavailable';
+    bbox?: [number, number, number, number];
   },
   tags: Record<string, string>
 ): T => ({
@@ -217,6 +234,7 @@ export const parseMotorwayWays = (rawData: OsmRawData, country: Country): OsmLin
           dataType: 'real',
           sourceUrl: buildSourceUrl('way', way.id),
           lastUpdated: timestamp,
+          bbox: computeBbox(coordinates),
         },
         tags
       );
@@ -253,6 +271,7 @@ export const parseTollPoints = (rawData: OsmRawData, country: Country): OsmPoint
             dataType: 'real',
             sourceUrl: buildSourceUrl('node', element.id),
             lastUpdated: timestamp,
+            bbox: [coordinates[0], coordinates[1], coordinates[0], coordinates[1]],
           },
           tags
         );
@@ -277,6 +296,7 @@ export const parseTollPoints = (rawData: OsmRawData, country: Country): OsmPoint
             dataType: 'real',
             sourceUrl: buildSourceUrl('way', element.id),
             lastUpdated: timestamp,
+            bbox: [coordinates[0], coordinates[1], coordinates[0], coordinates[1]],
           },
           tags
         );
@@ -316,6 +336,7 @@ export const parseTruckParkingPoints = (rawData: OsmRawData, country: Country): 
             dataType: 'real',
             sourceUrl: buildSourceUrl('node', element.id),
             lastUpdated: timestamp,
+            bbox: [coordinates[0], coordinates[1], coordinates[0], coordinates[1]],
           },
           tags
         );
@@ -339,6 +360,7 @@ export const parseTruckParkingPoints = (rawData: OsmRawData, country: Country): 
           dataType: 'real',
           sourceUrl: buildSourceUrl(element.type, element.id),
           lastUpdated: timestamp,
+          bbox: [coordinates[0], coordinates[1], coordinates[0], coordinates[1]],
         },
         tags
       );
@@ -377,6 +399,7 @@ export const buildRealCorridors = (motorways: OsmLineFeature[], country: Country
         dataType: 'calculated',
         sourceUrl: representative.sourceUrl,
         lastUpdated: representative.lastUpdated,
+        bbox: computeBbox(coordinates),
       },
       representative.tags
     );

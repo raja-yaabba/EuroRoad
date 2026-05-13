@@ -73,6 +73,7 @@ export interface OsmBaseFeature {
   parking?: string;
   hgv?: string;
   openingHours?: string;
+  bbox?: [number, number, number, number]; // [minLat, minLon, maxLat, maxLon]
 }
 
 export interface OsmLineFeature extends OsmBaseFeature {
@@ -122,8 +123,10 @@ export interface OsmLayerErrorState {
   axes: Record<OsmCountryCode, string | null>;
 }
 export interface OsmData {
-  motorways: Record<OsmCountryCode, OsmLineFeature[]>;
-  tolls: Record<OsmCountryCode, OsmPointFeature[]>;
-  truckParkings: Record<OsmCountryCode, OsmPointFeature[]>;
-  axes: Record<OsmCountryCode, OsmAxisFeature[]>;
+  motorways: Record<OsmCountryCode, OsmLineFeature[] | null>;
+  tolls: Record<OsmCountryCode, OsmPointFeature[] | null>;
+  truckParkings: Record<OsmCountryCode, OsmPointFeature[] | null>;
+  axes: Record<OsmCountryCode, OsmAxisFeature[] | null>;
+  loading: OsmLayerLoadState;
+  errors: OsmLayerErrorState;
 }

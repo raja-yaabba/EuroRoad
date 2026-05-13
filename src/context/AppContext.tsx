@@ -114,6 +114,21 @@ const derivePointCoordinates = (element: OverpassPointElement): [number, number]
   return null;
 };
 
+const computeBbox = (coords: [number, number][]): [number, number, number, number] => {
+  let minLat = coords[0][0];
+  let maxLat = coords[0][0];
+  let minLon = coords[0][1];
+  let maxLon = coords[0][1];
+  for (let i = 1; i < coords.length; i++) {
+    const [lat, lon] = coords[i];
+    if (lat < minLat) minLat = lat;
+    if (lat > maxLat) maxLat = lat;
+    if (lon < minLon) minLon = lon;
+    if (lon > maxLon) maxLon = lon;
+  }
+  return [minLat, minLon, maxLat, maxLon];
+};
+
 const buildMotorwayFeatures = (
   elements: Array<OverpassElementBase & { type: string }>,
   country: Country,
@@ -145,6 +160,7 @@ const buildMotorwayFeatures = (
       highway: tags.highway,
       coordinates,
       geometry,
+      bbox: computeBbox(coordinates),
     } satisfies OsmLineFeature;
   });
 };
@@ -188,6 +204,7 @@ const buildPointFeatures = (
       lat: coordinates[0],
       lon: coordinates[1],
       center: { lat: coordinates[0], lon: coordinates[1] },
+      bbox: [coordinates[0], coordinates[1], coordinates[0], coordinates[1]],
       geometry: Array.isArray((element as OverpassWayElement).geometry)
         ? (element as OverpassWayElement).geometry
         : undefined,
@@ -363,10 +380,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     fetchRealData();
   }, []);
 
-  useEffect(() => {
-    fetchRealData();
-  }, []);
-
   const loadLayer = async (
     layerKey: 'motorways' | 'tolls' | 'truckParkings',
     loadingRef: React.MutableRefObject<boolean>,
@@ -384,21 +397,32 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const countries: Country[] = ['France', 'Belgium', 'Netherlands'];
     
     try {
-      const results = await Promise.all(countries.map(async (country) => {
+      const results: { code: OsmCountryCode; features?: any; error?: boolean }[] = [];
+      
+      // Load countries sequentially to avoid CPU spikes during parsing
+      for (const country of countries) {
         const code = COUNTRY_CODES[country];
         try {
           const timestamp = new Date().toISOString();
           const filePath = COUNTRY_FILES[code][layerKey];
           const elements = await getOverpassElements(filePath);
+          
+          // Yield to main thread before parsing
+          await new Promise(resolve => setTimeout(resolve, 10));
+          
           const features = layerKey === 'motorways'
             ? buildMotorwayFeatures(elements, country, code, timestamp)
             : buildPointFeatures(elements, country, kind!, timestamp);
-          return { code, features };
+            
+          results.push({ code, features });
+          
+          // Yield to main thread after parsing each country
+          await new Promise(resolve => setTimeout(resolve, 20));
         } catch (err) {
           console.warn(`Failed to load ${layerKey} for ${code}:`, err);
-          return { code, error: true };
+          results.push({ code, error: true });
         }
-      }));
+      }
 
       setOsmData(prev => {
         const nextLayer = { ...prev[layerKey] };
@@ -465,36 +489,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     requestedCountries.forEach((country) => setLayerLoading(layer, COUNTRY_CODES[country], true));
     const motorwaysByCountry: Partial<Record<OsmCountryCode, OsmLineFeature[]>> = {};
 
-    await Promise.all(
-      requestedCountries.map(async (country) => {
-        const code = COUNTRY_CODES[country];
-
-        try {
-          const timestamp = new Date().toISOString();
-
-
-
-          const result = await loadAxisLayer(country);
-          setLayerData('axes', code, result.data);
-          return result.data;
-        } catch (err) {
-          const message = err instanceof Error ? err.message : 'Erreur de chargement OSM';
-          setLayerData(layer, code, []);
-          setLayerError(layer, code, message);
-          console.warn(`Layer load failed for ${layer} ${code}:`, err);
-          return null;
-        }
-      })
-    );
+    for (const country of requestedCountries) {
+      const code = COUNTRY_CODES[country];
+      try {
+        const result = await loadAxisLayer(country);
+        setLayerData('axes', code, result.data);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Erreur de chargement OSM';
+        setLayerData(layer, code, []);
+        setLayerError(layer, code, message);
+        console.warn(`Layer load failed for ${layer} ${code}:`, err);
+      }
+    }
 
     requestedCountries.forEach((country) => setLayerLoading(layer, COUNTRY_CODES[country], false));
     inFlightLoads.current.delete(loadKey);
   };
 
+  // On-demand loading only, via ensureOsmLayerLoaded in layer components
   useEffect(() => {
-    void loadMotorways();
-    void loadTolls();
-    void loadTruckParkings();
+    // We can pre-load motorways with a small delay for smoother initial experience
+    const timer = setTimeout(() => {
+      void ensureOsmLayerLoaded('motorways', ['France', 'Belgium', 'Netherlands']);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   const hasLoggedTotal = useRef(false);

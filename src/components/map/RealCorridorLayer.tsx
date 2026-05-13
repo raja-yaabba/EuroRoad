@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useEffect, useMemo } from 'react';
-import { Polyline, Tooltip } from 'react-leaflet';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { Polyline, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import { Country, OsmCountryCode } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -10,6 +10,14 @@ interface RealCorridorLayerProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null, type: 'axis' | null) => void;
 }
+
+const isVisible = (bbox: [number, number, number, number] | undefined, bounds: L.LatLngBounds | null) => {
+  if (!bounds || !bbox) return true;
+  const sw = bounds.getSouthWest();
+  const ne = bounds.getNorthEast();
+  const [minLat, minLon, maxLat, maxLon] = bbox;
+  return !(maxLat < sw.lat || minLat > ne.lat || maxLon < sw.lng || minLon > ne.lng);
+};
 
 const AXIS_COLOR = '#0F766E';
 
@@ -28,6 +36,7 @@ const AxisSeg = memo(({
   axisKey,
   memberCount,
   showTooltip,
+  zoom,
 }: {
   positions: [number, number][];
   isSelected: boolean;
@@ -36,13 +45,14 @@ const AxisSeg = memo(({
   axisKey: string;
   memberCount: number;
   showTooltip: boolean;
+  zoom: number;
 }) => {
   const pathOptions = useMemo(() => ({
     color: AXIS_COLOR,
-    weight: isSelected ? 3.5 : 1.5,
-    opacity: isSelected ? 0.85 : 0.3,
+    weight: isSelected ? 4 : (zoom < 9 ? 1.5 : 2.5),
+    opacity: isSelected ? 0.9 : (zoom < 9 ? 0.3 : 0.5),
     dashArray: '10 7',
-  }), [isSelected]);
+  }), [isSelected, zoom]);
 
   const handlers = useMemo(() => ({
     click: () => onSelect(onClickId),
@@ -73,7 +83,14 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = memo(({
   selectedItemId,
   onSelectItem,
 }) => {
+  const map = useMap();
+  const [bounds, setBounds] = useState<L.LatLngBounds>(map.getBounds());
   const { osmData, ensureOsmLayerLoaded, filters } = useApp();
+  
+  useMapEvents({
+    moveend: () => setBounds(map.getBounds()),
+    zoomend: () => setBounds(map.getBounds())
+  });
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
@@ -86,9 +103,10 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = memo(({
 
   // Sort once, memoised
   const displayFeatures = useMemo(() => {
-    const sorted = [...features].sort((a, b) => b.memberCount - a.memberCount);
-    return filters.showAllAxes ? sorted.slice(0, 50) : sorted.slice(0, 15);
-  }, [features, filters.showAllAxes]);
+    const filtered = features.filter(f => isVisible(f.bbox, bounds));
+    const sorted = [...filtered].sort((a, b) => b.memberCount - a.memberCount);
+    return filters.showAllAxes ? sorted.slice(0, 200) : sorted.slice(0, 15);
+  }, [features, filters.showAllAxes, bounds]);
 
   const handleSelect = useCallback((id: string) => onSelectItem(id, 'axis'), [onSelectItem]);
 
@@ -108,6 +126,7 @@ export const RealCorridorLayer: React.FC<RealCorridorLayerProps> = memo(({
           axisKey={feature.axisKey || feature.ref || 'N/A'}
           memberCount={feature.memberCount}
           showTooltip={showTooltip}
+          zoom={zoom}
         />
       ))}
     </>

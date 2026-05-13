@@ -1,6 +1,6 @@
-import React, { memo, useCallback, useEffect, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import L from 'leaflet';
-import { Marker, Tooltip } from 'react-leaflet';
+import { Marker, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import { Country, OsmCountryCode } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -11,6 +11,14 @@ interface TruckParkingLayerProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null, type: 'truck_parking' | null) => void;
 }
+
+const isVisible = (bbox: [number, number, number, number] | undefined, bounds: L.LatLngBounds | null) => {
+  if (!bounds || !bbox) return true;
+  const sw = bounds.getSouthWest();
+  const ne = bounds.getNorthEast();
+  const [minLat, minLon, maxLat, maxLon] = bbox;
+  return !(maxLat < sw.lat || minLat > ne.lat || maxLon < sw.lng || minLon > ne.lng);
+};
 
 const createMarkerIcon = (selected: boolean) =>
   L.divIcon({
@@ -62,7 +70,14 @@ const getServicesText = (featureTags: Record<string, string>, lang: string) => {
 export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = memo((
   { country, enabled, zoom, selectedItemId, onSelectItem }
 ) => {
+  const map = useMap();
+  const [bounds, setBounds] = useState<L.LatLngBounds>(map.getBounds());
   const { osmData, ensureOsmLayerLoaded, lang } = useApp();
+  
+  useMapEvents({
+    moveend: () => setBounds(map.getBounds()),
+    zoomend: () => setBounds(map.getBounds())
+  });
   const code = COUNTRY_CODE[country];
 
   useEffect(() => {
@@ -70,6 +85,9 @@ export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = memo((
   }, [country, enabled, ensureOsmLayerLoaded]);
 
   const features = useMemo(() => osmData.truckParkings[code] || [], [code, osmData.truckParkings]);
+  const displayFeatures = useMemo(() => {
+    return features.filter(f => isVisible(f.bbox, bounds)).slice(0, 300);
+  }, [features, bounds]);
   const loading = osmData.loading.truckParkings[code];
   const error = osmData.errors.truckParkings[code];
 
@@ -81,7 +99,7 @@ export const TruckParkingLayer: React.FC<TruckParkingLayerProps> = memo((
 
   return (
     <>
-      {features.slice(0, 300).map(feature => {
+      {displayFeatures.map(feature => {
         const selected = selectedItemId === feature.id;
         return (
           <Marker

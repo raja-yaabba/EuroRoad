@@ -53,11 +53,21 @@ interface MapExplorerProps {
   onSelectItem: (id: string | null, type: SelectedItemType | null) => void;
 }
 
-// Zoom tracker
-const MapZoomTracker: React.FC<{ onZoomChange: (zoom: number) => void }> = ({ onZoomChange }) => {
+// Map state tracker (zoom & bounds)
+const MapStateTracker: React.FC<{ 
+  onStateChange: (zoom: number, bounds: L.LatLngBounds) => void 
+}> = ({ onStateChange }) => {
   const map = useMap();
-  useMapEvents({ zoomend: () => onZoomChange(map.getZoom()) });
-  useEffect(() => { onZoomChange(map.getZoom()); }, [map, onZoomChange]);
+  const update = useCallback(() => {
+    onStateChange(map.getZoom(), map.getBounds());
+  }, [map, onStateChange]);
+
+  useMapEvents({ 
+    zoomend: update,
+    moveend: update
+  });
+
+  useEffect(() => { update(); }, [update]);
   return null;
 };
 
@@ -78,10 +88,12 @@ const MapResizer: React.FC<{ isFullScreen: boolean }> = ({ isFullScreen }) => {
   return null;
 };
 
+import { HubLayer } from './HubLayer';
+
 export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, selectedItemId, onSelectItem }) => {
   const { t } = useTranslation(lang);
   const [zoom, setZoom] = useState(7);
-  const { isFullScreen, setIsFullScreen, setIsSidebarOpen } = useApp();
+  const { isFullScreen, setIsFullScreen, setIsSidebarOpen, osmData } = useApp();
   const [showHelp, setShowHelp] = useState(true);
   const [showZoomHint, setShowZoomHint] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -119,14 +131,6 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
     setShowZoomHint(false);
     onSelectItem(id, type);
   }, [onSelectItem]);
-
-  const filteredHubs = useMemo(() => {
-    if (!filters?.showHubs) return [];
-    return hubsData.filter(h =>
-      filters.countries.includes(h.country) &&
-      filters.hubTypes.includes(h.type)
-    );
-  }, [filters]);
 
   const selectedCountries = filters?.countries ?? ['France', 'Belgium', 'Netherlands'];
 
@@ -171,29 +175,27 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | <a href="https://carto.com/attributions">CARTO</a> · Données OSM sous licence ODbL'
         />
         <ZoomControl position="topleft" />
-        <MapZoomTracker onZoomChange={setZoom} />
+        <MapStateTracker onStateChange={(z) => setZoom(z)} />
         <MapResizer isFullScreen={isFullScreen} />
         
         {/* Global search — MapSearch must be inside MapContainer to access useMap */}
         <MapSearch onSelectResult={(id, type) => handleSelect(id, type)} />
 
-        {/* Hubs */}
-        {filteredHubs.map(hub => {
-          const isSelected = selectedItemId === hub.id;
-          return (
-            <Marker
-              key={hub.id}
-              position={hub.coordinates}
-              icon={getHubIcon(hub.type, isSelected)}
-              eventHandlers={{ click: () => handleSelect(hub.id, 'hub') }}
-            >
-              <Tooltip offset={[0, -20]} className="border-none shadow-lg rounded-xl px-3 py-2 text-sm">
-                <div className="font-bold">{hub.name}</div>
-                <div className="text-xs text-brand-muted">{t(hub.type)}</div>
-              </Tooltip>
-            </Marker>
-          );
-        })}
+        {/* Hubs — Now isolated */}
+        {filters && (
+          <HubLayer 
+            lang={lang}
+            filters={{
+              showHubs: !!filters.showHubs,
+              countries: filters.countries,
+              hubTypes: filters.hubTypes
+            }}
+            selectedItemId={selectedItemId}
+            onSelectItem={handleSelect}
+            getHubIcon={getHubIcon}
+            t={t}
+          />
+        )}
 
         {(filters?.showMotorways || filters?.showAllMotorways) && selectedCountries.map((country) => (
           <MotorwayLayer
@@ -228,11 +230,11 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
           />
         ))}
 
-        {filters?.showAxes && selectedCountries.map((country) => (
+        {(filters?.showAxes || filters?.showAllAxes) && selectedCountries.map((country) => (
           <RealCorridorLayer
             key={`axis-${country}`}
             country={country as Country}
-            enabled={Boolean(filters?.showAxes)}
+            enabled={Boolean(filters?.showAxes || filters?.showAllAxes)}
             zoom={zoom}
             selectedItemId={selectedItemId}
             onSelectItem={handleSelect}
@@ -273,14 +275,40 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         </div>
       )}
 
-      {/* Consolidated zoom warning */}
-      {zoom < 10 && (filters?.showTolls || filters?.showTruckParkings) && (
-        <div className="pointer-events-none absolute left-6 bottom-36 z-[1000] rounded-xl border-2 border-brand-orange/30 bg-white/95 px-5 py-3 text-xs font-bold text-brand-orange shadow-2xl backdrop-blur-md max-w-[280px]">
+      {/* Consolidated zoom warning / Performance hint */}
+      {(zoom < 10 && (filters?.showTolls || filters?.showTruckParkings)) || (zoom < 9 && filters?.showAllMotorways) ? (
+        <div className="pointer-events-none absolute left-6 bottom-36 z-[1000] rounded-xl border-2 border-brand-orange/30 bg-white/95 px-5 py-3 text-xs font-bold text-brand-orange shadow-2xl backdrop-blur-md max-w-[280px] animate-in fade-in slide-in-from-left-4">
           <div className="flex items-center gap-2 mb-1">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-            <span>{t('zoomRequired')}</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>{lang === 'fr' ? 'Couche disponible' : 'Layer available'}</span>
           </div>
-          {t('zoomWarningText')}
+          {lang === 'fr' 
+            ? "Zoomez davantage pour l'afficher."
+            : "Zoom in further to display it."}
+        </div>
+      ) : null}
+
+      {/* Loading states overlay */}
+      {(osmData.loading.motorways.fr || osmData.loading.tolls.fr || osmData.loading.truckParkings.fr) && (
+        <div className="absolute left-6 bottom-10 z-[1000] flex flex-col gap-2 pointer-events-none">
+          {osmData.loading.motorways.fr && (
+            <div className="bg-brand-blue/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
+              {lang === 'fr' ? 'Chargement des couches OSM...' : 'Loading OSM layers...'}
+            </div>
+          )}
+          {osmData.loading.tolls.fr && (
+            <div className="bg-brand-orange/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
+              {lang === 'fr' ? 'Chargement des péages...' : 'Loading tolls...'}
+            </div>
+          )}
+          {osmData.loading.truckParkings.fr && (
+            <div className="bg-brand-green/90 text-white px-4 py-2 rounded-xl shadow-lg text-[10px] font-bold uppercase tracking-widest flex items-center gap-3 animate-pulse">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce" />
+              {lang === 'fr' ? 'Chargement des parkings PL...' : 'Loading HGV parkings...'}
+            </div>
+          )}
         </div>
       )}
 

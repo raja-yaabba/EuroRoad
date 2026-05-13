@@ -100,10 +100,33 @@ export const getAggregatedStats = (hubs: Hub[]) => {
 };
 
 export const computeGlobalStats = (hubs: Hub[], osmData: OsmData) => {
-  const totalMotorways = (osmData.motorways.fr?.length || 0) + (osmData.motorways.be?.length || 0) + (osmData.motorways.nl?.length || 0);
-  const totalTolls = (osmData.tolls.fr?.length || 0) + (osmData.tolls.be?.length || 0) + (osmData.tolls.nl?.length || 0);
-  const totalParkings = (osmData.truckParkings.fr?.length || 0) + (osmData.truckParkings.be?.length || 0) + (osmData.truckParkings.nl?.length || 0);
-  const osmElements = totalMotorways + totalTolls + totalParkings;
+  const getLayerStats = (layer: keyof OsmData) => {
+    const dataMap = osmData[layer] as Record<string, any[] | null>;
+    const loadingMap = osmData.loading?.[layer as keyof typeof osmData.loading] as Record<string, boolean> | undefined;
+    
+    let total = 0;
+    let isAnyLoading = false;
+    let isAnyNull = false;
+    
+    (['fr', 'be', 'nl'] as const).forEach(code => {
+      if (loadingMap?.[code]) isAnyLoading = true;
+      if (dataMap[code] === null) isAnyNull = true;
+      total += (dataMap[code]?.length || 0);
+    });
+
+    return {
+      total,
+      isLoading: isAnyLoading,
+      isIdle: isAnyNull && !isAnyLoading
+    };
+  };
+
+  const motorwayStats = getLayerStats('motorways');
+  const tollStats = getLayerStats('tolls');
+  const parkingStats = getLayerStats('truckParkings');
+  const axisStats = getLayerStats('axes');
+
+  const osmElements = motorwayStats.total + tollStats.total + parkingStats.total;
 
   const uniqueAxes = new Set<string>();
   (['fr', 'be', 'nl'] as const).forEach(country => {
@@ -118,12 +141,18 @@ export const computeGlobalStats = (hubs: Hub[], osmData: OsmData) => {
 
   return {
     osmElements,
-    totalMotorways,
-    totalTolls,
-    totalParkings,
+    totalMotorways: motorwayStats.total,
+    totalTolls: tollStats.total,
+    totalParkings: parkingStats.total,
     totalAxes,
     totalHubs: hubs.length,
     totalRealDocumented,
-    countriesCount: 3
+    countriesCount: 3,
+    states: {
+      motorways: motorwayStats.isLoading ? 'loading' : (motorwayStats.isIdle ? 'idle' : 'loaded'),
+      tolls: tollStats.isLoading ? 'loading' : (tollStats.isIdle ? 'idle' : 'loaded'),
+      parkings: parkingStats.isLoading ? 'loading' : (parkingStats.isIdle ? 'idle' : 'loaded'),
+      axes: axisStats.isLoading ? 'loading' : (axisStats.isIdle ? 'idle' : 'loaded'),
+    }
   };
 };

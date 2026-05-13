@@ -155,58 +155,77 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
               )}
             </div>
 
-            <button
-              onClick={() => setFilters(prev => ({ ...prev, showTolls: !prev.showTolls }))}
-              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${filters.showTolls
-                  ? 'bg-brand-orange text-white shadow-md'
-                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-orange/50'
-                }`}
-            >
-              <MapPin className="w-4 h-4" />
-              {t('toll')}
-              <span className="ml-auto text-[9px] font-normal opacity-60">zoom≥9</span>
-            </button>
-            <button
-              onClick={() => setFilters(prev => ({ ...prev, showTruckParkings: !prev.showTruckParkings }))}
-              className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${filters.showTruckParkings
-                  ? 'bg-brand-turquoise text-white shadow-md'
-                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-turquoise/50'
-                }`}
-            >
-              <Truck className="w-4 h-4" />
-              {t('truck_parking')}
-              <span className="ml-auto text-[9px] font-normal opacity-60">zoom≥10</span>
-            </button>
+            {/* Points of interest group */}
+            <div className="col-span-2 flex flex-col gap-2">
+              <div className="flex bg-brand-bg p-1 rounded-xl border border-brand-border gap-1">
+                <button
+                  onClick={() => setFilters(prev => ({ ...prev, showTolls: !prev.showTolls }))}
+                  className={`flex-1 flex flex-col items-center justify-center py-2 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showTolls
+                    ? 'bg-white shadow-sm text-brand-orange border border-brand-orange/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3 h-3" />
+                    {t('toll')}
+                  </div>
+                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ 9</span>
+                </button>
+                <button
+                  onClick={() => setFilters(prev => ({ ...prev, showTruckParkings: !prev.showTruckParkings }))}
+                  className={`flex-1 flex flex-col items-center justify-center py-2 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showTruckParkings
+                    ? 'bg-white shadow-sm text-brand-turquoise border border-brand-turquoise/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Truck className="w-3 h-3" />
+                    {t('truck_parking')}
+                  </div>
+                  <span className="text-[7px] font-bold opacity-60 mt-0.5">zoom ≥ 10</span>
+                </button>
+              </div>
+            </div>
 
-            {/* Analytical layer */}
-            <div className="col-span-2 border-t border-brand-border/50 pt-2 flex flex-col gap-1">
-              <div className="text-[9px] font-bold uppercase tracking-wider text-brand-muted mb-1 flex items-center gap-1">
+            {/* Analytical layer group */}
+            <div className="col-span-2 border-t border-brand-border/50 pt-4 flex flex-col gap-2">
+              <div className="text-[9px] font-bold uppercase tracking-wider text-brand-muted mb-1 flex items-center gap-1 opacity-70">
                 <Layers className="w-3 h-3" />
                 {t('analyticalLayer')}
               </div>
-              <button
-                onClick={() => setFilters(prev => ({ ...prev, showAxes: !prev.showAxes }))}
-                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${filters.showAxes
-                    ? 'bg-brand-green text-white shadow-md'
-                    : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-green/50'
-                  }`}
-              >
-                <Layers className="w-4 h-4" />
-                {t('osmAxesAnalysis')}
-              </button>
-              <div className="text-[9px] text-center text-brand-muted font-medium px-2 leading-tight">
+              <div className="flex bg-brand-bg p-1 rounded-xl border border-brand-border gap-1">
+                <button
+                  onClick={() => setFilters(prev => ({ 
+                    ...prev, 
+                    showAxes: !prev.showAxes,
+                    showAllAxes: false
+                  }))}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showAxes
+                    ? 'bg-white shadow-sm text-brand-green border border-brand-green/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <Route className="w-3.5 h-3.5" />
+                  {t('osmAxesAnalysis')}
+                </button>
+                <button
+                  onClick={() => setFilters(prev => ({ 
+                    ...prev, 
+                    showAllAxes: !prev.showAllAxes,
+                    showAxes: false
+                  }))}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showAllAxes
+                    ? 'bg-white shadow-sm text-brand-green border border-brand-green/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  {t('showAllAxes')}
+                </button>
+              </div>
+              <div className="text-[9px] text-center text-brand-muted font-medium px-2 leading-tight opacity-60">
                 {t('analyticalGroupingNote')}
               </div>
-              <button
-                onClick={() => setFilters(prev => ({ ...prev, showAllAxes: !prev.showAllAxes }))}
-                className={`flex items-center justify-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-bold transition-all ${filters.showAllAxes
-                    ? 'bg-brand-green/80 text-white shadow-sm'
-                    : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-green/50'
-                  }`}
-              >
-                <Layers className="w-3 h-3" />
-                {t('showAllAxes')}
-              </button>
             </div>
 
           </div>

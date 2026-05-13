@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useEffect, useMemo } from 'react';
-import { Polyline, Tooltip } from 'react-leaflet';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { Polyline, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import { Country, OsmCountryCode } from '../../types';
 import { useApp } from '../../context/AppContext';
 
@@ -10,6 +10,14 @@ interface MotorwayLayerProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null, type: 'motorway' | null) => void;
 }
+
+const isVisible = (bbox: [number, number, number, number] | undefined, bounds: L.LatLngBounds | null) => {
+  if (!bounds || !bbox) return true;
+  const sw = bounds.getSouthWest();
+  const ne = bounds.getNorthEast();
+  const [minLat, minLon, maxLat, maxLon] = bbox;
+  return !(maxLat < sw.lat || minLat > ne.lat || maxLon < sw.lng || minLon > ne.lng);
+};
 
 const COUNTRY_COLORS: Record<Country, string> = {
   France: '#3B82F6',
@@ -26,13 +34,13 @@ const COUNTRY_CODE: Record<Country, OsmCountryCode> = {
 // Zoom-based display caps: show fewer segments at low zoom (faster), more when user zooms in
 const getDisplayCap = (zoom: number, showAll: boolean): number => {
   if (!showAll) {
-    if (zoom < 8) return 600;
-    if (zoom < 10) return 1500;
-    return 3000;
+    if (zoom < 8) return 300;
+    if (zoom < 10) return 800;
+    return 2000;
   }
-  if (zoom < 9) return 1000;
-  if (zoom < 12) return 3000;
-  return 5000;
+  if (zoom < 9) return 500;
+  if (zoom < 12) return 2000;
+  return 4000;
 };
 
 // Single polyline – memo prevents re-render unless its own props change
@@ -46,6 +54,7 @@ const MotowaySeg = memo(({
   name,
   country,
   showTooltip,
+  zoom,
 }: {
   positions: [number, number][];
   color: string;
@@ -56,12 +65,13 @@ const MotowaySeg = memo(({
   name?: string;
   country: Country;
   showTooltip: boolean;
+  zoom: number;
 }) => {
   const pathOptions = useMemo(() => ({
     color,
-    weight: isSelected ? 5 : 2,
-    opacity: isSelected ? 0.9 : 0.55,
-  }), [color, isSelected]);
+    weight: isSelected ? 5 : (zoom < 9 ? 1.2 : 2),
+    opacity: isSelected ? 0.9 : (zoom < 9 ? 0.4 : 0.6),
+  }), [color, isSelected, zoom]);
 
   const handlers = useMemo(() => ({
     click: () => onSelect(onClickId),
@@ -93,7 +103,15 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = memo(({
   selectedItemId,
   onSelectItem,
 }) => {
+  const map = useMap();
+  const [bounds, setBounds] = useState<L.LatLngBounds>(map.getBounds());
   const { osmData, ensureOsmLayerLoaded, filters } = useApp();
+  
+  useMapEvents({
+    moveend: () => setBounds(map.getBounds()),
+    zoomend: () => setBounds(map.getBounds())
+  });
+
   const code = COUNTRY_CODE[country];
   const color = COUNTRY_COLORS[country];
 
@@ -108,12 +126,20 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = memo(({
   const cap = getDisplayCap(zoom, Boolean(filters.showAllMotorways));
 
   const displayFeatures = useMemo(() => {
+    let filtered = features;
+    
     if (filters.showAllMotorways && zoom >= 9) {
-      return features.slice(0, cap);
+      // Keep all
+    } else {
+      // Default: only principal roads (have a ref)
+      filtered = features.filter(f => f.ref || f.intRef);
     }
-    // Default: only principal roads (have a ref)
-    return features.filter(f => f.ref || f.intRef).slice(0, cap);
-  }, [features, filters.showAllMotorways, zoom, cap]);
+
+    // Viewport filtering
+    return filtered
+      .filter(f => isVisible(f.bbox, bounds))
+      .slice(0, cap);
+  }, [features, filters.showAllMotorways, zoom, cap, bounds]);
 
   // Stable callback
   const handleSelect = useCallback((id: string) => onSelectItem(id, 'motorway'), [onSelectItem]);
@@ -141,6 +167,7 @@ export const MotorwayLayer: React.FC<MotorwayLayerProps> = memo(({
             name={feature.name}
             country={country}
             showTooltip={showTooltip}
+            zoom={zoom}
           />
         );
       })}

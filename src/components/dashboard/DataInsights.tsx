@@ -73,7 +73,9 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
       name: t('realDocumentedData'), 
       value: globalStats.totalRealDocumented, 
       color: '#22C55E',
-      description: lang === 'fr' ? '55 751 éléments OSM + 15 hubs documentés' : '55,751 OSM elements + 15 documented hubs'
+      description: lang === 'fr' 
+        ? `${globalStats.osmElements.toLocaleString('fr-FR')} éléments OSM + ${globalStats.totalHubs} hubs documentés` 
+        : `${globalStats.osmElements.toLocaleString('en-US')} OSM elements + ${globalStats.totalHubs} documented hubs`
     },
     { 
       name: t('calculatedOsmData'), 
@@ -109,13 +111,23 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
           </div>
           <div className="grid grid-cols-2 gap-6 w-full md:w-auto shrink-0">
             {[
-              { label: t('osmElementsUsed'), value: globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US') },
+              { 
+                label: t('osmElementsUsed'), 
+                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.osmElements.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US'),
+                isLoading: globalStats.states.motorways === 'loading'
+              },
               { label: t('documentedHubs'), value: globalStats.totalHubs },
-              { label: t('calculatedAxes'), value: globalStats.totalAxes },
+              { 
+                label: t('calculatedAxes'), 
+                value: globalStats.states.motorways === 'loading' ? '...' : globalStats.totalAxes,
+                isLoading: globalStats.states.motorways === 'loading'
+              },
               { label: t('countriesCovered'), value: globalStats.countriesCount },
             ].map((kpi, idx) => (
               <div key={idx} className="bg-white p-5 rounded-2xl border border-brand-border shadow-sm flex flex-col items-center text-center">
-                <div className="text-2xl font-black text-brand-blue mb-1">{kpi.value}</div>
+                <div className={`text-2xl font-black text-brand-blue mb-1 ${kpi.isLoading ? 'animate-pulse opacity-50' : ''}`}>
+                  {kpi.value}
+                </div>
                 <div className="text-[10px] uppercase font-bold tracking-wider text-brand-muted leading-tight">{kpi.label}</div>
               </div>
             ))}
@@ -132,23 +144,50 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
             </p>
             <div className="space-y-4 flex-1">
               {[
-                { label: t('motorwaySegments'), value: globalStats.totalMotorways, color: 'bg-brand-blue' },
-                { label: t('osmTolls'), value: globalStats.totalTolls, color: 'bg-brand-orange' },
-                { label: t('hgvParkings'), value: globalStats.totalParkings, color: 'bg-brand-green' },
-              ].map((item, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="flex justify-between items-end">
-                    <span className="text-[11px] font-bold text-brand-muted uppercase">{item.label}</span>
-                    <span className="text-sm font-black text-brand-text">{item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US')}</span>
+                { 
+                  label: t('motorwaySegments'), 
+                  value: globalStats.totalMotorways, 
+                  color: 'bg-brand-blue',
+                  state: globalStats.states.motorways
+                },
+                { 
+                  label: t('osmTolls'), 
+                  value: globalStats.totalTolls, 
+                  color: 'bg-brand-orange',
+                  state: globalStats.states.tolls
+                },
+                { 
+                  label: t('hgvParkings'), 
+                  value: globalStats.totalParkings, 
+                  color: 'bg-brand-green',
+                  state: globalStats.states.parkings
+                },
+              ].map((item, idx) => {
+                const isLoading = item.state === 'loading';
+                const isIdle = item.state === 'idle';
+                const displayValue = isLoading 
+                  ? (lang === 'fr' ? 'Chargement...' : 'Loading...') 
+                  : isIdle 
+                    ? (lang === 'fr' ? '---' : '---')
+                    : item.value.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-US');
+
+                return (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex justify-between items-end">
+                      <span className="text-[11px] font-bold text-brand-muted uppercase">{item.label}</span>
+                      <span className={`text-sm font-black text-brand-text ${isLoading ? 'animate-pulse text-brand-blue' : ''}`}>
+                        {displayValue}
+                      </span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-bg rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${item.color} rounded-full transition-all duration-500`} 
+                        style={{ width: isLoading || isIdle ? '0%' : `${(item.value / (globalStats.osmElements || 1)) * 100}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-1.5 w-full bg-brand-bg rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full ${item.color} rounded-full`} 
-                      style={{ width: `${(item.value / globalStats.osmElements) * 100}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
               <p className="text-[10px] text-brand-muted mt-4 italic leading-tight">
                 {t('osmSourceNote')}
               </p>
