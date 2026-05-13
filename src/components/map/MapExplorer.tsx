@@ -82,6 +82,22 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
   const [zoom, setZoom] = useState(7);
   const { isFullScreen, setIsFullScreen, setIsSidebarOpen } = useApp();
   const [showHelp, setShowHelp] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Prevent browser zoom (Ctrl + Wheel) when over the map
+  useEffect(() => {
+    const div = containerRef.current;
+    if (!div) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+
+    div.addEventListener('wheel', handleWheel, { passive: false });
+    return () => div.removeEventListener('wheel', handleWheel);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowHelp(false), 8000);
@@ -115,7 +131,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
   };
 
   return (
-    <div className="relative z-0 h-full w-full overflow-hidden">
+    <div ref={containerRef} className="relative z-0 h-full w-full overflow-hidden">
       <MapContainer
         center={[50.8, 4.6]}
         zoom={7}

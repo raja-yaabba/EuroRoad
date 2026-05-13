@@ -54,6 +54,7 @@ body {
   font-family: var(--font-sans) !important;
   width: 100% !important;
   height: 100% !important;
+  overscroll-behavior: contain;
 }
 .leaflet-popup-content-wrapper {
   background: #FFFFFF !important;

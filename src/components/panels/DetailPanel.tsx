@@ -26,6 +26,7 @@ const humanizeValue = (val: string, lang: Language): string => {
     private: { fr: 'Privé', en: 'Private' },
     permissive: { fr: 'Autorisé', en: 'Permissive' },
     motorway: { fr: 'Autoroute', en: 'Motorway' },
+    designated: { fr: 'Accès poids lourds', en: 'HGV access' },
   };
 
   const normalized = val.toLowerCase().trim();

@@ -251,7 +251,7 @@ export const MapSearch: React.FC<MapSearchProps> = ({ onSelectResult }) => {
     });
 
     return results;
-  }, [osmData]);
+  }, [osmData, lang]);
 
   // ── Filter by debounced query ──────────────────────────────────────────────
   const results = useMemo<SearchResult[]>(() => {

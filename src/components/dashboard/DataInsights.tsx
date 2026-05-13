@@ -47,7 +47,7 @@ export const DataInsights: React.FC<DataInsightsProps> = ({ hubs, lang }) => {
     return [...axisMap.values()]
       .sort((a, b) => b.count - a.count)
       .slice(0, 5);
-  }, [osmData.motorways]);
+  }, [osmData.motorways, lang]);
 
   const representativeHubs = useMemo(() => {
     const targets = ['Rotterdam', 'Antwerp', 'Amsterdam', 'Lille', 'Venlo'];
