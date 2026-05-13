@@ -123,7 +123,7 @@ const MapSection: React.FC = () => {
         </div>
       )}
 
-      <div className={`transition-all duration-500 overflow-hidden ${
+      <div id="map-viewport" className={`transition-all duration-500 overflow-hidden ${
         isFullScreen 
           ? 'fixed inset-0 z-[9999] bg-white' 
           : 'relative w-full h-[70vh] min-h-[600px] max-w-[1440px] mx-auto md:rounded-3xl border border-brand-border shadow-2xl'

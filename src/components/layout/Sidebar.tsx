@@ -116,32 +116,45 @@ export const Sidebar: React.FC<SidebarProps> = ({ filters, setFilters, lang }) =
             {t('mapLayers')}
           </h3>
           <div className="grid grid-cols-2 gap-2">
-            {/* Primary layers */}
-            <button
-              onClick={() => setFilters(prev => ({ ...prev, showMotorways: !prev.showMotorways }))}
-              className={`col-span-2 flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${filters.showMotorways
-                  ? 'bg-brand-blue text-white shadow-md'
-                  : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-blue/50'
-                }`}
-            >
-              <Map className="w-4 h-4" />
-              {t('primaryMotorways')}
-            </button>
-            <div className="col-span-2 flex flex-col gap-1">
-              <button
-                onClick={() => setFilters(prev => ({ ...prev, showAllMotorways: !prev.showAllMotorways }))}
-                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-[10px] font-bold transition-all ${filters.showAllMotorways
-                    ? 'bg-brand-blue/80 text-white shadow-md'
-                    : 'bg-brand-bg text-brand-muted border border-brand-border hover:border-brand-blue/50'
-                  }`}
-              >
-                <Map className="w-3 h-3" />
-                {t('allMotorways')}
-              </button>
-              <div className="text-[8px] text-center text-amber-600 font-bold leading-tight">
-                {t('heavyLayerWarning')}
+            {/* Motorways segmented control */}
+            <div className="col-span-2 flex flex-col gap-2">
+              <div className="flex bg-brand-bg p-1 rounded-xl border border-brand-border">
+                <button
+                  onClick={() => setFilters(prev => ({
+                    ...prev,
+                    showMotorways: !prev.showMotorways,
+                    showAllMotorways: false
+                  }))}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showMotorways
+                    ? 'bg-white shadow-sm text-brand-blue border border-brand-blue/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <Map className="w-3.5 h-3.5" />
+                  {t('primaryMotorways')}
+                </button>
+                <button
+                  onClick={() => setFilters(prev => ({
+                    ...prev,
+                    showAllMotorways: !prev.showAllMotorways,
+                    showMotorways: false
+                  }))}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-tight transition-all ${filters.showAllMotorways
+                    ? 'bg-white shadow-sm text-brand-blue border border-brand-blue/10'
+                    : 'text-brand-muted hover:text-brand-text'
+                    }`}
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  {t('allMotorways')}
+                </button>
               </div>
+              {filters.showAllMotorways && (
+                <div className="text-[8px] text-center text-amber-600 font-bold leading-tight px-2 animate-pulse">
+                  {t('heavyLayerWarning')}
+                </div>
+              )}
             </div>
+
             <button
               onClick={() => setFilters(prev => ({ ...prev, showTolls: !prev.showTolls }))}
               className={`flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold transition-all ${filters.showTolls

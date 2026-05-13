@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, useMap, useMapEvents, ZoomControl } from 'react-leaflet';
+import { Layers } from 'lucide-react';
 import L from 'leaflet';
 import { Country, FilterState, Hub, Language, SelectedItemType } from '../../types';
 import { useTranslation } from '../../utils/i18n';
@@ -82,30 +83,40 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
   const [zoom, setZoom] = useState(7);
   const { isFullScreen, setIsFullScreen, setIsSidebarOpen } = useApp();
   const [showHelp, setShowHelp] = useState(true);
+  const [showZoomHint, setShowZoomHint] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Prevent browser zoom (Ctrl + Wheel) when over the map
+  // Browser zoom protection (Ctrl + Wheel) specifically on the map
   useEffect(() => {
-    const div = containerRef.current;
-    if (!div) return;
+    const mapElement = document.querySelector(".leaflet-container");
+    if (!mapElement) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      if (e.ctrlKey) {
-        e.preventDefault();
+    const preventBrowserZoomOnMap = (event: WheelEvent) => {
+      if (event.ctrlKey) {
+        event.preventDefault();
       }
     };
 
-    div.addEventListener('wheel', handleWheel, { passive: false });
-    return () => div.removeEventListener('wheel', handleWheel);
+    mapElement.addEventListener("wheel", preventBrowserZoomOnMap, {
+      passive: false,
+    });
+
+    return () => {
+      mapElement.removeEventListener("wheel", preventBrowserZoomOnMap);
+    };
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowHelp(false), 8000);
+    const timer = setTimeout(() => {
+      setShowHelp(false);
+      setShowZoomHint(false);
+    }, 8000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleSelect = useCallback((id: string | null, type: SelectedItemType | null) => {
     setShowHelp(false);
+    setShowZoomHint(false);
     onSelectItem(id, type);
   }, [onSelectItem]);
 
@@ -127,6 +138,14 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
       onSelectItem(null, null);
     } else {
       setIsSidebarOpen(true);
+      // Instant repositioning with a small top margin
+      setTimeout(() => {
+        const el = document.getElementById('map-viewport');
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.pageYOffset - 40;
+          window.scrollTo({ top: y, behavior: 'auto' });
+        }
+      }, 50);
     }
   };
 
@@ -140,8 +159,12 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         className="h-full w-full"
         style={{ height: "100%", width: "100%" }}
         zoomControl={false}
-        scrollWheelZoom={true}
+        scrollWheelZoom="center"
+        wheelDebounceTime={80}
+        wheelPxPerZoomLevel={180}
         preferCanvas={true}
+        dragging={true}
+        doubleClickZoom={true}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -150,6 +173,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         <ZoomControl position="topleft" />
         <MapZoomTracker onZoomChange={setZoom} />
         <MapResizer isFullScreen={isFullScreen} />
+        
         {/* Global search — MapSearch must be inside MapContainer to access useMap */}
         <MapSearch onSelectResult={(id, type) => handleSelect(id, type)} />
 
@@ -171,11 +195,11 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
           );
         })}
 
-        {filters?.showMotorways && selectedCountries.map((country) => (
+        {(filters?.showMotorways || filters?.showAllMotorways) && selectedCountries.map((country) => (
           <MotorwayLayer
             key={`motorway-${country}`}
             country={country as Country}
-            enabled={Boolean(filters?.showMotorways)}
+            enabled={Boolean(filters?.showMotorways || filters?.showAllMotorways)}
             zoom={zoom}
             selectedItemId={selectedItemId}
             onSelectItem={handleSelect}
@@ -216,6 +240,21 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
         ))}
       </MapContainer>
 
+      {/* Zoom trackpad hint */}
+      {showZoomHint && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] bg-brand-text/90 text-white px-6 py-3 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center shrink-0">
+            <Layers className="w-4 h-4 text-white" />
+          </div>
+          <p className="text-xs font-bold leading-tight">
+            {lang === 'fr' 
+              ? "Pincez ou utilisez le pavé tactile pour zoomer la carte."
+              : "Pinch or use the trackpad to zoom the map."}
+          </p>
+          <button onClick={() => setShowZoomHint(false)} className="ml-2 opacity-50 hover:opacity-100 transition-opacity text-base">✕</button>
+        </div>
+      )}
+
       {/* Help card */}
       {showHelp && (
         <div className="absolute top-4 right-4 z-[1000] flex items-start gap-3 rounded-2xl border border-brand-blue/20 bg-white/96 px-5 py-3 text-xs font-medium text-brand-text shadow-xl backdrop-blur-sm max-w-sm">
@@ -236,7 +275,7 @@ export const MapExplorer: React.FC<MapExplorerProps> = ({ lang = 'fr', filters, 
 
       {/* Consolidated zoom warning */}
       {zoom < 10 && (filters?.showTolls || filters?.showTruckParkings) && (
-        <div className="pointer-events-none absolute left-6 bottom-24 z-[1000] rounded-xl border-2 border-brand-orange/30 bg-white/95 px-5 py-3 text-xs font-bold text-brand-orange shadow-2xl backdrop-blur-md max-w-[280px]">
+        <div className="pointer-events-none absolute left-6 bottom-36 z-[1000] rounded-xl border-2 border-brand-orange/30 bg-white/95 px-5 py-3 text-xs font-bold text-brand-orange shadow-2xl backdrop-blur-md max-w-[280px]">
           <div className="flex items-center gap-2 mb-1">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
             <span>{t('zoomRequired')}</span>
